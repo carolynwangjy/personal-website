@@ -5,7 +5,7 @@ export default function Page() {
     <section>
       <div className="flex flex-col md:items-start">
         <div className="text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:max-w-4xl">
-          <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">
+          <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[520px]:text-center">
             hi! i&apos;m carolyn 👋
           </h1>
         <div
