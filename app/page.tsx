@@ -9,7 +9,7 @@ export default function Page() {
             hi! i&apos;m carolyn 👋
           </h1>
         <div
-          className="mx-auto mb-4 w-[160px] max-w-[38vw] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 md:float-right md:-mt-2 md:ml-4 md:mb-4 md:w-[190px] md:max-w-[210px]"
+          className="float-right -mt-2 ml-4 mb-4 w-[160px] max-w-[38vw] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 md:w-[190px] md:max-w-[210px] max-[520px]:float-none max-[520px]:mx-auto max-[520px]:mb-4"
         >
             <div className="relative aspect-square w-full">
               <Image
@@ -47,7 +47,7 @@ export default function Page() {
               className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
             >
               run
-            </a>{' '}
+            </a>
             , and perform :)
           </p>
           <p>welcome to my little corner of the internet! 🫶</p>
