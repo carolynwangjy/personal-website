@@ -4,12 +4,12 @@ export default function Page() {
   return (
     <section>
       <div className="flex flex-col md:items-start">
-        <div className="text-lg leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:max-w-4xl">
-          <h1 className="text-4xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">
+        <div className="text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:max-w-4xl">
+          <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">
             hi! i&apos;m carolyn 👋
           </h1>
-          <div
-          className="float-right -mt-1 ml-4 mb-4 w-[180px] max-w-[42vw] md:w-[215px] md:max-w-[230px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
+        <div
+          className="float-right -mt-2 ml-4 mb-4 w-[160px] max-w-[38vw] md:w-[190px] md:max-w-[210px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
           >
             <div className="relative aspect-square w-full">
               <Image

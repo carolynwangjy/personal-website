@@ -50,7 +50,7 @@ export default function RootLayout({
     >
       <body
         className={cx(
-          'antialiased max-w-4xl mx-6 mt-6 lg:mx-auto text-black bg-[#f5f5f5] dark:text-white dark:bg-black',
+          'antialiased max-w-[45rem] mx-6 mt-6 lg:mx-auto text-black bg-[#f5f5f5] dark:text-white dark:bg-black',
           inter.className
         )}
       >

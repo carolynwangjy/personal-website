@@ -1,3 +1,6 @@
+ 'use client'
+
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 const navItems = [
@@ -10,15 +13,41 @@ const navItems = [
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
+
   return (
-    <aside className="mb-16 tracking-tight">
+    <aside className="mb-12 tracking-tight">
       <div className="lg:sticky lg:top-20">
         <nav
-          className="flex items-center justify-start relative px-0 pb-0 fade md:overflow-visible scroll-pr-6 md:relative py-5"
+          className="flex items-center justify-start relative px-0 pb-0 fade md:overflow-visible scroll-pr-6 md:relative py-3"
           id="nav"
         >
-          <div className="flex items-center space-x-7 text-lg">
-            {navItems.map((item) => (
+          <div className="flex items-center space-x-6 text-[17px]">
+            {navItems.map((item) => {
+              const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group relative px-1 py-0.5 rounded text-neutral-900 dark:text-neutral-100"
+                >
+                  {item.name}
+                  <span
+                    className={[
+                      'pointer-events-none absolute left-0 right-0 -bottom-[1px] h-[1.6px] rounded-full origin-center transition-transform duration-200 ease-out',
+                      'bg-neutral-900 dark:bg-neutral-100',
+                      active ? 'scale-x-100' : 'scale-x-0',
+                      'group-hover:scale-x-100',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                  />
+                </Link>
+              )
+            })}
+            {/* duplicate map removed */}
+            {/* original links removed */}
+            {false && navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

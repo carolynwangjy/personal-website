@@ -70,7 +70,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="text-[18.5px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
+      <div className="text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
         <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
         <button
           type="button"
@@ -81,10 +81,10 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
             setSortMode('date')
           }}
           className={[
-            'underline-offset-[2px] decoration-[1.5px]',
+            'px-1 rounded transition-colors',
             sortMode === 'date'
-              ? 'underline text-neutral-900 dark:text-neutral-100'
-              : 'hover:underline text-neutral-700 dark:text-neutral-300',
+              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
+              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
           ].join(' ')}
         >
           date {dateDir === 'desc' ? '↓' : '↑'}
@@ -94,10 +94,10 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
           type="button"
           onClick={() => setSortMode('topic')}
           className={[
-            'underline-offset-[2px] decoration-[1.5px]',
+            'px-1 rounded transition-colors',
             sortMode === 'topic'
-              ? 'underline text-neutral-900 dark:text-neutral-100'
-              : 'hover:underline text-neutral-700 dark:text-neutral-300',
+              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da]'
+              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
           ].join(' ')}
         >
           topic

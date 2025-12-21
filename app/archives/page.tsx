@@ -29,7 +29,7 @@ const data: { year: string; items: YearItem[] }[] = [
 
 export default function ArchivesPage() {
   return (
-    <section className="space-y-4 text-[18.5px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">experience</h1>
       <p className="text-neutral-700 dark:text-neutral-300">some things i've been up to :)</p>
 
@@ -60,7 +60,7 @@ export default function ArchivesPage() {
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">
                 <span className="text-lg font-semibold tracking-tight">{entry.year}</span>
               </div>
-              <div className="px-6 pb-4 text-[18.5px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
+              <div className="px-6 pb-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1.5 pl-5">
                   {entry.items.map((item, idx) => (
                     <li key={idx}>{item.label}</li>

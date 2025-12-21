@@ -1,8 +1,10 @@
 export default function HobbiesPage() {
   return (
-    <section className="space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">hobbies</h1>
-      <p className="text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
+    <section className="space-y-4 text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl">
+      <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+        hobbies
+      </h1>
+      <p>
         in my free time, i pen thought pieces on my{' '}
         <a className="text-blue-700 hover:underline dark:text-blue-300" href="#">
           medium blog
@@ -23,7 +25,7 @@ export default function HobbiesPage() {
         , and a pianist, flutist &amp; classical vocalist. i still put those hats
         on every now and then.
       </p>
-      <p className="text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
+      <p>
         if you know me well, you&apos;d know that i&apos;m a music kid at heart.
         sight reading is a long lost forte :)
       </p>
