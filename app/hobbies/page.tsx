@@ -1,7 +1,7 @@
 export default function HobbiesPage() {
   return (
     <section className="space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">Hobbies</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">hobbies</h1>
       <p className="text-lg leading-relaxed text-neutral-800 dark:text-neutral-200">
         in my free time, i pen thought pieces on my{' '}
         <a className="text-blue-700 hover:underline dark:text-blue-300" href="#">

@@ -1,69 +1,58 @@
 import Image from 'next/image'
-import { Caveat } from 'next/font/google'
-
-const caveat = Caveat({ subsets: ['latin'], weight: ['700'] })
 
 export default function Page() {
   return (
     <section>
-      <header className="mb-8">
-        <h1 className={`${caveat.className} text-[4.25rem] mb-0`}>
-          BIO :)
-        </h1>
-        <svg
-          width="118"
-          height="8"
-          viewBox="0 0 118 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-neutral-900 dark:text-neutral-100 -mt-1"
-        >
-          <path
-            d="M2 4.5C24 3 48 2.6 74 3.6C92.5 4.2 107 5 116 4.8"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-        </svg>
-      </header>
-
-      <div>
-        <div
-          className="float-right ml-6 mb-5 w-[220px] max-w-[36vw] md:w-[240px]"
-          style={{
-            shapeOutside: 'circle(50%)',
-            shapeMargin: '22px',
-          }}
-        >
-          <div className="relative aspect-square w-full overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900">
-            <Image
-              src="/carolyn.jpg"
-              alt="Carolyn Wang"
-              fill
-              className="object-cover"
-              priority
-            />
+      <div className="flex flex-col md:items-start">
+        <div className="text-lg leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:max-w-4xl">
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">
+            hi! i&apos;m carolyn 👋
+          </h1>
+          <div
+            className="float-right -mt-2 ml-6 mb-4 w-[175px] max-w-[42vw] md:w-[205px] md:max-w-[220px] rounded-full overflow-hidden bg-neutral-50 border border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
+          style={{ shapeOutside: 'circle(52%)', shapeMargin: '24px' }}
+          >
+            <div className="relative aspect-square w-full">
+              <Image
+                src="/carolyn.jpg"
+                alt="Carolyn Wang"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
-
-        </div>
-
-        <div className="text-[18.5px] leading-[1.45] text-neutral-800 dark:text-neutral-200 space-y-4 max-w-3xl">
-          <p className="max-w-[54ch] md:max-w-[58ch]">
-            hey hey! 👋 i&apos;m carolyn, an undergraduate @ uc berkeley (go
-            bears!) studying computer science and politics, philosophy &amp; law
-            (ppl). my interests lie in ai/nlp, sociopolitical systems, and public
-            service. welcome to my little corner of the internet :)
+          <p>
+            i&apos;m an undergraduate @ uc berkeley (go bears!) studying computer science and
+            politics, philosophy &amp; law (ppl). my interests lie in machine learning and social
+            systems.
           </p>
-
-          <div className="space-y-2">
-            <p className="text-neutral-700 dark:text-neutral-300">
-              currently, i&apos;m:
-            </p>
-            <ul className="list-disc space-y-1.5 pl-7" />
-          </div>
+          <p>
+            currently i&apos;m busy sidequesting (yay!), but you can find my past adventures{' '}
+            <a
+              href="/archives"
+              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors underline underline-offset-[2px] decoration-[1.5px]"
+            >
+              here
+            </a>
+            . in my free time, i like to{' '}
+            <a
+              href="/writing"
+              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors underline underline-offset-[2px] decoration-[1.5px]"
+            >
+              write
+            </a>
+            ,{' '}
+            <a
+              href="/hobbies"
+              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors underline underline-offset-[2px] decoration-[1.5px]"
+            >
+              run
+            </a>{' '}
+            , and perform :)
+          </p>
+          <p>welcome to my little corner of the internet! 🫶</p>
         </div>
-
-        <div className="clear-both" />
       </div>
     </section>
   )
