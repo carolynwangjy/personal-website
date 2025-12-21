@@ -22,7 +22,7 @@ export function Navbar() {
           className="flex items-center justify-start relative px-0 pb-0 fade md:overflow-visible scroll-pr-6 md:relative py-3"
           id="nav"
         >
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[17px]">
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-x-4 gap-y-2 text-[17px] w-full md:w-auto">
             {navItems.map((item) => {
               const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
               return (

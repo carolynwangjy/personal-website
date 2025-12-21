@@ -9,8 +9,8 @@ export default function Page() {
             hi! i&apos;m carolyn 👋
           </h1>
         <div
-          className="float-right -mt-2 ml-4 mb-4 w-[160px] max-w-[38vw] md:w-[190px] md:max-w-[210px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
-          >
+          className="mx-auto mb-4 w-[160px] max-w-[38vw] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 md:float-right md:-mt-2 md:ml-4 md:mb-4 md:w-[190px] md:max-w-[210px]"
+        >
             <div className="relative aspect-square w-full">
               <Image
                 src="/carolyn.jpg"
