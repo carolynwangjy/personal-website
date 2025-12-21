@@ -5,11 +5,11 @@ export default function Page() {
     <section>
       <div className="flex flex-col md:items-start">
         <div className="text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:max-w-4xl">
-          <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[520px]:text-center">
+          <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center">
             hi! i&apos;m carolyn 👋
           </h1>
         <div
-          className="float-right mb-4 w-[160px] max-w-[38vw] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 md:-mt-2 md:ml-4 md:mb-4 md:w-[190px] md:max-w-[210px] max-[520px]:float-none max-[520px]:mx-auto max-[520px]:mt-6 max-[520px]:mb-8"
+          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 min-[421px]:-mt-2 min-[421px]:ml-4 min-[421px]:mb-4 max-[420px]:float-none max-[420px]:mx-auto max-[420px]:mt-6 max-[420px]:mb-8 max-[420px]:w-[160px] max-[420px]:min-w-[160px] max-[420px]:max-w-[160px]"
         >
             <div className="relative aspect-square w-full">
               <Image
