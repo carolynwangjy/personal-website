@@ -1,10 +1,18 @@
-import { BlogPosts } from '../components/posts'
+import { getBlogPosts } from '../blog/utils'
+import { FilteredPosts } from '../components/filtered-posts'
 
 export default function WritingPage() {
+  const posts = getBlogPosts().map((p) => ({
+    slug: p.slug,
+    metadata: p.metadata,
+  }))
+
   return (
-    <section className="space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">writing</h1>
-      <BlogPosts />
+    <section className="space-y-4 text-lg leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl">
+      <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+        writing
+      </h1>
+      <FilteredPosts posts={posts} />
     </section>
   )
 }

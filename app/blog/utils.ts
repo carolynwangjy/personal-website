@@ -6,6 +6,7 @@ type Metadata = {
   publishedAt: string
   summary: string
   image?: string
+  category?: string
 }
 
 function parseFrontmatter(fileContent: string) {
@@ -76,10 +77,10 @@ export function formatDate(date: string, includeRelative = false) {
     formattedDate = 'Today'
   }
 
-  let fullDate = targetDate.toLocaleString('en-us', {
-    month: 'long',
+  let fullDate = targetDate.toLocaleDateString('en-US', {
+    month: 'numeric',
     day: 'numeric',
-    year: 'numeric',
+    year: '2-digit',
   })
 
   if (!includeRelative) {

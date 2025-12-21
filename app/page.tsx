@@ -9,15 +9,14 @@ export default function Page() {
             hi! i&apos;m carolyn 👋
           </h1>
           <div
-            className="float-right -mt-2 ml-6 mb-4 w-[175px] max-w-[42vw] md:w-[205px] md:max-w-[220px] rounded-full overflow-hidden bg-neutral-50 border border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
-          style={{ shapeOutside: 'circle(52%)', shapeMargin: '24px' }}
+          className="float-right -mt-1 ml-4 mb-4 w-[180px] max-w-[42vw] md:w-[215px] md:max-w-[230px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
           >
             <div className="relative aspect-square w-full">
               <Image
                 src="/carolyn.jpg"
                 alt="Carolyn Wang"
                 fill
-                className="object-cover"
+              className="object-cover scale-[1.12]"
                 priority
               />
             </div>
