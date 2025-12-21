@@ -4,6 +4,7 @@ import { FilteredPosts } from '../components/filtered-posts'
 export default function WritingPage() {
   const posts = getBlogPosts().map((p) => ({
     slug: p.slug,
+    href: `/blog/${p.slug}`,
     metadata: p.metadata,
   }))
 

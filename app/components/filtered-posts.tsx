@@ -5,7 +5,8 @@ import { formatDate } from 'app/lib/format-date'
 import { useMemo, useState } from 'react'
 
 type Post = {
-  slug: string
+  slug?: string
+  href: string
   metadata: {
     title: string
     publishedAt: string
@@ -113,12 +114,12 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
             <ul className="list-disc pl-5 space-y-[1px]">
               {dateSorted.map((post) => (
                 <li
-                  key={post.slug}
+                  key={post.slug || post.href}
                   className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
                 >
                   <Link
                     className="text-neutral-900 dark:text-neutral-100 tracking-tight"
-                    href={`/blog/${post.slug}`}
+                    href={post.href}
                   >
                     {post.metadata.title}{' '}
                     <span className="italic text-neutral-700 dark:text-neutral-300">
@@ -148,12 +149,12 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
                 <ul className="list-disc pl-5 space-y-[1px]">
                   {group.posts.map((post) => (
                     <li
-                      key={post.slug}
+                      key={post.slug || post.href}
                       className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
                     >
                       <Link
                         className="text-neutral-900 dark:text-neutral-100 tracking-tight"
-                        href={`/blog/${post.slug}`}
+                        href={post.href}
                       >
                         {post.metadata.title}{' '}
                         <span className="italic text-neutral-700 dark:text-neutral-300">

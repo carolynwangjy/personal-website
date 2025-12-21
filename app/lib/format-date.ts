@@ -22,9 +22,9 @@ export function formatDate(date: string, includeRelative = false) {
   }
 
   let fullDate = targetDate.toLocaleDateString('en-US', {
-    month: 'numeric',
+    month: 'short',
     day: 'numeric',
-    year: '2-digit',
+    year: 'numeric',
   })
 
   if (!includeRelative) {

@@ -48,6 +48,14 @@ function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />
 }
 
+function PullQuote({ children }) {
+  return (
+    <blockquote className="border-l-4 border-neutral-300 dark:border-neutral-700 pl-4 italic text-neutral-700 dark:text-neutral-200 bg-neutral-50/70 dark:bg-neutral-900/40 rounded-md py-3 px-4">
+      {children}
+    </blockquote>
+  )
+}
+
 function Code({ children, ...props }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
@@ -97,6 +105,7 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
+  PullQuote,
 }
 
 export function CustomMDX(props) {

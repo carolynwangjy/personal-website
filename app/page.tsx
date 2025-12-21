@@ -30,21 +30,21 @@ export default function Page() {
             currently i&apos;m busy sidequesting (yay!), but you can find my past adventures{' '}
             <a
               href="/archives"
-              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors underline underline-offset-[2px] decoration-[1.5px]"
+              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
             >
               here
             </a>
             . in my free time, i like to{' '}
             <a
               href="/writing"
-              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors underline underline-offset-[2px] decoration-[1.5px]"
+              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
             >
               write
             </a>
             ,{' '}
             <a
               href="/hobbies"
-              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors underline underline-offset-[2px] decoration-[1.5px]"
+              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
             >
               run
             </a>{' '}

@@ -22,7 +22,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 pb-0 underline-offset-[2px] decoration-[1.5px] hover:underline"
+                className="transition-colors px-1 py-0.5 rounded hover:bg-[#f2e8da] hover:text-neutral-900 dark:hover:bg-neutral-800/70"
               >
                 {item.name}
               </Link>
