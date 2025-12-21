@@ -9,7 +9,7 @@ export default function Page() {
             hi! i&apos;m carolyn 👋
           </h1>
         <div
-          className="float-right mb-4 w-[160px] max-w-[38vw] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 md:-mt-2 md:ml-4 md:mb-4 md:w-[190px] md:max-w-[210px] max-[520px]:float-none max-[520px]:mx-auto max-[520px]:mb-6 max-[520px]:mt-4"
+          className="float-right mb-4 w-[160px] max-w-[38vw] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 md:-mt-2 md:ml-4 md:mb-4 md:w-[190px] md:max-w-[210px] max-[520px]:float-none max-[520px]:mx-auto max-[520px]:mt-6 max-[520px]:mb-8"
         >
             <div className="relative aspect-square w-full">
               <Image
