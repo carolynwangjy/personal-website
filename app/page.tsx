@@ -22,29 +22,54 @@ export default function Page() {
             </div>
           </div>
           <p>
-            i&apos;m an undergraduate @ uc berkeley (go bears!) studying computer science and
-            politics, philosophy &amp; law (ppl). my interests lie in machine learning and social
-            systems.
+            i&apos;m an undergraduate @{' '}
+            <a
+              href="https://www.berkeley.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f5ecde] hover:bg-[#e1d4be]"
+            >
+              uc berkeley
+            </a>{' '}
+            (go bears!) studying{' '}
+            <a
+              href="https://eecs.berkeley.edu/cs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f5ecde] hover:bg-[#e1d4be]"
+            >
+              computer science
+            </a>{' '}
+            and{' '}
+            <a
+              href="https://ppl-minor.berkeley.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+            >
+              politics, philosophy &amp; law (ppl)
+            </a>
+            . my interests lie in machine learning and social systems.
           </p>
           <p>
-            currently i&apos;m busy sidequesting (yay!), but you can find my past adventures{' '}
+            currently i&apos;m busy sidequesting (yay!), but you can find my{' '}
             <a
               href="/archives"
-              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
             >
-              here
+              past adventures here
             </a>
             . in my free time, i like to{' '}
             <a
               href="/writing"
-              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
             >
               write
             </a>
             ,{' '}
             <a
               href="/hobbies"
-              className="rounded bg-[#f2e8da] hover:bg-[#e1d4be] transition-colors"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
             >
               run
             </a>

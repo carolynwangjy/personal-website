@@ -1,28 +1,188 @@
-type YearItem = { label: string }
+type YearItem = { label: string | JSX.Element }
 
 const data: { year: string; items: YearItem[] }[] = [
   {
     year: '2025',
     items: [
-      { label: "taught berkeley's cs61a course, leading the cs scholars program" },
-      { label: 'ran the eecs-dept sponsored cs kickstart program' },
-      { label: 'built ai agents for finance reconciliation systems at amazon' },
+      {
+        label: (
+            <>
+              taught{' '}
+              <a
+                href="https://cs61a.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              >
+                uc berkeley&apos;s cs61a course
+              </a>
+              , leading the{' '}
+              <a
+                href="https://eecs.berkeley.edu/cs-scholars/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              >
+                cs scholars program
+              </a>
+            </>
+        ),
+      },
+      {
+        label: (
+          <>
+            ran the eecs-dept sponsored{' '}
+            <a
+              href="https://www.cskickstart.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              cs kickstart program
+            </a>
+          </>
+        ),
+      },
+      {
+        label: (
+          <>
+            built ai agents for finance reconciliation systems at{' '}
+            <a
+              href="https://amazon.jobs/content/en/teams/fgbs/finance-automation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              amazon
+            </a>
+          </>
+        ),
+      },
+      {
+        label: (
+          <>
+            computationally solved puzzles at{' '}
+            <a
+              href="https://gamescrafters.berkeley.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              gamescrafters
+            </a>
+          </>
+        ),
+      },
     ],
   },
   {
     year: '2024',
     items: [
-      { label: 'conducted ai + election research at the brookings institution' },
-      { label: 'building tech policy opportunities at the paragon policy fellowship' },
-      { label: 'authored for the tech policy press' },
+      {
+        label: (
+          <>
+            conducted{' '}
+            <a
+              href="https://www.brookings.edu/projects/artificial-intelligence-and-emerging-technology-initiative/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              ai + election research
+            </a>{' '}
+            at{' '}
+            <a
+              href="https://www.brookings.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              the brookings institution
+            </a>
+          </>
+        ),
+      },
+      {
+        label: (
+          <>
+            building tech policy opportunities at the{' '}
+            <a
+              href="https://www.paragonfellowship.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              paragon policy fellowship
+            </a>
+          </>
+        ),
+      },
+      {
+        label: (
+          <>
+            authored for the{' '}
+            <a
+              href="https://www.techpolicy.press/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              tech policy press
+            </a>
+          </>
+        ),
+      },
     ],
   },
   {
     year: '2023 - prior',
     items: [
-      { label: 'wrote for the berkeley political review' },
-      { label: 'led the saratoga falcon newspaper' },
-      { label: 'served on the city of saratoga\'s youth commission' },
+      {
+        label: (
+          <>
+            wrote for the{' '}
+            <a
+              href="https://bpr.studentorg.berkeley.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              berkeley political review
+            </a>
+          </>
+        ),
+      },
+      {
+        label: (
+          <>
+            led the{' '}
+            <a
+              href="https://saratogafalcon.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              saratoga falcon newspaper
+            </a>
+          </>
+        ),
+      },
+      {
+        label: (
+          <>
+            served on the{' '}
+            <a
+              href="https://www.saratoga.ca.us/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            >
+              city of saratoga&apos;s
+            </a>{' '}
+            youth commission
+          </>
+        ),
+      },
     ],
   },
 ]
@@ -40,7 +200,7 @@ export default function ArchivesPage() {
             <a
               key={entry.year}
               href={`#${targetId}`}
-              className="rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition flex items-center gap-2 border-[#d9c8aa] bg-[#f2e8da] text-neutral-900 hover:bg-[#e1d4be] hover:border-[#cbb896]"
+              className="rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition flex items-center gap-2 border-[#efe2c8] bg-[#f5ecde] text-neutral-900 hover:bg-[#e1d4be] hover:border-[#e2d2b3]"
             >
               <span>{entry.year}</span>
             </a>

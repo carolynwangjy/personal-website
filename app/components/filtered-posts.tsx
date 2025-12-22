@@ -81,7 +81,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
             setSortMode('date')
           }}
           className={[
-            'px-1 rounded transition-colors',
+            'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             sortMode === 'date'
               ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
               : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
@@ -94,7 +94,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
           type="button"
           onClick={() => setSortMode('topic')}
           className={[
-            'px-1 rounded transition-colors',
+            'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             sortMode === 'topic'
               ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da]'
               : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
