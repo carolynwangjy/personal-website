@@ -141,7 +141,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
               className="border border-neutral-200 bg-transparent rounded-xl dark:border-neutral-700/70 dark:bg-transparent mb-3"
             >
               <div className="flex items-center justify-between px-4 py-3">
-                <span className="text-lg font-semibold tracking-tight lowercase">
+                <span className="text-lg font-medium tracking-tight lowercase">
                   {group.cat}
                 </span>
               </div>

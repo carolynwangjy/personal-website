@@ -1,8 +1,8 @@
 function ArrowIcon() {
   return (
     <svg
-      width="12"
-      height="12"
+      width="10"
+      height="10"
       viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,9 @@ export default function Footer() {
             target="_blank"
             href="mailto:carolyn.wang@berkeley.edu"
           >
-            <ArrowIcon />
+            <span className="-translate-y-[0.225rem]">
+              <ArrowIcon />
+            </span>
             <p className="ml-2 h-7">email</p>
           </a>
         </li>
@@ -37,7 +39,9 @@ export default function Footer() {
             target="_blank"
             href="https://www.linkedin.com/in/carolyn-wang-70a870276/"
           >
-            <ArrowIcon />
+            <span className="-translate-y-[0.225rem]">
+              <ArrowIcon />
+            </span>
             <p className="ml-2 h-7">linkedin</p>
           </a>
         </li>
@@ -48,7 +52,9 @@ export default function Footer() {
             target="_blank"
             href="https://github.com/vercel/next.js"
           >
-            <ArrowIcon />
+            <span className="-translate-y-[0.225rem]">
+              <ArrowIcon />
+            </span>
             <p className="ml-2 h-7">github</p>
           </a>
         </li>
@@ -59,7 +65,9 @@ export default function Footer() {
             target="_blank"
             href="/rss"
           >
-            <ArrowIcon />
+            <span className="-translate-y-[0.225rem]">
+              <ArrowIcon />
+            </span>
             <p className="ml-2 h-7">rss</p>
           </a>
         </li>

@@ -40,7 +40,7 @@ export default function CoursesPage() {
       term: 'fall 2024',
       courses: [
         'cs 170: efficient algorithms & intractable problems (mt1, mt2, final)',
-        'cs 61c: great ideas in computer architecture (mt1, mt2, final)',
+        'cs 61c: great ideas in computer architecture (mt, final)',
         'data 8: foundations of data science',
         'cs 197: 61a course staff - tutor',
       ],
@@ -52,7 +52,7 @@ export default function CoursesPage() {
     {
       term: 'spring 2024',
       courses: [
-        'cs 70: discrete math & probability theory (mt1, mt2, final)',
+        'cs 70: discrete math & probability theory (mt, final)',
         'cs 61b: data structures & algorithms',
         'pubpol 101: public policy analysis (final)',
         'pubpol 198: cal in the capital decal',
@@ -75,7 +75,7 @@ export default function CoursesPage() {
   return (
     <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">coursework 📚</h1>
-      <p className="text-neutral-700 dark:text-neutral-300">exam cheat sheets are linked too and free to use as a resource :)</p>
+      <p className="text-neutral-700 dark:text-neutral-300">exam cheat sheets are linked and free to use as a resource :)</p>
 
       <div className="flex flex-wrap gap-2 pt-1">
         {semesters.map((semester) => {

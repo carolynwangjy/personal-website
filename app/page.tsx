@@ -54,7 +54,7 @@ export default function Page() {
           <p>
             currently i&apos;m busy sidequesting (yay!), but you can find my{' '}
             <a
-              href="/archives"
+              href="/experience"
               className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
             >
               past adventures here
