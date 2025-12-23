@@ -24,7 +24,7 @@ export function FooterWithLinks() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="mailto:carolyn.wang@berkeley.edu"
+            href="mailto:carolynwang.jy@berkeley.edu"
           >
             <span className="-translate-y-[0.225rem]">
               <ArrowIcon />
@@ -37,7 +37,7 @@ export function FooterWithLinks() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://www.linkedin.com/in/carolyn-wang-70a870276/"
+            href="https://www.linkedin.com/in/carolyn-wang-jy/"
           >
             <span className="-translate-y-[0.225rem]">
               <ArrowIcon />
@@ -50,7 +50,7 @@ export function FooterWithLinks() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://github.com/vercel/next.js"
+            href="https://github.com/carolynwangjy"
           >
             <span className="-translate-y-[0.225rem]">
               <ArrowIcon />
