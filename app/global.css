@@ -25,8 +25,16 @@ body {
 
 /* Global dark mode palette */
 html.dark body {
-  background-color: #111111; /* pure dark gray (no blue tint) */
+  background-color: #181818; /* softer neutral dark gray */
   color: #e5e7eb; /* gray-200 */
+}
+
+/* In dark mode, slightly dim any pure-white utility text so it's not stark */
+html.dark .text-white,
+html.dark .dark\:text-white,
+html.dark .dark\:text-neutral-50,
+html.dark .dark\:text-neutral-100 {
+  color: #e5e7eb !important; /* same as body text, soft light gray */
 }
 
 /* In dark mode, make all text readable by default */
@@ -58,8 +66,8 @@ html.dark .home-bio a:hover {
 html.dark .experience-card,
 html.dark .courses-card,
 html.dark .teaching-card {
-  background-color: #1a1a1a !important; /* slightly lighter than page bg (#111111) */
-  border-color: #333333 !important;     /* subtle gray border */
+  background-color: #181818 !important; /* match overall dark-mode background */
+  border-color: #e5e7eb !important;     /* light gray/near-white border for stronger contrast */
 }
 
 /* Writing page chips (sort controls + read more + list items) */
