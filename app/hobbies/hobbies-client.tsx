@@ -29,8 +29,8 @@ export function HobbiesClient({ sections }: { sections: HobbySection[] }) {
           className={[
             'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             selectedSection === null
-              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+              ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+              : 'text-neutral-700 dark:text-neutral-300 writing-chip',
           ].join(' ')}
         >
           all
@@ -44,8 +44,8 @@ export function HobbiesClient({ sections }: { sections: HobbySection[] }) {
               className={[
                 'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
                 selectedSection === section.id
-                  ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-                  : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+                  ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+                  : 'text-neutral-700 dark:text-neutral-300 writing-chip',
               ].join(' ')}
             >
               {section.title}

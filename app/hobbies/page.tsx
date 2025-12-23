@@ -14,10 +14,10 @@ export default function HobbiesPage() {
         {sections.map((section) => (
           <li
             key={section.id}
-            className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
+            className="transition-colors rounded-lg -mx-2 px-2 py-1 list-inside writing-chip"
           >
             <Link
-              className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
+              className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2"
               href={`/hobbies/${section.id}`}
             >
               {section.title}

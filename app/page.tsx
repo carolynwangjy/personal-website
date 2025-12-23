@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Page() {
   return (
-    <section>
+    <section className="home-bio">
       <div className="flex flex-col md:items-start">
         <div className="text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:max-w-4xl">
           <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center">
@@ -27,7 +27,7 @@ export default function Page() {
               href="https://www.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f5ecde] hover:bg-[#e1d4be]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] bg-[#f5ecde] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               uc berkeley
             </a>{' '}
@@ -36,7 +36,7 @@ export default function Page() {
               href="https://eecs.berkeley.edu/cs/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f5ecde] hover:bg-[#e1d4be]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] bg-[#f5ecde] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               computer science
             </a>{' '}
@@ -45,7 +45,7 @@ export default function Page() {
               href="https://ppl-minor.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               politics, philosophy &amp; law (ppl)
             </a>
@@ -55,21 +55,21 @@ export default function Page() {
             currently i&apos;m busy sidequesting (yay!), but you can find my{' '}
             <a
               href="/experience"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               past adventures here
             </a>
             . in my free time, i like to{' '}
             <a
               href="/writing"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               write
             </a>
             ,{' '}
             <a
               href="/hobbies"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               run
             </a>

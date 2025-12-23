@@ -102,7 +102,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
               href={post.metadata.originalLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-1 rounded transition-colors bg-[#f2e8da] hover:bg-[#e1d4be] text-neutral-900 dark:text-neutral-100 underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]"
+              className="px-1 rounded transition-colors text-neutral-900 dark:text-neutral-100 underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               Read Original
             </a>

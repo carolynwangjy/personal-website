@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { ThemeToggle } from './theme-toggle'
 
 const navItems = [
   { href: '/', name: 'home' },
@@ -56,6 +57,7 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
         </nav>
       </div>

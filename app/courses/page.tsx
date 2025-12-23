@@ -98,21 +98,6 @@ export default function CoursesPage() {
       <h1 className="text-3xl font-semibold tracking-tight">coursework 📚</h1>
       <p className="text-neutral-700 dark:text-neutral-300">exam cheat sheets are linked and free to use as a resource :)</p>
 
-      <div className="flex flex-wrap gap-2 pt-1">
-        {semesters.map((semester) => {
-          const targetId = `semester-${semester.term.replace(/\s+/g, '-').toLowerCase()}`
-          return (
-            <a
-              key={semester.term}
-              href={`#${targetId}`}
-              className="rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition flex items-center gap-2 border-[#efe2c8] bg-[#f5ecde] text-neutral-900 hover:bg-[#e1d4be] hover:border-[#e2d2b3]"
-            >
-              <span>{getBubbleLabel(semester.term)}</span>
-            </a>
-          )
-        })}
-      </div>
-
       <div className="space-y-3">
         {semesters.map((semester) => {
           const targetId = `semester-${semester.term.replace(/\s+/g, '-').toLowerCase()}`
@@ -120,9 +105,9 @@ export default function CoursesPage() {
             <div
               key={semester.term}
               id={targetId}
-              className={`border rounded-xl scroll-mt-20 ${
+              className={`courses-card border-2 rounded-xl scroll-mt-20 ${
                 activeSemester === targetId
-                  ? 'border-[#e1d4be] bg-white/80 ring-8 ring-[#f5ecde]/60 dark:border-[#d7c8a9] dark:ring-[#e1d4be]/40'
+                  ? 'border-[#e1d4be] bg-white/80 ring-8 ring-[#f5ecde]/60 dark:border-neutral-700/70 dark:bg-transparent dark:ring-neutral-800/60'
                   : 'border-neutral-200 bg-white/80 dark:border-neutral-700/70 dark:bg-transparent'
               }`}
             >

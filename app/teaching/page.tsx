@@ -143,8 +143,8 @@ export default function TeachingPage() {
           className={[
             'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             selectedCourse === null
-              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+              ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+              : 'text-neutral-700 dark:text-neutral-300 writing-chip',
           ].join(' ')}
         >
           all
@@ -158,8 +158,8 @@ export default function TeachingPage() {
               className={[
                 'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
                 selectedCourse === course.id
-                  ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-                  : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+                  ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+                  : 'text-neutral-700 dark:text-neutral-300 writing-chip',
               ].join(' ')}
             >
               {course.shortName}
@@ -215,8 +215,8 @@ export default function TeachingPage() {
                   className={[
                     'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
                     sortMode === 'year'
-                      ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-                      : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+                      ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+                      : 'text-neutral-700 dark:text-neutral-300 writing-chip',
                   ].join(' ')}
                 >
                   year {yearDir === 'desc' ? '↓' : '↑'}
@@ -228,8 +228,8 @@ export default function TeachingPage() {
                   className={[
                     'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
                     sortMode === 'popularity'
-                      ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-                      : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+                      ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+                      : 'text-neutral-700 dark:text-neutral-300 writing-chip',
                   ].join(' ')}
                 >
                   most popular
@@ -238,7 +238,7 @@ export default function TeachingPage() {
             )}
           </div>
           {sortedMaterials.length > 0 ? (
-            <div className="border border-neutral-200 bg-white/80 rounded-xl dark:border-neutral-700/70 dark:bg-transparent overflow-hidden">
+            <div className="teaching-card border-2 border-neutral-200 bg-white/80 rounded-xl dark:border-neutral-700/70 dark:bg-transparent overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
@@ -274,7 +274,7 @@ export default function TeachingPage() {
                                       href={value.url}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/70"
+                                      className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
                                     >
                                       {value.label}
                                     </a>
@@ -297,7 +297,7 @@ export default function TeachingPage() {
                                             href={links[0].url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/70"
+                                            className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
                                           >
                                             {links[0].label}
                                           </a>
@@ -314,7 +314,7 @@ export default function TeachingPage() {
                                                 href={link.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/70"
+                                                className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
                                               >
                                                 {link.label}
                                               </a>
@@ -354,7 +354,7 @@ export default function TeachingPage() {
                                             href={links[0].url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/70"
+                                            className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
                                           >
                                             {links[0].label}
                                           </a>
@@ -371,7 +371,7 @@ export default function TeachingPage() {
                                                 href={link.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/70"
+                                                className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
                                               >
                                                 {link.label}
                                               </a>

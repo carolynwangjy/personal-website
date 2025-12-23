@@ -12,21 +12,21 @@ const data: { year: string; items: YearItem[] }[] = [
         label: (
             <>
               taught{' '}
-              <a
-                href="https://cs61a.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+            <a
+              href="https://cs61a.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
               >
                 uc berkeley&apos;s cs61a course
               </a>
               , leading the{' '}
               <a
-                href="https://eecs.berkeley.edu/cs-scholars/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
-              >
+              href="https://eecs.berkeley.edu/cs-scholars/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
+            >
                 cs scholars program
               </a>
             </>
@@ -40,7 +40,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://www.cskickstart.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               cs kickstart program
             </a>
@@ -55,7 +55,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://amazon.jobs/content/en/teams/fgbs/finance-automation"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/50"
             >
               amazon
             </a>
@@ -70,7 +70,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://gamescrafters.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               gamescrafters
             </a>
@@ -90,7 +90,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://www.brookings.edu/projects/artificial-intelligence-and-emerging-technology-initiative/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               ai + election research
             </a>{' '}
@@ -99,7 +99,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://www.brookings.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               the brookings institution
             </a>
@@ -114,7 +114,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://www.paragonfellowship.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               paragon policy fellowship
             </a>
@@ -129,7 +129,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://www.techpolicy.press/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               tech policy press
             </a>
@@ -149,7 +149,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://bpr.studentorg.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               berkeley political review
             </a>
@@ -164,7 +164,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://saratogafalcon.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               saratoga falcon newspaper
             </a>
@@ -179,7 +179,7 @@ const data: { year: string; items: YearItem[] }[] = [
               href="https://www.saratoga.ca.us/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6]"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
               city of saratoga&apos;s
             </a>{' '}
@@ -215,21 +215,6 @@ export default function ExperiencePage() {
       <h1 className="text-3xl font-semibold tracking-tight">experience</h1>
       <p className="text-neutral-700 dark:text-neutral-300">some things i've been up to :)</p>
 
-      <div className="flex flex-wrap gap-2 pt-1">
-        {data.map((entry) => {
-          const targetId = `year-${entry.year.replace(/\s+/g, '-').toLowerCase()}`
-          return (
-            <a
-              key={entry.year}
-              href={`#${targetId}`}
-              className="rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition flex items-center gap-2 border-[#efe2c8] bg-[#f5ecde] text-neutral-900 hover:bg-[#e1d4be] hover:border-[#e2d2b3]"
-            >
-              <span>{entry.year}</span>
-            </a>
-          )
-        })}
-      </div>
-
       <div className="space-y-3">
         {data.map((entry) => {
           const targetId = `year-${entry.year.replace(/\s+/g, '-').toLowerCase()}`
@@ -237,10 +222,10 @@ export default function ExperiencePage() {
             <div
               key={entry.year}
               id={targetId}
-              className={`border rounded-xl scroll-mt-20 ${
+              className={`experience-card border-2 rounded-xl scroll-mt-20 ${
                 activeYear === targetId
-                  ? 'border-[#e1d4be] bg-white/80 ring-8 ring-[#f5ecde]/60'
-                  : 'border-neutral-200 bg-white/80'
+                  ? 'border-[#e1d4be] bg-white/80 ring-8 ring-[#f5ecde]/60 dark:border-neutral-700/70 dark:bg-transparent dark:ring-neutral-800/60'
+                  : 'border-neutral-200 bg-white/80 dark:border-neutral-700/70 dark:bg-transparent'
               }`}
             >
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">

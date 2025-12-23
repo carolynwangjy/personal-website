@@ -32,7 +32,7 @@ export default async function HobbyPage({ params }: { params: Promise<{ slug: st
                   href={href}
                   target={isExternal ? '_blank' : undefined}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
-                  className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+                  className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
                 />
               )
             },

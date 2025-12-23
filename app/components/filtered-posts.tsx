@@ -90,7 +90,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
   }, [posts, dateDir])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 writing-page">
       <div className="text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
         <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
         <button
@@ -104,8 +104,8 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
           className={[
             'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             sortMode === 'date'
-              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+              ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+              : 'text-neutral-700 dark:text-neutral-300 writing-chip',
           ].join(' ')}
         >
           date {dateDir === 'desc' ? '↓' : '↑'}
@@ -117,8 +117,8 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
           className={[
             'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             sortMode === 'topic'
-              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
-              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+              ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
+              : 'text-neutral-700 dark:text-neutral-300 writing-chip',
           ].join(' ')}
         >
           topic
@@ -128,7 +128,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
           href="https://carolynwangjy.medium.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70"
+          className="px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] text-neutral-700 dark:text-neutral-300 writing-chip"
         >
           read more
         </a>
@@ -145,7 +145,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
               {dateSorted.map((post) => (
                 <li
                   key={post.slug || post.href}
-                  className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
+                  className="transition-colors rounded-lg -mx-2 px-2 py-1 list-inside writing-chip"
                 >
                   <Link
                     className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
@@ -168,7 +168,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
           groupedByTopic.map((group) => (
             <div
               key={group.cat}
-              className="border border-neutral-200 bg-transparent rounded-xl dark:border-neutral-700/70 dark:bg-transparent mb-3"
+              className="border-2 border-neutral-300 bg-transparent rounded-xl dark:border-neutral-700/70 dark:bg-transparent mb-3"
             >
               <div className="flex items-center justify-between px-4 py-3">
                 <span className="text-lg font-medium tracking-tight lowercase">
@@ -180,7 +180,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
                   {group.posts.map((post) => (
                     <li
                       key={post.slug || post.href}
-                      className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
+                      className="transition-colors rounded-lg -mx-2 px-2 py-1 list-inside writing-chip"
                     >
                                   <Link
                                     className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
