@@ -1,5 +1,6 @@
 import { getBlogPosts } from '../blog/utils'
 import { FilteredPosts } from '../components/filtered-posts'
+import { Suspense } from 'react'
 
 export default function WritingPage() {
   const posts = getBlogPosts().map((p) => ({
@@ -13,7 +14,9 @@ export default function WritingPage() {
       <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
         writing
       </h1>
-      <FilteredPosts posts={posts} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <FilteredPosts posts={posts} />
+      </Suspense>
     </section>
   )
 }
