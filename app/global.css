@@ -42,7 +42,7 @@ html:not(.dark) .dark\:text-neutral-200 {
 
 /* Light mode global text safety: force readable text across all pages */
 html:not(.dark) body,
-html:not(.dark) body :where(*):not(svg):not(path) {
+html:not(.dark) body :where(*):not(svg):not(path):not(.home-icons):not(.home-icons *) {
   color: #111827 !important;
 }
 
@@ -83,6 +83,57 @@ html.dark .home-bio a:hover {
 html:not(.dark) .home-bio a {
   background-color: #f5ecde !important; /* warm beige */
   color: #111827 !important;           /* near-black text */
+}
+
+/* Exclude icon links from beige background */
+html:not(.dark) .home-icons a {
+  background-color: transparent !important;
+  color: #d4d4d4 !important; /* neutral-300 - lighter gray */
+}
+
+html:not(.dark) .home-icons a svg {
+  color: #9a9a9a !important; /* darker gray */
+  shape-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* For SVGs that use fill (LinkedIn, GitHub) */
+html:not(.dark) .home-icons a svg[fill="currentColor"] * {
+  fill: #9a9a9a !important;
+  stroke: none !important;
+}
+
+/* For SVGs that use stroke (Email, RSS) */
+html:not(.dark) .home-icons a svg[stroke="currentColor"] * {
+  stroke: #9a9a9a !important;
+  fill: none !important;
+}
+
+html:not(.dark) .home-icons a:hover {
+  color: #111827 !important; /* dark on hover */
+}
+
+html:not(.dark) .home-icons a:hover svg {
+  color: #111827 !important;
+}
+
+html:not(.dark) .home-icons a:hover svg[fill="currentColor"] * {
+  fill: #111827 !important;
+  stroke: none !important;
+}
+
+html:not(.dark) .home-icons a:hover svg[stroke="currentColor"] * {
+  stroke: #111827 !important;
+  fill: none !important;
+}
+
+html:not(.dark) .home-icons a.writing-chip:hover {
+  background-color: transparent !important;
+}
+
+html.dark .home-icons a {
+  background-color: transparent !important;
 }
 
 /* Ensure all home page bio text is dark in light mode (iOS sometimes keeps light text) */
@@ -329,4 +380,9 @@ table {
   .prose h4 {
     font-size: 1.125rem !important; /* 18px */
   }
+}
+
+/* Footer date link hover in dark mode */
+html.dark .footer-date-link:hover {
+  background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 */
 }

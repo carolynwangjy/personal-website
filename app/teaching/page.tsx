@@ -43,17 +43,17 @@ export default function TeachingPage() {
       materials: [
         {
           topic: 'getting started',
-          lab: [{label: 'lab00', url: '#'}, {label: 'slides', url: '#'}],
-          disc: [{ label: 'disc00', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{label: 'lab00', url: 'https://cs61a.org/lab/lab00/'}, {label: 'slides', url: '#'}],
+          disc: [{ label: 'disc00', url: 'https://cs61a.org/disc/disc00/' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'functions, control',
-          lab: [{ label: 'lab01', url: '#' }, { label: 'slides', url: '#' }],
-          disc: [{ label: 'disc01', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab01', url: 'https://cs61a.org/lab/lab01/' }, { label: 'slides', url: '#' }],
+          disc: [{ label: 'disc01', url: 'https://cs61a.org/disc/disc01/' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'env diagrams, hofs',
-          lab: [{ label: 'lab02', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab02', url: 'https://cs61a.org/lab/lab02/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc02', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
@@ -63,27 +63,27 @@ export default function TeachingPage() {
         },
         {
           topic: 'tree recursion, abstraction',
-          lab: [{ label: 'lab03', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab03', url: 'https://cs61a.org/lab/lab03/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc04', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'trees',
-          lab: [{ label: 'lab04', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab04', url: 'https://cs61a.org/lab/lab04/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc05', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'iterators, generators',
-          lab: [{ label: 'lab05', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab05', url: 'https://cs61a.org/lab/lab05/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc06', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'object oriented programming',
-          lab: [{ label: 'lab06', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab06', url: 'https://cs61a.org/lab/lab06/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc07', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'linked lists',
-          lab: [{ label: 'lab07', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab07', url: 'https://cs61a.org/lab/lab07/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc08', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
@@ -93,22 +93,22 @@ export default function TeachingPage() {
         },
         {
           topic: 'scheme, scheme lists',
-          lab: [{ label: 'lab8', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab8', url: 'https://cs61a.org/lab/lab08/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc10', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'interpreters',
-          lab: [{ label: 'lab9', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab9', url: 'https://cs61a.org/lab/lab09/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc11', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'macros',
-          lab: [{ label: 'lab10', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab10', url: 'https://cs61a.org/lab/lab10/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc12', url: '#' }, { label: 'slides', url: '#' }],
         },
         {
           topic: 'sql',
-          lab: [{ label: 'lab11', url: '#' }, { label: 'slides', url: '#' }],
+          lab: [{ label: 'lab11', url: 'https://cs61a.org/lab/lab11/' }, { label: 'slides', url: '#' }],
           disc: [{ label: 'disc13', url: '#' }, { label: 'slides', url: '#' }],
         },
       ],
