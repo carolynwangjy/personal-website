@@ -17,12 +17,18 @@ export default async function HobbyPage({ params }: { params: Promise<{ slug: st
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <ReactMarkdown
           components={{
-            a: ({ node, ...props }) => (
-              <a
-                {...props}
-                className="text-blue-700 hover:underline dark:text-blue-300"
-              />
-            ),
+            a: ({ node, href, ...props }) => {
+              const isExternal = href?.startsWith('http://') || href?.startsWith('https://')
+              return (
+                <a
+                  {...props}
+                  href={href}
+                  target={isExternal ? '_blank' : undefined}
+                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                  className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] bg-[#f2e8da] hover:bg-[#e1d4be]"
+                />
+              )
+            },
             p: ({ node, ...props }) => (
               <p {...props} className="mb-4 last:mb-0" />
             ),

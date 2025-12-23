@@ -49,7 +49,7 @@ export default function Page() {
             >
               politics, philosophy &amp; law (ppl)
             </a>
-            . my interests lie in machine learning and social systems.
+            . my interests lie in machine learning, social systems, and public service.
           </p>
           <p>
             currently i&apos;m busy sidequesting (yay!), but you can find my{' '}
