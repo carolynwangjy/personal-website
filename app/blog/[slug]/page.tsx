@@ -3,6 +3,7 @@ import { CustomMDX } from 'app/components/mdx'
 import { getBlogPosts } from 'app/blog/utils'
 import { formatDate } from 'app/lib/format-date'
 import { baseUrl } from 'app/sitemap'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -85,6 +86,12 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           }),
         }}
       />
+      <Link
+        href="/writing"
+        className="inline-flex items-center px-2 py-1 rounded text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70 transition-colors mb-2"
+      >
+        ← back
+      </Link>
       <h1 className="title text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
         {post.metadata.title}
       </h1>

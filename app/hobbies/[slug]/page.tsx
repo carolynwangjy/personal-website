@@ -16,7 +16,7 @@ export default async function HobbyPage({ params }: { params: Promise<{ slug: st
     <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <Link
         href="/hobbies"
-        className="inline-flex items-center text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-2"
+        className="inline-flex items-center px-2 py-1 rounded text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70 transition-colors mb-2"
       >
         ← back
       </Link>

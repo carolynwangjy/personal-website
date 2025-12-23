@@ -136,6 +136,21 @@ const data: { year: string; items: YearItem[] }[] = [
           </>
         ),
       },
+      {
+        label: (
+          <>
+            taught berkeley students how to program at{' '}
+            <a
+              href="https://csmentors.studentorg.berkeley.edu/#/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
+            >
+              computer science mentors
+            </a>
+          </>
+        ),
+      },
     ],
   },
   {

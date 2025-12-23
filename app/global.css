@@ -132,6 +132,17 @@ html.dark .writing-chip-active:hover {
   background-color: rgb(82 82 82); /* neutral-600 */
 }
 
+/* Back button hover highlights */
+a[href="/writing"]:hover,
+a[href="/hobbies"]:hover {
+  background-color: #f2e8da !important; /* beige for light mode */
+}
+
+html.dark a[href="/writing"]:hover,
+html.dark a[href="/hobbies"]:hover {
+  background-color: rgb(64 64 64 / 0.7) !important; /* gray for dark mode */
+}
+
 /* Ensure nav underline is light in dark mode */
 html.dark nav a span {
   background-color: rgb(245 245 245) !important; /* neutral-100 - matches text color */
@@ -289,4 +300,33 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+/* Smaller text on mobile for blog posts and hobbies */
+@media (max-width: 767px) {
+  /* Prose content in blog posts and hobbies - reduce base font size */
+  .prose {
+    font-size: 15px !important;
+  }
+  
+  .prose p,
+  .prose li,
+  .prose td,
+  .prose th {
+    font-size: 15px !important;
+  }
+  
+  /* Reduce heading sizes proportionally on mobile */
+  .prose h1 {
+    font-size: 1.875rem !important; /* 30px instead of default */
+  }
+  
+  .prose h2,
+  .prose h3 {
+    font-size: 1.25rem !important; /* 20px */
+  }
+  
+  .prose h4 {
+    font-size: 1.125rem !important; /* 18px */
+  }
 }
