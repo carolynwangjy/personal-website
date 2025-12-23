@@ -144,7 +144,7 @@ html.dark nav a span {
 }
 
 html.dark .prose blockquote.pull-quote {
-  background-color: #111827 !important; /* dark card on dark background */
+  background-color: #151515 !important; /* neutral dark gray to match page */
   color: #f9fafb !important;            /* near-white text */
   border-color: #4b5563 !important;     /* neutral-600 border */
 }
