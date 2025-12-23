@@ -108,8 +108,23 @@ html.dark nav a span {
   background-color: rgb(245 245 245) !important; /* neutral-100 - matches text color */
 }
 
-/* Syntax highlighting colors */
+/* Pull quote styling inside prose */
+.prose blockquote.pull-quote {
+  background-color: #e5e7eb !important; /* light gray card in light mode */
+  color: #111827 !important;           /* near-black text */
+}
+
+html.dark .prose blockquote.pull-quote {
+  background-color: #111827 !important; /* dark card on dark background */
+  color: #f9fafb !important;            /* near-white text */
+  border-color: #4b5563 !important;     /* neutral-600 border */
+}
+
+/* Syntax highlighting colors + base color scheme */
 html {
+  /* Ensure light-mode browser UI on mobile when not in dark mode */
+  color-scheme: light;
+
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -119,6 +134,8 @@ html {
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+
+  min-width: 360px;
 }
 
 html.dark {
@@ -127,10 +144,6 @@ html.dark {
   --sh-keyword: #f47067;
   --sh-string: #0fa295;
   color-scheme: dark;
-}
-
-html {
-  min-width: 360px;
 }
 
 .prose .anchor {
