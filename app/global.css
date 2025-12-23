@@ -25,8 +25,8 @@ body {
 
 /* Global dark mode palette */
 html.dark body {
-  background-color: #181818; /* softer neutral dark gray */
-  color: #e5e7eb; /* gray-200 */
+  background-color: #151515; /* neutral dark gray, no blue tint */
+  color: #d6d7da; /* softened light gray for lower contrast */
 }
 
 /* In light mode, prevent accidental white/very-light text on light backgrounds */
@@ -51,7 +51,7 @@ html.dark .text-white,
 html.dark .dark\:text-white,
 html.dark .dark\:text-neutral-50,
 html.dark .dark\:text-neutral-100 {
-  color: #e5e7eb !important; /* same as body text, soft light gray */
+  color: #d6d7da !important; /* match softened body text */
 }
 
 /* In dark mode, make all text readable by default */
@@ -95,8 +95,8 @@ html:not(.dark) .home-bio * {
 html.dark .experience-card,
 html.dark .courses-card,
 html.dark .teaching-card {
-  background-color: #181818 !important; /* match overall dark-mode background */
-  border-color: #e5e7eb !important;     /* light gray/near-white border for stronger contrast */
+  background-color: #151515 !important; /* match softened dark background */
+  border-color: #d6d7da !important;     /* soft light-gray border for gentle contrast */
 }
 
 /* Writing page chips (sort controls + read more + list items) */
