@@ -15,7 +15,7 @@ function ArrowIcon() {
   )
 }
 
-export default function Footer() {
+export function FooterWithLinks() {
   return (
     <footer className="mb-12">
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-1.5 text-neutral-600 md:flex-row md:space-x-3 md:space-y-0 dark:text-neutral-300 text-sm">
@@ -72,6 +72,13 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+    </footer>
+  )
+}
+
+export default function Footer() {
+  return (
+    <footer className="mb-12">
     </footer>
   )
 }

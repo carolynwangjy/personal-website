@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 
 type MaterialLink = { label: string; url?: string }
 
@@ -29,6 +29,7 @@ type CourseSection = {
 }
 
 export default function TeachingPage() {
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null)
   const [sortMode, setSortMode] = useState<'year' | 'popularity'>('year')
   const [yearDir, setYearDir] = useState<'desc' | 'asc'>('desc')
   
@@ -131,22 +132,45 @@ export default function TeachingPage() {
   ]
 
   return (
-    <section className="space-y-6 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">teaching</h1>
       
-      <div className="flex flex-wrap gap-2 pt-1">
+      <div className="text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
+        <span className="text-neutral-700 dark:text-neutral-300">filter by:</span>
+        <button
+          type="button"
+          onClick={() => setSelectedCourse(null)}
+          className={[
+            'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
+            selectedCourse === null
+              ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
+              : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+          ].join(' ')}
+        >
+          all
+        </button>
         {courses.map((course) => (
-          <a
-            key={course.id}
-            href={`#${course.id}`}
-            className="rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition flex items-center gap-2 border-[#efe2c8] bg-[#f5ecde] text-neutral-900 hover:bg-[#e1d4be] hover:border-[#e2d2b3]"
-          >
-            <span>{course.shortName}</span>
-          </a>
+          <React.Fragment key={course.id}>
+            <span>|</span>
+            <button
+              type="button"
+              onClick={() => setSelectedCourse(selectedCourse === course.id ? null : course.id)}
+              className={[
+                'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
+                selectedCourse === course.id
+                  ? 'text-neutral-900 dark:text-neutral-100 bg-[#f2e8da] hover:bg-[#e1d4be]'
+                  : 'text-neutral-700 dark:text-neutral-300 hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70',
+              ].join(' ')}
+            >
+              {course.shortName}
+            </button>
+          </React.Fragment>
         ))}
       </div>
 
-      {courses.map((course, courseIdx) => {
+      {courses
+        .filter((course) => selectedCourse === null || course.id === selectedCourse)
+        .map((course, courseIdx) => {
         // Sort NACLO materials by year or popularity
         const sortedMaterials = course.id === 'naclo' 
           ? [...course.materials].sort((a, b) => {
@@ -166,7 +190,7 @@ export default function TeachingPage() {
           : course.materials
 
         return (
-        <div key={courseIdx} id={course.id} className="space-y-3 scroll-mt-20">
+        <div key={courseIdx} className="space-y-3">
           <div>
             <h2 className="text-xl font-semibold tracking-tight">{course.title}</h2>
             {course.subtitle && (

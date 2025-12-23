@@ -1,3 +1,7 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
 type YearItem = { label: string | JSX.Element }
 
 const data: { year: string; items: YearItem[] }[] = [
@@ -188,6 +192,24 @@ const data: { year: string; items: YearItem[] }[] = [
 ]
 
 export default function ExperiencePage() {
+  const [activeYear, setActiveYear] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Get the hash from URL on mount and when hash changes
+    const updateActiveYear = () => {
+      const hash = window.location.hash.replace('#', '')
+      if (hash.startsWith('year-')) {
+        setActiveYear(hash)
+      } else {
+        setActiveYear(null)
+      }
+    }
+
+    updateActiveYear()
+    window.addEventListener('hashchange', updateActiveYear)
+    return () => window.removeEventListener('hashchange', updateActiveYear)
+  }, [])
+
   return (
     <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">experience</h1>
@@ -215,7 +237,11 @@ export default function ExperiencePage() {
             <div
               key={entry.year}
               id={targetId}
-              className="border border-neutral-200 bg-white/80 rounded-xl scroll-mt-20"
+              className={`border rounded-xl scroll-mt-20 ${
+                activeYear === targetId
+                  ? 'border-[#e1d4be] bg-white/80 ring-8 ring-[#f5ecde]/60'
+                  : 'border-neutral-200 bg-white/80'
+              }`}
             >
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">
                 <span className="text-lg font-semibold tracking-tight">{entry.year}</span>

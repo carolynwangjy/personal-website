@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from './components/footer'
+import { ConditionalFooter } from './components/conditional-footer'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
@@ -49,15 +49,15 @@ export default function RootLayout({
       className={cx('text-black bg-[#f5f5f5] dark:text-white dark:bg-black', inter.className)}
     >
       <body
-        className={cx(
+      className={cx(
           'antialiased max-w-[45rem] mx-6 mt-6 lg:mx-auto text-black bg-[#f5f5f5] dark:text-white dark:bg-black',
           inter.className
-        )}
-      >
+      )}
+    >
         <main className="flex-auto min-w-0 mt-4 flex flex-col px-4 md:px-8">
           <Navbar />
           {children}
-          <Footer />
+          <ConditionalFooter />
           <Analytics />
           <SpeedInsights />
         </main>

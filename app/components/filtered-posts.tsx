@@ -118,7 +118,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
                   className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
                 >
                   <Link
-                    className="text-neutral-900 dark:text-neutral-100 tracking-tight"
+                    className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
                     href={post.href}
                   >
                     {post.metadata.title}{' '}
@@ -152,15 +152,15 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
                       key={post.slug || post.href}
                       className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
                     >
-                      <Link
-                        className="text-neutral-900 dark:text-neutral-100 tracking-tight"
-                        href={post.href}
-                      >
-                        {post.metadata.title}{' '}
-                        <span className="italic text-neutral-700 dark:text-neutral-300">
-                          ({prettyDate(post.metadata.publishedAt)})
-                        </span>
-                      </Link>
+                                  <Link
+                                    className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
+                                    href={post.href}
+                                  >
+                                    {post.metadata.title}{' '}
+                                    <span className="italic text-neutral-700 dark:text-neutral-300">
+                                      ({prettyDate(post.metadata.publishedAt)})
+                                    </span>
+                                  </Link>
                     </li>
                   ))}
                 </ul>

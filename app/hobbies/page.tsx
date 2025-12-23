@@ -1,35 +1,30 @@
+import Link from 'next/link'
+import { getHobbySections } from './utils'
+
 export default function HobbiesPage() {
+  const sections = getHobbySections()
+
   return (
-    <section className="space-y-4 text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl">
-      <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-        hobbies
-      </h1>
-      <p>
-        in my free time, i pen thought pieces on my{' '}
-        <a className="text-blue-700 hover:underline dark:text-blue-300" href="#">
-          medium blog
-        </a>
-        , swim/bike/run on{' '}
-        <a className="text-blue-700 hover:underline dark:text-blue-300" href="#">
-          cal triathlon
-        </a>
-        , and post computational linguistic puzzle videos on my{' '}
-        <a className="text-blue-700 hover:underline dark:text-blue-300" href="#">
-          hobby channel
-        </a>
-        . i&apos;m also a fan of fantasy novels and the nyt hard fork podcast. in a
-        past life, i was a newspaper editor-in-chief,{' '}
-        <a className="text-blue-700 hover:underline dark:text-blue-300" href="#">
-          varsity cross country captain
-        </a>
-        , and a pianist, flutist &amp; classical vocalist. i still put those hats
-        on every now and then.
-      </p>
-      <p>
-        if you know me well, you&apos;d know that i&apos;m a music kid at heart.
-        sight reading is a long lost forte :)
-      </p>
+    <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+      <h1 className="text-3xl font-semibold tracking-tight">hobbies</h1>
+      <p className="text-neutral-700 dark:text-neutral-300">on a quest for more side quests :D</p>
+
+      
+      <ul className="list-disc pl-5 space-y-[1px]">
+        {sections.map((section) => (
+          <li
+            key={section.id}
+            className="transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-800/70 rounded-lg -mx-2 px-2 py-1 list-inside"
+          >
+            <Link
+              className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
+              href={`/hobbies/${section.id}`}
+            >
+              {section.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
-
