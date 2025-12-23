@@ -13,14 +13,25 @@ type Post = {
     summary: string
     image?: string
     category?: string
+    displayTitle?: string
   }
 }
 
 const categoryOrder = ['short stories', 'reflections', 'thought pieces', 'miscellaneous']
 
 const prettyDate = (date: string) => {
+  // Check if date is in YYYY-MM format (no day specified)
+  if (/^\d{4}-\d{2}$/.test(date)) {
+    const dateObj = new Date(`${date}-01T00:00:00`)
+    return dateObj.toLocaleDateString('en-US', {
+      month: 'short',
+      year: 'numeric',
+    })
+  }
+  // Full date with day specified
   const safe = date.includes('T') ? date : `${date}T00:00:00`
-  return new Date(safe).toLocaleDateString('en-US', {
+  const dateObj = new Date(safe)
+  return dateObj.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
@@ -121,7 +132,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
                     className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
                     href={post.href}
                   >
-                    {post.metadata.title}{' '}
+                    {post.metadata.displayTitle || post.metadata.title}{' '}
                     <span className="italic text-neutral-700 dark:text-neutral-300">
                       ({prettyDate(post.metadata.publishedAt)})
                     </span>
@@ -156,7 +167,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
                                     className="text-neutral-900 dark:text-neutral-100 tracking-tight underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2"
                                     href={post.href}
                                   >
-                                    {post.metadata.title}{' '}
+                                    {post.metadata.displayTitle || post.metadata.title}{' '}
                                     <span className="italic text-neutral-700 dark:text-neutral-300">
                                       ({prettyDate(post.metadata.publishedAt)})
                                     </span>

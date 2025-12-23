@@ -48,6 +48,19 @@ function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />
 }
 
+function ImageWithCaption({ caption, alt, ...props }: React.ComponentProps<typeof Image> & { caption?: string }) {
+  return (
+    <figure className="my-6">
+      <Image alt={alt || caption || ''} className="rounded-lg" {...props} />
+      {caption && (
+        <figcaption className="mt-2 text-sm text-center text-neutral-600 dark:text-neutral-400">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  )
+}
+
 function PullQuote({ children }) {
   return (
     <blockquote className="border-l-4 border-neutral-300 dark:border-neutral-700 pl-4 italic text-neutral-700 dark:text-neutral-200 bg-neutral-50/70 dark:bg-neutral-900/40 rounded-md py-3 px-4">
@@ -102,6 +115,7 @@ let components = {
   h5: createHeading(5),
   h6: createHeading(6),
   Image: RoundedImage,
+  ImageWithCaption,
   a: CustomLink,
   code: Code,
   Table,

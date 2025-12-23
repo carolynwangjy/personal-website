@@ -1,6 +1,11 @@
 export function formatDate(date: string, includeRelative = false) {
   let currentDate = new Date()
-  if (!date.includes('T')) {
+  const isMonthOnly = /^\d{4}-\d{2}$/.test(date)
+  
+  // Check if date is in YYYY-MM format (no day specified)
+  if (isMonthOnly) {
+    date = `${date}-01T00:00:00`
+  } else if (!date.includes('T')) {
     date = `${date}T00:00:00`
   }
   let targetDate = new Date(date)
@@ -21,11 +26,16 @@ export function formatDate(date: string, includeRelative = false) {
     formattedDate = 'Today'
   }
 
-  let fullDate = targetDate.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  })
+  let fullDate = isMonthOnly
+    ? targetDate.toLocaleDateString('en-US', {
+        month: 'short',
+        year: 'numeric',
+      })
+    : targetDate.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      })
 
   if (!includeRelative) {
     return fullDate
