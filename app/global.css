@@ -29,6 +29,17 @@ html.dark body {
   color: #e5e7eb; /* gray-200 */
 }
 
+/* In light mode, prevent accidental white/very-light text on light backgrounds */
+html:not(.dark) .text-white,
+html:not(.dark) .text-neutral-50,
+html:not(.dark) .text-neutral-100,
+html:not(.dark) .text-neutral-200,
+html:not(.dark) .dark\:text-neutral-50,
+html:not(.dark) .dark\:text-neutral-100,
+html:not(.dark) .dark\:text-neutral-200 {
+  color: #111827 !important; /* neutral-900-ish */
+}
+
 /* In dark mode, slightly dim any pure-white utility text so it's not stark */
 html.dark .text-white,
 html.dark .dark\:text-white,
@@ -60,6 +71,18 @@ html.dark .home-bio a {
 
 html.dark .home-bio a:hover {
   background-color: rgb(82 82 82) !important; /* neutral-600 */
+}
+
+/* Ensure home page bio links are readable in light mode on all devices */
+html:not(.dark) .home-bio a {
+  background-color: #f5ecde !important; /* warm beige */
+  color: #111827 !important;           /* near-black text */
+}
+
+/* Ensure all home page bio text is dark in light mode (iOS sometimes keeps light text) */
+html:not(.dark) .home-bio,
+html:not(.dark) .home-bio * {
+  color: #111827 !important;
 }
 
 /* Force dark-mode backgrounds for large cards so light bg doesn't leak through */
