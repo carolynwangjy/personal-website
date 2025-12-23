@@ -40,6 +40,12 @@ html:not(.dark) .dark\:text-neutral-200 {
   color: #111827 !important; /* neutral-900-ish */
 }
 
+/* Light mode global text safety: force readable text across all pages */
+html:not(.dark) body,
+html:not(.dark) body :where(*):not(svg):not(path) {
+  color: #111827 !important;
+}
+
 /* In dark mode, slightly dim any pure-white utility text so it's not stark */
 html.dark .text-white,
 html.dark .dark\:text-white,
