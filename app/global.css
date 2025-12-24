@@ -387,6 +387,20 @@ html.dark .footer-date-link:hover {
   background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 */
 }
 
+/* Theme toggle button dark mode override */
+html.dark button[aria-label="Toggle theme"] {
+  background-color: #151515 !important;
+  border-color: #404040 !important;
+}
+
+html.dark button[aria-label="Toggle theme"]:hover {
+  background-color: #1a1a1a !important;
+}
+
+html.dark button[aria-label="Toggle theme"] span {
+  background-color: #525252 !important; /* neutral-600 */
+}
+
 /* Larger footer icons on mobile */
 @media (max-width: 767px) {
   .home-icons svg {
