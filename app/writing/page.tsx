@@ -12,7 +12,7 @@ export default function WritingPage() {
   return (
     <section className="space-y-4 text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl">
       <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-        writing
+        writing <span className="ml-1">✍️</span>
       </h1>
       <Suspense fallback={<div>Loading...</div>}>
         <FilteredPosts posts={posts} />

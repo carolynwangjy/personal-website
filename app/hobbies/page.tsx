@@ -6,7 +6,7 @@ export default function HobbiesPage() {
 
   return (
     <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
-      <h1 className="text-3xl font-semibold tracking-tight">hobbies</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">hobbies <span className="ml-1">☕</span></h1>
       <p className="text-neutral-700 dark:text-neutral-300">on a quest for more side quests :D</p>
 
       
