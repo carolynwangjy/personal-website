@@ -126,6 +126,14 @@ function PullQuote({ children }) {
   )
 }
 
+function LargeQuote({ children }) {
+  return (
+    <blockquote className="text-xl md:text-2xl text-neutral-500 dark:text-neutral-400 my-6 leading-relaxed pl-6 md:pl-8">
+      {children}
+    </blockquote>
+  )
+}
+
 function Code({ children, ...props }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
@@ -177,6 +185,7 @@ let components = {
   code: Code,
   Table,
   PullQuote,
+  LargeQuote,
 }
 
 export function CustomMDX(props) {
