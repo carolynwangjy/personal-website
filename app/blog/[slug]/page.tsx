@@ -63,7 +63,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <section className="space-y-4 text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl">
+    <section className="space-y-4 text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl -mt-4">
       <script
         type="application/ld+json"
         suppressHydrationWarning

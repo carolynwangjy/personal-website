@@ -28,24 +28,81 @@ function Table({ data }) {
 
 function CustomLink(props) {
   let href = props.href
+  const { className = '', ...restProps } = props
+  const linkClasses = 'rounded bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600/70 transition-colors'
+  const mergedClassName = className ? `${linkClasses} ${className}` : linkClasses
 
   if (href.startsWith('/')) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} className={mergedClassName} {...restProps}>
         {props.children}
       </Link>
     )
   }
 
   if (href.startsWith('#')) {
-    return <a {...props} />
+    return <a className={mergedClassName} {...restProps} />
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />
+  return <a target="_blank" rel="noopener noreferrer" className={mergedClassName} {...restProps} />
 }
 
 function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />
+}
+
+function parseCaptionWithLinks(caption: string): React.ReactNode {
+  // Match markdown-style links: [text](url)
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+  const parts: React.ReactNode[] = []
+  let lastIndex = 0
+  let match
+  let key = 0
+
+  while ((match = linkRegex.exec(caption)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(caption.substring(lastIndex, match.index))
+    }
+    
+    // Add the link
+    const linkText = match[1]
+    const linkUrl = match[2]
+    const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://')
+    
+    if (isExternal) {
+      parts.push(
+        <a
+          key={key++}
+          href={linkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+        >
+          {linkText}
+        </a>
+      )
+    } else {
+      parts.push(
+        <Link
+          key={key++}
+          href={linkUrl}
+          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+        >
+          {linkText}
+        </Link>
+      )
+    }
+    
+    lastIndex = linkRegex.lastIndex
+  }
+  
+  // Add remaining text after the last link
+  if (lastIndex < caption.length) {
+    parts.push(caption.substring(lastIndex))
+  }
+  
+  return parts.length > 0 ? parts : caption
 }
 
 function ImageWithCaption({ caption, alt, ...props }: React.ComponentProps<typeof Image> & { caption?: string }) {
@@ -54,7 +111,7 @@ function ImageWithCaption({ caption, alt, ...props }: React.ComponentProps<typeo
       <Image alt={alt || caption || ''} className="rounded-lg" {...props} />
       {caption && (
         <figcaption className="mt-2 text-sm text-center text-neutral-600 dark:text-neutral-400">
-          {caption}
+          {parseCaptionWithLinks(caption)}
         </figcaption>
       )}
     </figure>
