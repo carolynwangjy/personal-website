@@ -84,7 +84,7 @@ export function FooterWithLinks() {
         >
           {dateString}
         </a>
-        .
+        . built with love <span className="text-[0.80em] align-top -mt-0.4 inline-block -ml-[0.9]">ᯓ ᥫ᭡</span> 
       </p>
     </footer>
   )
