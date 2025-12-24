@@ -183,14 +183,14 @@ html.dark .writing-chip-active:hover {
   background-color: rgb(82 82 82); /* neutral-600 */
 }
 
-/* Back button hover highlights */
-a[href="/writing"]:hover,
-a[href="/hobbies"]:hover {
+/* Back button hover highlights - exclude nav links */
+section a[href="/writing"]:hover,
+section a[href="/hobbies"]:hover {
   background-color: #f2e8da !important; /* beige for light mode */
 }
 
-html.dark a[href="/writing"]:hover,
-html.dark a[href="/hobbies"]:hover {
+html.dark section a[href="/writing"]:hover,
+html.dark section a[href="/hobbies"]:hover {
   background-color: rgb(64 64 64 / 0.7) !important; /* gray for dark mode */
 }
 
