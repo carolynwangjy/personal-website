@@ -357,14 +357,14 @@ table {
 @media (max-width: 767px) {
   /* Prose content in blog posts and hobbies - reduce base font size */
   .prose {
-    font-size: 15px !important;
+    font-size: 16px !important;
   }
   
   .prose p,
   .prose li,
   .prose td,
   .prose th {
-    font-size: 15px !important;
+    font-size: 16px !important;
   }
   
   /* Reduce heading sizes proportionally on mobile */
@@ -385,4 +385,12 @@ table {
 /* Footer date link hover in dark mode */
 html.dark .footer-date-link:hover {
   background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 */
+}
+
+/* Larger footer icons on mobile */
+@media (max-width: 767px) {
+  .home-icons svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
 }
