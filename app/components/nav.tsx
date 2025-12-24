@@ -57,7 +57,7 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <div className="ml-6 mt-1">
+            <div className="ml-4 md:ml-6 mt-0 md:mt-1">
               <ThemeToggle />
             </div>
           </div>
