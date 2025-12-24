@@ -7,6 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ConditionalFooter } from './components/conditional-footer'
 import { ThemeProvider } from './components/theme-provider'
 import { baseUrl } from './sitemap'
+import { getLatestCommitDate } from './lib/git-date'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -44,6 +45,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Get the commit date on the server side
+  const commitDate = getLatestCommitDate()
+  const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+  const month = months[commitDate.getMonth()]
+  const day = commitDate.getDate()
+  const year = commitDate.getFullYear()
+  const dateString = `${month} ${day}, ${year}`
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <head>
@@ -69,7 +77,7 @@ export default function RootLayout({
           <main className="flex-auto min-w-0 mt-4 flex flex-col px-4 md:px-8">
             <Navbar />
             {children}
-            <ConditionalFooter />
+            <ConditionalFooter dateString={dateString} />
             <Analytics />
             <SpeedInsights />
           </main>

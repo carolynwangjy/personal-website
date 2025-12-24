@@ -15,15 +15,7 @@ function ArrowIcon() {
   )
 }
 
-import { getLatestCommitDate } from '../lib/git-date'
-
-export function FooterWithLinks() {
-  const commitDate = getLatestCommitDate()
-  const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-  const month = months[commitDate.getMonth()]
-  const day = commitDate.getDate()
-  const year = commitDate.getFullYear()
-  const dateString = `${month} ${day}, ${year}`
+export function FooterWithLinks({ dateString }: { dateString: string }) {
   
   return (
     <footer className="mb-12">
