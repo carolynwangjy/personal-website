@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function CoursesPage() {
   const [activeSemester, setActiveSemester] = useState<string | null>(null)
@@ -116,9 +117,25 @@ export default function CoursesPage() {
               </div>
               <div className="px-6 pb-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1 pl-5">
-                  {semester.courses.map((course, idx) => (
-                    <li key={idx}>{course}</li>
-                  ))}
+                  {semester.courses.map((course, idx) => {
+                    // Check if course contains "materials" and make just that word a link
+                    if (course.includes('materials')) {
+                      const parts = course.split('materials')
+                      return (
+                        <li key={idx}>
+                          {parts[0]}
+                          <Link
+                            href="/teaching"
+                            className="materials-link underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da]"
+                          >
+                            materials
+                          </Link>
+                          {parts[1]}
+                        </li>
+                      )
+                    }
+                    return <li key={idx}>{course}</li>
+                  })}
                 </ul>
               </div>
             </div>

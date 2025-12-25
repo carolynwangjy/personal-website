@@ -396,6 +396,15 @@ html.dark .footer-date-link:hover {
   background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 */
 }
 
+/* Materials link in courses page - dark mode background only on hover */
+html.dark .materials-link {
+  background-color: transparent !important; /* no background by default */
+}
+
+html.dark .materials-link:hover {
+  background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 on hover */
+}
+
 /* Theme toggle button dark mode override */
 html.dark button[aria-label="Toggle theme"] {
   background-color: #151515 !important;

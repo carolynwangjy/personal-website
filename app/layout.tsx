@@ -45,12 +45,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Get the commit date on the server side
+  // Get the commit date on the server side and convert to Pacific time
   const commitDate = getLatestCommitDate()
-  const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-  const month = months[commitDate.getMonth()]
-  const day = commitDate.getDate()
-  const year = commitDate.getFullYear()
+  // Format date components in Pacific time (handles both PST and PDT automatically)
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+  const parts = formatter.formatToParts(commitDate)
+  const month = (parts.find(p => p.type === 'month')?.value || '').toLowerCase()
+  const day = parts.find(p => p.type === 'day')?.value || ''
+  const year = parts.find(p => p.type === 'year')?.value || ''
   const dateString = `${month} ${day}, ${year}`
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
