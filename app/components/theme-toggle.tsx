@@ -12,7 +12,7 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
     >
       <span
-        className={`inline-block w-3.5 h-3.5 transform rounded-full bg-white dark:bg-neutral-600 transition-transform duration-200 ease-in-out ${
+        className={`inline-flex items-center justify-center w-3.5 h-3.5 transform rounded-full bg-white dark:bg-neutral-600 transition-transform duration-200 ease-in-out ${
           theme === 'dark' ? 'translate-x-5' : 'translate-x-0.5'
         }`}
       >
@@ -25,7 +25,7 @@ export function ThemeToggle() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-2.5 h-2.5 text-neutral-800 mt-0.5 ml-0.5"
+            className="w-2.5 h-2.5 text-neutral-800"
           >
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
           </svg>
@@ -38,7 +38,7 @@ export function ThemeToggle() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-3 h-3 text-yellow-500 mt-0.5 ml-0.5"
+            className="w-3 h-3 text-yellow-500"
           >
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2" />

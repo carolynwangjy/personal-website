@@ -405,7 +405,16 @@ html.dark .materials-link:hover {
   background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 on hover */
 }
 
-/* Theme toggle button dark mode override */
+/* Theme toggle button - ensure consistent styling on mobile and desktop */
+button[aria-label="Toggle theme"] {
+  background-color: #e5e7eb !important; /* neutral-200 */
+  border-color: #737373 !important; /* neutral-500 */
+}
+
+button[aria-label="Toggle theme"]:hover {
+  background-color: #d4d4d4 !important; /* neutral-300 */
+}
+
 html.dark button[aria-label="Toggle theme"] {
   background-color: #151515 !important;
   border-color: #404040 !important;
