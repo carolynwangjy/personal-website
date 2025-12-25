@@ -29,7 +29,7 @@ function Table({ data }) {
 function CustomLink(props) {
   let href = props.href
   const { className = '', ...restProps } = props
-  const linkClasses = 'rounded bg-transparent hover:bg-[#f2e8da] dark:bg-neutral-700/70 dark:hover:bg-neutral-600/70 transition-colors'
+  const linkClasses = 'rounded bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600/70 transition-colors'
   const mergedClassName = className ? `${linkClasses} ${className}` : linkClasses
 
   if (href.startsWith('/')) {

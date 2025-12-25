@@ -121,11 +121,75 @@ export default function TeachingPage() {
       materials: [
         {
           problem: 'zoink',
+          year: "2015",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/VaCOkmJS2eM?si=pnYUaVCxCWUhXaJL&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2015/N2015-G.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2015/N2015-GS.pdf' }],
+          popularity: 2400,
+        },
+        {
+          problem: 'junk mail (part 1)',
           year: "2021",
           round: "round 1",
-          video: { label: 'video', url: '#' },
-          blankSolution: [{ label: 'blank', url: '#' }, { label: 'solution', url: '#' }],
-          popularity: 0,
+          video: { label: 'video', url: 'https://youtu.be/apUjOpDGN5s?si=KTOiM_v-gLIlGGkk&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2021/N2021-B.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2021/N2021-BS.pdf' }],
+          popularity: 529,
+        },
+        {
+          problem: 'junk mail (part 2)',
+          year: "2021",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/Z2tqvwqPeBI?si=WGUiIBGoGjpizUNS&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2021/N2021-B.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2021/N2021-BS.pdf' }],
+          popularity: 528,
+        },
+        {
+          problem: 'set in stone (part 1)',
+          year: "2020",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/5mrZbv3OMHc?si=EiIKjQSwIPmmPE6n&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2020/N2020-C.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2020/N2020-CS.pdf' }],
+          popularity: 647,
+        },
+        {
+          problem: 'set in stone (part 2)',
+          year: "2020",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/pQrb64Dkku8?si=HULTukl6RVSSBs9T&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2020/N2020-C.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2020/N2020-CS.pdf' }],
+          popularity: 646,
+        },
+        {
+          problem: 'set in stone (part 3)',
+          year: "2020",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/v3lUbchwCw0?si=ZH2JN3y4jDtHXO6e&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2020/N2020-C.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2020/N2020-CS.pdf' }],
+          popularity: 645,
+        },
+        {
+          problem: 'chess tournament (part 1)',
+          year: "2016",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/4d35qAkGvQo?si=0G0aM4i-kS6c8SC8&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2016/N2016-N.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2016/N2016-NS.pdf' }],
+          popularity: 921,
+        },
+        {
+          problem: 'chess tournament (part 2)',
+          year: "2016",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/c18R-9w7ldc?si=dedewZrNbG-3ZDl0&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2016/N2016-N.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2016/N2016-NS.pdf' }],
+          popularity: 920,
+        },
+        {
+          problem: 'we are all molistic in a way',
+          year: "2007",
+          round: "round 1",
+          video: { label: 'video', url: 'https://youtu.be/O6Cel0m73MY?si=gxT-iB4IJ43SLtqI&t=0' },
+          blankSolution: [{ label: 'blank', url: 'https://naclo.org/resources/problems/2007/N2007-A.pdf' }, { label: 'solution', url: 'https://naclo.org/resources/problems/2007/N2007-AS.pdf' }],
+          popularity: 1000,
         },
       ],
     },
@@ -234,6 +298,15 @@ export default function TeachingPage() {
                 >
                   most popular
                 </button>
+                <span>|</span>
+                <a
+                  href="https://naclo.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 writing-chip"
+                >
+                  website
+                </a>
               </div>
             )}
           </div>
