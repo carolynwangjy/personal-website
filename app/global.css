@@ -264,27 +264,41 @@ html.dark {
   @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em];
 }
 
-/* Ensure blog post links have beige background in light mode (desktop and mobile) */
-html:not(.dark) .prose a,
-html:not(.dark) section a:not([href="/writing"]):not([href="/hobbies"]):not([href^="/hobbies/"]) {
+/* Blog post links: beige background by default in light mode (desktop and mobile) */
+/* Only apply to blog posts, not hobbies */
+html:not(.dark) section:not(.hobbies-page) .prose a {
   background-color: #f2e8da !important; /* light beige default */
 }
 
-html:not(.dark) .prose a:hover,
-html:not(.dark) section a:not([href="/writing"]):not([href="/hobbies"]):not([href^="/hobbies/"]):hover {
+html:not(.dark) section:not(.hobbies-page) .prose a:hover {
   background-color: #e1d4be !important; /* darker beige on hover */
 }
 
-/* Mobile-specific: ensure blog post links have beige background in light mode */
+/* Hobbies links: no default background, only on hover in light mode */
+html:not(.dark) .hobbies-page .prose a {
+  background-color: transparent !important; /* no background by default */
+}
+
+html:not(.dark) .hobbies-page .prose a:hover {
+  background-color: #f2e8da !important; /* beige only on hover */
+}
+
+/* Mobile-specific: same rules apply */
 @media (max-width: 767px) {
-  html:not(.dark) .prose a,
-  html:not(.dark) section a:not([href="/writing"]):not([href="/hobbies"]):not([href^="/hobbies/"]) {
+  html:not(.dark) section:not(.hobbies-page) .prose a {
     background-color: #f2e8da !important; /* light beige default */
   }
 
-  html:not(.dark) .prose a:hover,
-  html:not(.dark) section a:not([href="/writing"]):not([href="/hobbies"]):not([href^="/hobbies/"]):hover {
+  html:not(.dark) section:not(.hobbies-page) .prose a:hover {
     background-color: #e1d4be !important; /* darker beige on hover */
+  }
+
+  html:not(.dark) .hobbies-page .prose a {
+    background-color: transparent !important; /* no background by default */
+  }
+
+  html:not(.dark) .hobbies-page .prose a:hover {
+    background-color: #f2e8da !important; /* beige only on hover */
   }
 }
 
