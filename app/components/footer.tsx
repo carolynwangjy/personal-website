@@ -69,7 +69,7 @@ export function FooterWithLinks({ dateString }: { dateString: string }) {
         </a>
       </div>
       <p className="font-sm text-neutral-600 dark:text-neutral-300 text-xs mt-1">
-        last deployed on{' '}
+        last updated on{' '}
         <a
           href="https://github.com/carolynwangjy/personal-website/commits/main"
           target="_blank"
