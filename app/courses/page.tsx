@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function CoursesPage() {
@@ -76,7 +76,7 @@ export default function CoursesPage() {
       courses: [
         'cs 70: discrete math & probability theory (mt, final)',
         'cs 61b: data structures & algorithms',
-        'pubpol 101: public policy analysis (final)',
+        'pubpol 101: public policy analysis',
         'pubpol 198: cal in the capital decal',
         'cs 197: computer science mentors (6la junior mentor)',
       ],
@@ -118,6 +118,8 @@ export default function CoursesPage() {
               <div className="px-6 pb-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1 pl-5">
                   {semester.courses.map((course, idx) => {
+                    const linkClass = "underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+                    
                     // Check if course contains "materials" and make just that word a link
                     if (course.includes('materials')) {
                       const parts = course.split('materials')
@@ -126,7 +128,7 @@ export default function CoursesPage() {
                           {parts[0]}
                           <Link
                             href="/teaching"
-                            className="materials-link underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da]"
+                            className={`materials-link ${linkClass}`}
                           >
                             materials
                           </Link>
@@ -134,6 +136,95 @@ export default function CoursesPage() {
                         </li>
                       )
                     }
+                    
+                    // Handle exam links (mt1, mt2, etc.)
+                    const examLinks: { [key: string]: string } = {}
+                    if (course.includes('cs 162')) {
+                      if (course.includes('mt1')) {
+                        examLinks['mt1'] = 'https://drive.google.com/file/d/14G-38XDzyMTMdJzZzgvrgcKuMx43ks2P/view?usp=drive_link'
+                      }
+                    } else if (course.includes('cs 170')) {
+                      if (course.includes('mt1')) {
+                        examLinks['mt1'] = 'https://drive.google.com/file/d/1096Wxnep6WVch_3jDdZYj957QuWKPs-m/view?usp=drive_link'
+                      }
+                      if (course.includes('mt2')) {
+                        examLinks['mt2'] = 'https://drive.google.com/file/d/1GqOqnA1mouGbz47mW9sKDhs_-8HTvRwp/view?usp=drive_link'
+                      }
+                      if (course.includes('final')) {
+                        examLinks['final'] = 'https://drive.google.com/file/d/1fxoMnPoEsBHZ5AEQGPzmI7bkS21MJ4NR/view?usp=drive_link'
+                      }
+                    } else if (course.includes('cs 70')) {
+                      // Check for "mt" specifically in exam context (not "mt1" or "mt2", and not part of "math")
+                      if ((course.includes('(mt') || course.includes(', mt') || course.includes('mt,')) && !course.includes('mt1') && !course.includes('mt2')) {
+                        examLinks['mt'] = 'https://drive.google.com/file/d/1Q9M7T6yN7B8tCXWEs4cRakDH5mMEKJz4/view?usp=drive_link'
+                      }
+                      if (course.includes('final')) {
+                        examLinks['final'] = 'https://drive.google.com/file/d/1aKD-45na4u_b1jVCQ4I1W-hWnjjhzd1B/view?usp=drive_link'
+                      }
+                    } else if (course.includes('cs 61c')) {
+                      // Check for "mt" specifically in exam context (not "mt1" or "mt2")
+                      if ((course.includes('(mt') || course.includes(', mt') || course.includes('mt,')) && !course.includes('mt1') && !course.includes('mt2')) {
+                        examLinks['mt'] = 'https://drive.google.com/file/d/1owvuVA5R8ok6EZCR2QsIl94MfRdaWVV5/view?usp=drive_link'
+                      }
+                      if (course.includes('final')) {
+                        examLinks['final'] = 'https://drive.google.com/file/d/1eFUglWlBHXqVXmU3LiNXrEFNvfDPWg3F/view?usp=drive_link'
+                      }
+                    } else if (course.includes('eecs 126')) {
+                      if (course.includes('mt1')) {
+                        examLinks['mt1'] = 'https://drive.google.com/file/d/1_xv-2JWBlV3-DrLWOql-2Hx98kDpk2WH/view?usp=drive_link'
+                      }
+                      if (course.includes('mt2')) {
+                        examLinks['mt2'] = 'https://drive.google.com/file/d/1krPB-E5mJwk7FPOYR3woRythdeDPtx1X/view?usp=drive_link'
+                      }
+                      if (course.includes('final')) {
+                        examLinks['final'] = 'https://drive.google.com/file/d/1Qj4rM_W__fBbjimZHFXG8oSIxq4OAeDR/view?usp=drive_link'
+                      }
+                    }
+                    
+                    // If there are exam links, render them
+                    if (Object.keys(examLinks).length > 0) {
+                      const parts: React.ReactNode[] = []
+                      let remainingText = course
+                      let lastIndex = 0
+                      
+                      // Sort exam keys by their position in the string to maintain order
+                      const examKeys = Object.keys(examLinks).sort((a, b) => {
+                        const indexA = remainingText.indexOf(a, lastIndex)
+                        const indexB = remainingText.indexOf(b, lastIndex)
+                        return indexA - indexB
+                      })
+                      
+                      examKeys.forEach((examKey) => {
+                        const examIndex = remainingText.indexOf(examKey, lastIndex)
+                        if (examIndex !== -1) {
+                          // Add text before the exam link
+                          if (examIndex > lastIndex) {
+                            parts.push(remainingText.substring(lastIndex, examIndex))
+                          }
+                          // Add the exam link
+                          parts.push(
+                            <a
+                              key={examKey}
+                              href={examLinks[examKey]}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={linkClass}
+                            >
+                              {examKey}
+                            </a>
+                          )
+                          lastIndex = examIndex + examKey.length
+                        }
+                      })
+                      
+                      // Add remaining text after the last exam link
+                      if (lastIndex < remainingText.length) {
+                        parts.push(remainingText.substring(lastIndex))
+                      }
+                      
+                      return <li key={idx}>{parts}</li>
+                    }
+                    
                     return <li key={idx}>{course}</li>
                   })}
                 </ul>

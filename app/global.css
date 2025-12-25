@@ -443,6 +443,17 @@ html.dark .materials-link:hover {
   background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 on hover */
 }
 
+/* All links in courses page - ensure dark mode uses gray highlights, not beige */
+html.dark section a[href^="https://drive.google.com"],
+html.dark .courses-card a {
+  background-color: transparent !important; /* no background by default */
+}
+
+html.dark section a[href^="https://drive.google.com"]:hover,
+html.dark .courses-card a:hover {
+  background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 on hover - gray, not beige */
+}
+
 /* Theme toggle button - ensure consistent styling on mobile and desktop */
 button[aria-label="Toggle theme"] {
   background-color: #e5e7eb !important; /* neutral-200 */
