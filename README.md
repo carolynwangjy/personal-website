@@ -1,4 +1,4 @@
-# carolyn's personal website
+# carolyn's personal website 🫶
 hi there! welcome to my internet home :)
 
 in this repo, you can find the source code for this site i made, loosely based off
