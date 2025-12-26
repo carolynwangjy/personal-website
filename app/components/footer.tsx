@@ -71,7 +71,7 @@ export function FooterWithLinks({ dateString }: { dateString: string }) {
       <p className="font-sm text-neutral-600 dark:text-neutral-300 text-xs mt-1">
         last updated on{' '}
         <a
-          href="https://github.com/carolynwangjy/personal-website/commits/main"
+          href="https://github.com/carolynwangjy/personal-website"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-date-link underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.5px] rounded transition-colors hover:bg-[#f2e8da]"
