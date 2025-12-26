@@ -12,13 +12,13 @@ import { getLatestCommitDate } from './lib/git-date'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "carolyn wang's personal website :)",
-    template: "%s | carolyn wang's personal website :)",
+    default: "Carolyn Wang - Personal Website",
+    template: "%s | Carolyn Wang",
   },
-  description: "carolyn is an undergraduate @ uc berkeley studying computer science and politics, philosophy & law (ppl).",
+  description: "Carolyn is an undergraduate @ UC Berkeley studying computer science and politics, philosophy & law (PPL). Her interests lie in machine learning, social systems, and public service.",
   openGraph: {
     title: "carolyn wang's personal website :)",
-    description: "carolyn is an undergraduate @ uc berkeley studying computer science and politics, philosophy & law (ppl).",
+    description: "carolyn is an undergraduate @ uc berkeley studying computer science and politics, philosophy & law (ppl). her interests lie in machine learning, social systems, and public service.",
     url: baseUrl,
     siteName: "carolyn wang's personal website :)",
     locale: 'en_US',
