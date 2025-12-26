@@ -43,17 +43,17 @@ export default function TeachingPage() {
       materials: [
         {
           topic: 'getting started',
-          lab: [{label: 'lab00', url: 'https://cs61a.org/lab/lab00/'}, {label: 'slides', url: 'https://docs.google.com/presentation/d/12n2AmcYwmMSmPCAb7glrE_E4rBCOHIPbpdrNCxGuYFk/edit?usp=drive_link'}],
+          lab: [{label: 'lab00', url: 'https://cs61a.org/lab/lab00/'}, {label: 'slides', url: 'https://docs.google.com/presentation/d/12CbiBXRsFzIPn4Fi7QbJnWfbERbclNwRark3Y5Gq2GU/edit?usp=drive_link'}],
           disc: [{ label: 'disc00', url: 'https://cs61a.org/disc/disc00/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1D6UYaZNJAAFKSjf5qnQx3X-HlOFhbuBnXmBOCMWWWUA/edit?usp=drive_link' }],
         },
         {
           topic: 'functions, control',
-          lab: [{ label: 'lab01', url: 'https://cs61a.org/lab/lab01/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/12n2AmcYwmMSmPCAb7glrE_E4rBCOHIPbpdrNCxGuYFk/edit?usp=drive_link' }],
+          lab: [{ label: 'lab01', url: 'https://cs61a.org/lab/lab01/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/12CbiBXRsFzIPn4Fi7QbJnWfbERbclNwRark3Y5Gq2GU/edit?usp=drive_link' }],
           disc: [{ label: 'disc01', url: 'https://cs61a.org/disc/disc01/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1AZBRndzm7sY9YlcRNmRCAb49ip6ulaMYgBeCgHit9gI/edit?usp=drive_link' }],
         },
         {
           topic: 'env diagrams, hofs',
-          lab: [{ label: 'lab02', url: 'https://cs61a.org/lab/lab02/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1LVbraK3pCE6gou3_Gjhx54OEIckZjr0E8EL45zYg5Ak/edit?usp=drive_link' }],
+          lab: [{ label: 'lab02', url: 'https://cs61a.org/lab/lab02/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1RnxgvnqVrfcV_kr3KjzSY_WID-NGrodKLZX-5xGIKFM/edit?usp=drive_link' }],
           disc: [{ label: 'disc02', url: 'https://cs61a.org/disc/disc02/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1FWISIYHIVu-pnnpps9Hz2SH5RmOvrfws2P2knEt6Z5Q/edit?usp=drive_link' }],
         },
         {
@@ -63,27 +63,27 @@ export default function TeachingPage() {
         },
         {
           topic: 'tree recursion, abstraction',
-          lab: [{ label: 'lab03', url: 'https://cs61a.org/lab/lab03/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1_V778b5MLljwL7DSsGCL3Sztm3wDA0OPt2f1xb7LHbQ/edit?usp=drive_link' }],
+          lab: [{ label: 'lab03', url: 'https://cs61a.org/lab/lab03/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1MU653xwO5e96QFwjBUiRaGgApkoX4EbxBvcizHcFk9M/edit?usp=drive_link' }],
           disc: [{ label: 'disc04', url: 'https://cs61a.org/disc/disc04/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1hZ6hrmpGNHmyrTgiROqNHXymf8HymYtzfm2kry6AM14/edit?usp=drive_link' }],
         },
         {
           topic: 'trees',
-          lab: [{ label: 'lab04', url: 'https://cs61a.org/lab/lab04/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1mQEtmtrjK7wi2AExl7S_slSpfpyaTqVXCNUjkkCihRc/edit?usp=drive_link' }],
+          lab: [{ label: 'lab04', url: 'https://cs61a.org/lab/lab04/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1X0OfO16McwA4e5SnodFb0RUWP4-qXcOrjd4MyXOOWjg/edit?usp=drive_link' }],
           disc: [{ label: 'disc05', url: 'https://cs61a.org/disc/disc05/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1atc_D9Myaf8m2fDB79KGYlCNL7gUAvyzWQZ2gdAelRk/edit?usp=drive_link' }],
         },
         {
           topic: 'iterators, generators',
-          lab: [{ label: 'lab05', url: 'https://cs61a.org/lab/lab05/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1RVIvhix8m5-Ml93t4gj_ceRve8S18lYRexvptjbLJj0/edit?usp=drive_link' }],
+          lab: [{ label: 'lab05', url: 'https://cs61a.org/lab/lab05/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1OeysgmPvYl85fA8JpLeyuRR2dbsRfi_ETEezGqzw4as/edit?usp=drive_link' }],
           disc: [{ label: 'disc06', url: 'https://cs61a.org/disc/disc06/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1BzfSr5DEZ5bvnPa5T1TX4SSY_Ee8GaWyFz6ULnDZg9A/edit?usp=drive_link' }],
         },
         {
           topic: 'object oriented programming',
-          lab: [{ label: 'lab06', url: 'https://cs61a.org/lab/lab06/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/10aE0c4YPtwLquOAcfP8OS-Qia7x3yk5OgWiiUWZJmRY/edit?usp=drive_link' }],
+          lab: [{ label: 'lab06', url: 'https://cs61a.org/lab/lab06/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/18yHQETTdDB7l4Q_Rkv8MlZTFcOPr4b-ySKZOHcOM-_8/edit?usp=drive_link' }],
           disc: [{ label: 'disc07', url: 'https://cs61a.org/disc/disc07/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1NVE_UXqVZFqCMBv60FA4aQDEHSOLYMH3b-LmmBEeccA/edit?usp=drive_link' }],
         },
         {
           topic: 'linked lists',
-          lab: [{ label: 'lab07', url: 'https://cs61a.org/lab/lab07/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/11U7bRW-qA5F4YvcNtp-eRuDkE94Zpv4foBL3dBQSggg/edit?usp=drive_link' }],
+          lab: [{ label: 'lab07', url: 'https://cs61a.org/lab/lab07/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/18zj62P535LF9i0zPBGZ99MeKXbNNxwLGK8gR-X8CBCg/edit?usp=drive_link' }],
           disc: [{ label: 'disc08', url: 'https://cs61a.org/disc/disc08/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1yPBfSsX8Re61JaDpCqDapX5a0uW5tDKAPk8zYmrwiog/edit?usp=drive_link' }],
         },
         {
@@ -93,22 +93,22 @@ export default function TeachingPage() {
         },
         {
           topic: 'scheme, scheme lists',
-          lab: [{ label: 'lab8', url: 'https://cs61a.org/lab/lab08/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1xhJNa2iDGOqDFd2EnwxxBrl3ae63Zl1bwcBt0gse7fU/edit?usp=drive_link' }],
+          lab: [{ label: 'lab8', url: 'https://cs61a.org/lab/lab08/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1GclsCPWSCZMQChmce-Wxnozxyb64pTNBHHY0Weh74Jw/edit?usp=drive_link' }],
           disc: [{ label: 'disc10', url: 'https://cs61a.org/disc/disc10/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1qlMbVMsMYu8PRIoGeOlYKF3F_LdEbJrNFCmz1pXPBh8/edit?usp=drive_link' }],
         },
         {
           topic: 'interpreters',
-          lab: [{ label: 'lab9', url: 'https://cs61a.org/lab/lab09/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1JEhaQ5aPA4AWcl8YjvlADLeSz1nw_hbS_EvlEfZz9S4/edit?usp=drive_link' }],
+          lab: [{ label: 'lab9', url: 'https://cs61a.org/lab/lab09/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1l9g8onfeOcxYr-iZdJ2gDexzrvW2bozX_HZwcrdhybE/edit?usp=drive_link' }],
           disc: [{ label: 'disc11', url: 'https://cs61a.org/disc/disc11/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1a57yIoMzlV0WA4O1rdi4OroPfVlgQrs_8vLnFwShR8M/edit?usp=drive_link' }],
         },
         {
           topic: 'macros',
-          lab: [{ label: 'lab10', url: 'https://cs61a.org/lab/lab10/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/10MBvvWkxdwGfL7blKxe08XXHR8eJbdxaNg-NDSI7rS8/edit?usp=drive_link' }],
+          lab: [{ label: 'lab10', url: 'https://cs61a.org/lab/lab10/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/15KL7wI_5n2NMjW7_4hhGLhSvpLkRMq_CG0s0su5Q-yM/edit?usp=drive_link' }],
           disc: [{ label: 'disc12', url: 'https://cs61a.org/disc/disc12/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1rl430TxgR6Z6gk7UmcSHx-k5M-8FYglDSq3FltL6xs8/edit?usp=drive_link' }],
         },
         {
           topic: 'sql',
-          lab: [{ label: 'lab11', url: 'https://cs61a.org/lab/lab11/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1TWKOwTVfkHPXsUphvWbfOKM4K09XM7Acv7BmfLb_vLs/edit?usp=drive_link' }],
+          lab: [{ label: 'lab11', url: 'https://cs61a.org/lab/lab11/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1EyNHOfRY2U8fDdVBQ32namMFkbYzT6UT5Izb0XmzAqM/edit?usp=drive_link' }],
           disc: [{ label: 'disc13', url: 'https://cs61a.org/disc/disc13/' }, { label: 'slides', url: 'https://docs.google.com/presentation/d/1FMz23pDV0Ny60pTFnLSlhK_JArB99wqecb9mCJaDKc0/edit?usp=drive_link' }],
         },
       ],
