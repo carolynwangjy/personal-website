@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 export default function WritingPage() {
   const posts = getBlogPosts().map((p) => ({
     slug: p.slug,
-    href: `/blog/${p.slug}`,
+    href: `/writing/${p.slug}`,
     metadata: p.metadata,
   }))
 
