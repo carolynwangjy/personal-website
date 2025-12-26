@@ -1,5 +1,9 @@
 # carolyn's personal website:
 welcome to my internet home :)
-here, you can find the source code for this site i made, 
-loosely based off the following source code:
-https://portfolio-blog-starter.vercel.app
+
+in this repo, you can find the source code for this site i made, loosely based off
+my old site's design and vercel's portfolio starter: https://portfolio-blog-starter.vercel.app.
+
+happy exploring <3
+
+
