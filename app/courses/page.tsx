@@ -78,7 +78,7 @@ export default function CoursesPage() {
         'cs 61b: data structures & algorithms',
         'pubpol 101: public policy analysis',
         'pubpol 198: cal in the capital decal',
-        'cs 197: computer science mentors (6la junior mentor)',
+        'cs 197: computer science mentors (61a junior mentor)',
       ],
     },
     {
@@ -86,7 +86,7 @@ export default function CoursesPage() {
       courses: [
         'cs 61a: structure & interpretation of computer programs',
         'math 54: linear algebra & differential equations',
-        'geog10ac: worldings: regions, peoples, & states',
+        'geog 10ac: worldings: regions, peoples, & states',
         'cs 198: web design decal',
         'cs 198: going down the eecs stack decal',
         'physed 1: circuit weight training',
