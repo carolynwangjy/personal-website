@@ -39,6 +39,13 @@ export default function CoursesPage() {
 
   const semesters = [
     {
+      term: 'spring 2026',
+      courses: [
+        'cs 186: database systems',
+        'legalst106wi: philosophy of law',
+      ],
+    },
+    {
       term: 'fall 2025',
       courses: [
         'cs 162: operating systems & system programming (mt1)',

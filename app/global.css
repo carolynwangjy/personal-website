@@ -150,8 +150,8 @@ html:not(.dark) .home-bio * {
 html.dark .experience-card,
 html.dark .courses-card,
 html.dark .teaching-card {
-  background-color: #151515 !important; /* match softened dark background */
-  border-color: #d6d7da !important;     /* soft light-gray border for gentle contrast */
+  background-color: #1f1f1f !important; /* slightly lighter than page background for subtle contrast */
+  border-color: #4a4a4a !important;     /* more visible neutral gray border, no blue tint */
 }
 
 /* Writing page chips (sort controls + read more + list items) */
