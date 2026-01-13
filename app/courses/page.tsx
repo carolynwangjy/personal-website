@@ -42,6 +42,7 @@ export default function CoursesPage() {
       term: 'spring 2026',
       courses: [
         'cs 186: database systems',
+        'legalst 106wi: philosophy of law',
         'cs 197: 189 course staff - tutor',
       ],
     },
