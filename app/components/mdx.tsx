@@ -105,10 +105,31 @@ function parseCaptionWithLinks(caption: string): React.ReactNode {
   return parts.length > 0 ? parts : caption
 }
 
-function ImageWithCaption({ caption, alt, ...props }: React.ComponentProps<typeof Image> & { caption?: string }) {
+function ImageWithCaption({ caption, alt, href, ...props }: React.ComponentProps<typeof Image> & { caption?: string; href?: string }) {
+  const imageContent = (
+    <div className="relative group cursor-pointer">
+      <div className="relative overflow-hidden rounded-lg">
+        <Image alt={alt || caption || ''} className="rounded-lg transition-opacity duration-300 group-hover:opacity-50 dark:opacity-90" {...props} />
+        {href && (
+          <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center image-overlay-text">
+            <span className="text-lg font-medium px-4 text-center">
+              {alt || caption || ''}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+
   return (
     <figure className="my-6">
-      <Image alt={alt || caption || ''} className="rounded-lg" {...props} />
+      {href ? (
+        <Link href={href} className="block">
+          {imageContent}
+        </Link>
+      ) : (
+        imageContent
+      )}
       {caption && (
         <figcaption className="mt-2 text-sm text-center text-neutral-600 dark:text-neutral-400">
           {parseCaptionWithLinks(caption)}
@@ -137,6 +158,14 @@ function LargeQuote({ children }) {
 function Code({ children, ...props }) {
   let codeHTML = highlight(children)
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+}
+
+function SmallText({ children, ...props }) {
+  return (
+    <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2 mb-4" {...props}>
+      {children}
+    </p>
+  )
 }
 
 function slugify(str) {
@@ -181,6 +210,7 @@ let components = {
   h6: createHeading(6),
   Image: RoundedImage,
   ImageWithCaption,
+  SmallText,
   a: CustomLink,
   code: Code,
   Table,

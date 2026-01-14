@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getHobbySections } from '../utils'
-import ReactMarkdown from 'react-markdown'
+import { CustomMDX } from 'app/components/mdx'
 import Link from 'next/link'
 
 export default async function HobbyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,27 +22,7 @@ export default async function HobbyPage({ params }: { params: Promise<{ slug: st
       </Link>
       <h1 className="text-3xl font-semibold tracking-tight">{section.title}</h1>
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        <ReactMarkdown
-          components={{
-            a: ({ node, href, ...props }) => {
-              const isExternal = href?.startsWith('http://') || href?.startsWith('https://')
-              return (
-                <a
-                  {...props}
-                  href={href}
-                  target={isExternal ? '_blank' : undefined}
-                  rel={isExternal ? 'noopener noreferrer' : undefined}
-                  className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-                />
-              )
-            },
-            p: ({ node, ...props }) => (
-              <p {...props} className="mb-4 last:mb-0" />
-            ),
-          }}
-        >
-          {section.content}
-        </ReactMarkdown>
+        <CustomMDX source={section.content} />
       </div>
     </section>
   )

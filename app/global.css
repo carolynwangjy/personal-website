@@ -1,7 +1,14 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
-::selection {
+/* Light mode selection */
+html:not(.dark) ::selection {
+  background-color: #bfdbfe;
+  color: #1e293b;
+}
+
+/* Dark mode selection */
+html.dark ::selection {
   background-color: #47a3f3;
   color: #fefefe;
 }
@@ -42,7 +49,7 @@ html:not(.dark) .dark\:text-neutral-200 {
 
 /* Light mode global text safety: force readable text across all pages */
 html:not(.dark) body,
-html:not(.dark) body :where(*):not(svg):not(path):not(.home-icons):not(.home-icons *) {
+html:not(.dark) body :where(*):not(svg):not(path):not(.home-icons):not(.home-icons *):not(.image-overlay-text):not(.image-overlay-text *) {
   color: #111827 !important;
 }
 
@@ -283,6 +290,16 @@ html:not(.dark) .hobbies-page .prose a:hover {
   background-color: #f2e8da !important; /* beige only on hover */
 }
 
+/* Remove hover highlighting from links inside headings */
+html:not(.dark) .hobbies-page .prose h1 a:hover,
+html:not(.dark) .hobbies-page .prose h2 a:hover,
+html:not(.dark) .hobbies-page .prose h3 a:hover,
+html:not(.dark) .hobbies-page .prose h4 a:hover,
+html:not(.dark) .hobbies-page .prose h5 a:hover,
+html:not(.dark) .hobbies-page .prose h6 a:hover {
+  background-color: transparent !important;
+}
+
 /* Mobile-specific: same rules apply */
 @media (max-width: 767px) {
   html:not(.dark) section:not(.hobbies-page) .prose a {
@@ -299,6 +316,16 @@ html:not(.dark) .hobbies-page .prose a:hover {
 
   html:not(.dark) .hobbies-page .prose a:hover {
     background-color: #f2e8da !important; /* beige only on hover */
+  }
+
+  /* Remove hover highlighting from links inside headings on mobile */
+  html:not(.dark) .hobbies-page .prose h1 a:hover,
+  html:not(.dark) .hobbies-page .prose h2 a:hover,
+  html:not(.dark) .hobbies-page .prose h3 a:hover,
+  html:not(.dark) .hobbies-page .prose h4 a:hover,
+  html:not(.dark) .hobbies-page .prose h5 a:hover,
+  html:not(.dark) .hobbies-page .prose h6 a:hover {
+    background-color: transparent !important;
   }
 }
 
@@ -483,4 +510,10 @@ html.dark button[aria-label="Toggle theme"] span {
     width: 20px !important;
     height: 20px !important;
   }
+}
+
+/* Image overlay text - force white text in light mode */
+html:not(.dark) .image-overlay-text,
+html:not(.dark) .image-overlay-text * {
+  color: #ffffff !important;
 }
