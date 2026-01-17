@@ -48,8 +48,17 @@ export default function Page() {
               className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
             >
               politics, philosophy &amp; law (ppl)
+            </a>{' '}
+            as part of the{' '}
+            <a
+              href="https://eecs.berkeley.edu/resources/undergrads/honors/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+            >
+              eecs honors program
             </a>
-            . my interests lie in machine learning, social systems, and public service.
+            . my interests lie in machine learning and social systems.
           </p>
           <p>
             currently i&apos;m busy sidequesting (yay!), but you can find my{' '}
