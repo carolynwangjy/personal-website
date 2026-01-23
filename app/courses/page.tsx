@@ -43,7 +43,8 @@ export default function CoursesPage() {
       courses: [
         'cs 186: database systems',
         'legalst 106wi: philosophy of law',
-        'cs 199: independent research',
+        'cs 199-191: independent research',
+        'cs 199-202: independent research',
         'cs 197: 189 course staff - tutor',
       ],
     },
