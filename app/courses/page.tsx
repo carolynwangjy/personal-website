@@ -42,9 +42,9 @@ export default function CoursesPage() {
       term: 'spring 2026',
       courses: [
         'cs 186: database systems',
+        'cdss 94: designing ai systems',
         'legalst 106wi: philosophy of law',
-        'cs 199 (ind 191): research',
-        'cs 199 (ind 202): research',
+        'cs 199: research', 
         'cs 197: 189 course staff - tutor',
       ],
     },
