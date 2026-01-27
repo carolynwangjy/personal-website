@@ -6,8 +6,10 @@ type MaterialLink = { label: string; url?: string }
 
 type Material = {
   topic: string
-  lab: MaterialLink[]
-  disc: MaterialLink[]
+  lab?: MaterialLink[]
+  disc?: MaterialLink[]
+  video?: MaterialLink[]
+  pdfs?: MaterialLink[]
 }
 
 type NacloMaterial = {
@@ -34,6 +36,30 @@ export default function TeachingPage() {
   const [yearDir, setYearDir] = useState<'desc' | 'asc'>('desc')
   
   const courses: CourseSection[] = [
+    {
+      id: 'cs189',
+      shortName: 'cs189',
+      title: 'CS 189: Introduction to Machine Learning (Spring 2026)',
+      subtitle: 'materials are still in progress :)',
+      columnHeaders: ['topic', 'video', 'pdfs'],
+      materials: [
+        {
+          topic: 'disc01: math review & data processing',
+          video: [{label: 'video', url: ''}],
+          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}],
+        },
+        {
+          topic: 'hw01 (written): math refresher',
+          video: [{label: 'video', url: ''}],
+          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}],
+        },
+        {
+          topic: 'disc02: machine learning design',
+          video: [{label: 'video', url: ''}],
+          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}],
+        },  
+      ],
+    },
     {
       id: 'cs61a',
       shortName: 'cs61a',
@@ -254,7 +280,10 @@ export default function TeachingPage() {
           : course.materials
 
         return (
-        <div key={courseIdx} className="space-y-3">
+        <div
+          key={courseIdx}
+          className={`space-y-3 ${courseIdx < courses.length - 1 ? 'mb-6' : ''}`}
+        >
           <div>
             <h2 className="text-xl font-semibold tracking-tight">{course.title}</h2>
             {course.subtitle && (
@@ -313,7 +342,7 @@ export default function TeachingPage() {
           {sortedMaterials.length > 0 ? (
             <div className="teaching-card border-2 border-neutral-200 bg-white/80 rounded-xl dark:border-neutral-700/70 dark:bg-transparent overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full teaching-table">
                   <thead>
                     <tr className="border-b border-neutral-200 dark:border-neutral-700/70">
                       {course.columnHeaders.map((header, idx) => (
@@ -364,7 +393,7 @@ export default function TeachingPage() {
                                 <td key={header} className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
                                   {Array.isArray(links) && links.length > 0 ? (
                                     links.length === 1 ? (
-                                      <div className="flex justify-center">
+                                      <span>
                                         {links[0].url && links[0].url.trim() !== '' ? (
                                           <a
                                             href={links[0].url}
@@ -377,7 +406,7 @@ export default function TeachingPage() {
                                         ) : (
                                           <span>{links[0].label}</span>
                                         )}
-                                      </div>
+                                      </span>
                                     ) : (
                                       <span className="flex flex-wrap gap-1">
                                         {links.map((link, linkIdx) => (
@@ -415,13 +444,13 @@ export default function TeachingPage() {
                             const materialItem = item as Material
                             const value = materialItem[header as keyof Material]
                             
-                            if (header === 'lab' || header === 'disc') {
+                            if (header === 'lab' || header === 'disc' || header === 'video' || header === 'pdfs') {
                               const links = value as MaterialLink[]
                               return (
                                 <td key={header} className="px-4 py-3 text-neutral-600 dark:text-neutral-400">
                                   {Array.isArray(links) && links.length > 0 ? (
                                     links.length === 1 ? (
-                                      <div className="flex justify-center">
+                                      <span>
                                         {links[0].url && links[0].url.trim() !== '' ? (
                                           <a
                                             href={links[0].url}
@@ -434,7 +463,7 @@ export default function TeachingPage() {
                                         ) : (
                                           <span>{links[0].label}</span>
                                         )}
-                                      </div>
+                                      </span>
                                     ) : (
                                       <span className="flex flex-wrap gap-1">
                                         {links.map((link, linkIdx) => (

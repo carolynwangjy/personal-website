@@ -423,6 +423,11 @@ table {
   white-space: nowrap;
 }
 
+.teaching-table {
+  width: 100%;
+  max-width: 100%;
+}
+
 .title {
   text-wrap: balance;
 }
