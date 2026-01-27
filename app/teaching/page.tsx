@@ -341,12 +341,7 @@ export default function TeachingPage() {
           </div>
           {sortedMaterials.length > 0 ? (
             <div className="teaching-card border-2 border-neutral-200 bg-white/80 rounded-xl dark:border-neutral-700/70 dark:bg-transparent overflow-hidden">
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white/90 via-white/70 to-transparent dark:from-neutral-900/90 dark:via-neutral-900/70 sm:hidden" />
-                <div className="pointer-events-none absolute right-2 top-2 rounded-full bg-white/80 px-2 py-0.5 text-xs text-neutral-600 shadow-sm dark:bg-neutral-800/80 dark:text-neutral-300 sm:hidden">
-                  scroll →
-                </div>
-                <div className="overflow-x-auto">
+              <div className="overflow-x-auto">
                 <table className="w-full teaching-table">
                   <thead>
                     <tr className="border-b border-neutral-200 dark:border-neutral-700/70">
@@ -508,7 +503,6 @@ export default function TeachingPage() {
                     ))}
                   </tbody>
                 </table>
-                </div>
               </div>
             </div>
           ) : (
