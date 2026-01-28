@@ -45,8 +45,8 @@ export default function TeachingPage() {
       materials: [
         {
           topic: 'disc01: math review & data processing',
-          video: [{label: 'video', url: ''}],
-          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}],
+          video: [{label: 'video', url: 'https://www.youtube.com/watch?v=dTdHuJEHOsM&list=PL-ysCubq-Sa8_GGY5otoIkzjneKo-qfW3'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1mOLnCkkKanK7mT-2IKNcHxGh894fVGEB/view'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/1KIwjMhxblX0LiVvshwIkrBa2IqfXF_XT/view'}],
         },
         {
           topic: 'hw01 (written): math refresher',
