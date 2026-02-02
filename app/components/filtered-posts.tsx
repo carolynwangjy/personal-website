@@ -18,7 +18,7 @@ type Post = {
   }
 }
 
-const categoryOrder = ['tech', 'thought pieces', 'short stories', 'reflections', 'miscellaneous']
+const categoryOrder = ['tech, research, academics', 'thought pieces', 'short stories', 'reflections', 'miscellaneous']
 
 const prettyDate = (date: string) => {
   // Check if date is in YYYY-MM format (no day specified)
