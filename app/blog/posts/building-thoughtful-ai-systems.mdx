@@ -4,8 +4,8 @@ subtitle: "notes on uc berkeley's newest [cdss94 seminar](https://www.posttraini
 publishedAt: "2026-02-02"
 category: tech
 ---
-<ImageWithCaption 
-  src="/blog-images/thoughtful-ai.jpeg" 
+<ImageWithCaption
+  src="/blog-images/thoughtful-ai.jpeg"
   alt="course website for uc berkeley's cdss94 course: building thoughtful ai systems"
   width={1200}
   height={800}
@@ -21,24 +21,57 @@ compels us to jot down our thoughts in a somewhat comprehensible, publishable ma
 here goes :)
 
 ## [1/26/26] fundamentals: what do we owe machines?
-- **lecture thoughts:**
 
-- **technical work:**
+<Collapsible title="lecture thoughts">
+
+first, a prelude. the lecture did such a phenomenol job of summarizing the ai revolution at its "shifts" that i want to emphasize it again: a key to understanding where we are now involve understanding the historical precedence and paradigm shifts of ai, from expert systems and symbolic ai (i.e. hardcoded cases) to supervised machine learning (training on top of human-based feature identification),
+    unsupervised learning (i.e. edge detection within neural nets that were not explicit), self-supervised representation learning (i.e. BERT/FLAN missing-piece language prediction), and finally, the GPT-moment. at where we are now,
+    our most interesting questions look at how we can shape model behavior after pre-training (i.e. in the post-training process) through reward models. the primary two being RLHF (reinforcement learning with human feedback, which requires human annotations of preferring option A or B), and
+    reasoning RL (which removes human-labeled data in fields with verifiable rewards, such as math or coding where test cases passed can indicate success.)
+
+knowing the history and techniques, i find that what we "owe" machines poses an interesting question. in lecture, five paradigms of ways we should treat models were introduced:
+    good teaching (i.e. constitutional ai rather than benchmark optimization like the SAT or IMO scores), care (investigating WHY a model breaks, rather than patching up symptoms),
+    honesty (understanding the drivers behind model dev, such as publication), patience (iteration even w/failure), and imagination (treating philosophers/artists/psychologists at the same level as engineers.)
+
+imagination is an interesting point here, because at the core of this pillar (and the involvement of psychologists, artists, writers, philosophers etc.) is this fundamental question: what is it that we really want models to be able to do? personally, i DO want models to be able to handle menial coding tasks that i don't particularly care about doing
+    in favor of the product and the creative idea behind it (think: vibe coding this website haha!). i DO want it to help find patterns in data that accelerate cancer drug discovery, or perhaps help outline some good must-see spots when i'm planning my vacation to new york.
+    i would also love a personalized teaching assistant that poses questions and guides learning in a way that fundamentally optimizes my OWN learning. what i DON'T want AI to do is what i believe is soulless—which is taking out the "human" storytelling aspect of our world. i don't want it to create art for me that has some
+    hidden deep meaning, because i don't think art by a machine has any meaning. i don't want it to philosophize about existence—i think we as the living creatures here have the fundamental right to that. and i CERTAINLY do not want AI to write and publish novels, because again—i believe
+    that the "human experience" is what makes storytelling what it is. i don't care how good an ai writes a fictional sci-fi fantasy—if it didn't come from the thought process of a human, is it really a story at all? it lacks soul. i think ai is like any other innovation—a tool. and as
+    questions are asked about what we want these models to be able to do, i believe it's imperative that we are optimizing its assistance and tool capabilities—not its human ones. (things like [moltbook](https://www.moltbook.com/), this reddit-based social network for ai agents,
+    scare me, for example.)
+
+that note aside, i quite enjoyed what i found were incredibly good insights about the best practices in ai research at this day and age—particularly because they apply both to research and to daily life in general. my favorite point that the lecturers mentioned was
+"choosing the right problem and iterating fast." choosing the right problem is more of an art than it is a science, but by iterating fast (and experimenting fast), or in other words, simply "doing" something with a beginning problem direction in mind
+and iterating from there, seemingly small incremental improvements compound quickly. it's almost the bread and butter of post-training, this kind of "compound interest" mindset where small tweaks bring incrementally better performance, and it is—in my opinion—what powers any kind of skillbuilding.
+
+lastly, in the spirit of not turning these thoughts into an ever larger rambling than it is, i love the way [riccardo colleti broke down our lecture](https://drive.google.com/file/d/10AQCsEnCpEPpblU4TgUNZJzCu-JtUoes/view) and will just list karina and kevin's research insights here again for my own convenience:
+(1) choose the right problem, (2) iterate fast, (3) design experiments for max information / evaluate whether something is worth burning compute on or not and how much, (4) pre-training is a moonshot, post-training is compound interest, (5) check the stack before blaming the model, (6) benchmarks steer the field, and
+(7) start from the user, not the benchmark / capabilities. (this reminds me of my experience with amazon's principal of customer obsession).
+
+thanks for reading these ramblings! onto next week :)
+</Collapsible>
+
+<Collapsible title="technical work">
+
+</Collapsible>
 
 ## [2/2/26] fundamentals: the lifecycle of a language model
-- **lecture reflection:**
 
-- **technical work:**
+<Collapsible title="lecture reflection">
 
-## [2/9/26] post-training: post-training foundations 
-- **lecture thoughts:**
+</Collapsible>
 
-- **technical work:**
+<Collapsible title="technical work">
 
+</Collapsible>
 
+## [2/9/26] post-training: post-training foundations
 
+<Collapsible title="lecture thoughts">
 
+</Collapsible>
 
+<Collapsible title="technical work">
 
-
-
+</Collapsible>

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
+import { Collapsible } from './collapsible'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -209,6 +210,7 @@ let components = {
   Table,
   PullQuote,
   LargeQuote,
+  Collapsible,
 }
 
 export function CustomMDX(props) {
