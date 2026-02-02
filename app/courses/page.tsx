@@ -42,10 +42,10 @@ export default function CoursesPage() {
       term: 'spring 2026',
       courses: [
         'cs 186: database systems',
-        'cdss 94: building thoughtful ai systems',
+        'cdss 94: building thoughtful ai systems (notes)',
         'legalst 106wi: philosophy of law',
-        'cs 199: research', 
-        'cs 197: 189 course staff - tutor',
+        'cs 199: research',
+        'cs 197: 189 course staff - tutor (materials)',
       ],
     },
     {
@@ -141,6 +141,23 @@ export default function CoursesPage() {
                             className={`materials-link ${linkClass}`}
                           >
                             materials
+                          </Link>
+                          {parts[1]}
+                        </li>
+                      )
+                    }
+
+                    // Check if course contains "notes" and make just that word a link
+                    if (course.includes('notes')) {
+                      const parts = course.split('notes')
+                      return (
+                        <li key={idx}>
+                          {parts[0]}
+                          <Link
+                            href="/writing/building-thoughtful-ai-systems"
+                            className={`materials-link ${linkClass}`}
+                          >
+                            notes
                           </Link>
                           {parts[1]}
                         </li>

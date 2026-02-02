@@ -6,6 +6,14 @@ type YearItem = { label: string | JSX.Element }
 
 const data: { year: string; items: YearItem[] }[] = [
   {
+    year: '2026',
+    items: [
+      {
+        label: 'many fun things in progress ;)',
+      },
+    ],
+  },
+  {
     year: '2025',
     items: [
       {

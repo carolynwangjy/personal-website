@@ -4,6 +4,41 @@ import { getBlogPosts } from 'app/blog/utils'
 import { formatDate } from 'app/lib/format-date'
 import { baseUrl } from 'app/sitemap'
 import Link from 'next/link'
+import React from 'react'
+
+function parseSubtitleLinks(text: string): React.ReactNode {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+  const parts: React.ReactNode[] = []
+  let lastIndex = 0
+  let match
+  let key = 0
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index))
+    }
+    const linkText = match[1]
+    const linkUrl = match[2]
+    const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://')
+    parts.push(
+      <a
+        key={key++}
+        href={linkUrl}
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+      >
+        {linkText}
+      </a>
+    )
+    lastIndex = linkRegex.lastIndex
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex))
+  }
+
+  return parts.length > 0 ? parts : text
+}
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -97,7 +132,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       </h1>
       {post.metadata.subtitle && (
         <h2 className="text-xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300">
-          {post.metadata.subtitle}
+          {parseSubtitleLinks(post.metadata.subtitle)}
         </h2>
       )}
       <div className="flex flex-wrap items-center gap-3 mt-3 mb-8 text-sm text-neutral-600 dark:text-neutral-400">
