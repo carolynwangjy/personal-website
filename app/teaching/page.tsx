@@ -2,6 +2,40 @@
 
 import React, { useState, useMemo } from 'react'
 
+function parseLinks(text: string): React.ReactNode {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+  const parts: React.ReactNode[] = []
+  let lastIndex = 0
+  let match
+  let key = 0
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index))
+    }
+    const linkText = match[1]
+    const linkUrl = match[2]
+    const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://')
+    parts.push(
+      <a
+        key={key++}
+        href={linkUrl}
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+      >
+        {linkText}
+      </a>
+    )
+    lastIndex = linkRegex.lastIndex
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex))
+  }
+
+  return parts.length > 0 ? parts : text
+}
+
 type MaterialLink = { label: string; url?: string }
 
 type Material = {
@@ -40,7 +74,7 @@ export default function TeachingPage() {
       id: 'cs189',
       shortName: 'cs189',
       title: 'CS 189: Introduction to Machine Learning (Spring 2026)',
-      subtitle: 'materials are still in progress :)',
+      subtitle: 'Course Website: [eecs189.org](https://eecs189.org)',
       columnHeaders: ['topic', 'video', 'pdfs'],
       materials: [
         {
@@ -64,7 +98,7 @@ export default function TeachingPage() {
       id: 'cs61a',
       shortName: 'cs61a',
       title: 'CS 61A: Structure & Interpretation of Computer Programs (Fall 2025)',
-      subtitle: 'Lab: Tues 5-6:30pm (Soda 330)\nDiscussion: Thurs 12:30-2pm (Wheeler 106)\nOffice Hours: Wed 7-8pm (Warren 101B)',
+      subtitle: 'Lab: Tues 5-6:30pm (Soda 330)\nDiscussion: Thurs 12:30-2pm (Wheeler 106)\nOffice Hours: Wed 7-8pm (Warren 101B)\nCourse Website: [cs61a.org](https://cs61a.org)',
       columnHeaders: ['topic', 'lab', 'disc'],
       materials: [
         {
@@ -289,7 +323,7 @@ export default function TeachingPage() {
             {course.subtitle && (
               <ul className="text-base text-neutral-700 dark:text-neutral-300 mt-1 list-disc pl-5 space-y-0.5">
                 {course.subtitle.split('\n').map((line, idx) => (
-                  <li key={idx}>{line.trim()}</li>
+                  <li key={idx}>{parseLinks(line.trim())}</li>
                 ))}
               </ul>
             )}
