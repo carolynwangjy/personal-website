@@ -77,7 +77,7 @@ export default function Page() {
             >
               cs189
             </a>
-            ). in my free time, i happily{' '}
+            ). in my free time, i like to{' '}
             <a
               href="/hobbies"
               className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
