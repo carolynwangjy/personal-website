@@ -1,8 +1,14 @@
+'use client'
+
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 export default function Page() {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
   return (
-    <section className="home-bio">
+    <section className={`home-bio ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
       <div className="flex flex-col md:items-start">
         <div className="text-[16.75px] md:text-[16.75px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:space-y-4 md:max-w-4xl">
           <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center min-[421px]:mb-0">

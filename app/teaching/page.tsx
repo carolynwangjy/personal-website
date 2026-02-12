@@ -78,7 +78,7 @@ export default function TeachingPage() {
       columnHeaders: ['topic', 'video', 'pdfs'],
       materials: [
         {
-          topic: 'disc01: math review & data processing',
+          topic: 'disc01: math review',
           video: [{label: 'video', url: 'https://www.youtube.com/watch?v=dTdHuJEHOsM&list=PL-ysCubq-Sa8_GGY5otoIkzjneKo-qfW3'}],
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/13TjzfhCv8lbf8pxoQjOx4RoEY0oS5-9b/view'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/1rvdrRJ6YBEDrIhxeulEjq80H1iI2qwVR/view?usp=sharing'}, {label: 'notes', url: 'https://drive.google.com/file/d/1ePY_SImeT7HDDrlbuU8F8e064tpxd5Gb/view?usp=drive_link'}],
         },
@@ -86,6 +86,11 @@ export default function TeachingPage() {
           topic: 'disc02: machine learning design',
           video: [{label: 'video', url: 'https://www.youtube.com/watch?v=Mf4deCkjUkQ&list=PL-ysCubq-Sa9uYDjsrzfmPCLLbjfOKVPd&index=2'}],
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1MZs3r4ZOMhKUTAXjvLU9lxeCvGCUq1ND/view'}, {label: 'solution', url: 'https://drive.google.com/file/d/1-WUgqsS3b51pib-68iFYLFbWkBoBzdaM/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/1ms5ml4mNaTGyyumOxf9Xjw0Y-ZzoUreo/view?usp=drive_link'}],
+        },
+        {
+          topic: 'disc03: k-means, multivariate gaussians',
+          video: [{label: 'video', url: ''}],
+          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
         },
         {
           topic: 'hw01 (written): math refresher',
@@ -442,7 +447,7 @@ export default function TeachingPage() {
                                         )}
                                       </span>
                                     ) : (
-                                      <span className="flex flex-wrap gap-1">
+                                      <span className="flex flex-nowrap gap-1">
                                         {links.map((link, linkIdx) => (
                                           <span key={linkIdx}>
                                             {link.url && link.url.trim() !== '' ? (
@@ -499,7 +504,7 @@ export default function TeachingPage() {
                                         )}
                                       </span>
                                     ) : (
-                                      <span className="flex flex-wrap gap-1">
+                                      <span className="flex flex-nowrap gap-1">
                                         {links.map((link, linkIdx) => (
                                           <span key={linkIdx}>
                                             {link.url && link.url.trim() !== '' ? (
