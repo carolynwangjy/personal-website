@@ -521,7 +521,7 @@ html.dark button[aria-label="Toggle theme"] span {
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;

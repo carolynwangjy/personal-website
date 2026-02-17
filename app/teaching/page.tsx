@@ -84,11 +84,16 @@ export default function TeachingPage() {
         },
         {
           topic: 'disc02: machine learning design',
-          video: [{label: 'video', url: 'https://www.youtube.com/watch?v=Mf4deCkjUkQ&list=PL-ysCubq-Sa9uYDjsrzfmPCLLbjfOKVPd&index=2'}],
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa9uYDjsrzfmPCLLbjfOKVPd&si=zvS0-v6MBnLiwmCa'}],
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1MZs3r4ZOMhKUTAXjvLU9lxeCvGCUq1ND/view'}, {label: 'solution', url: 'https://drive.google.com/file/d/1-WUgqsS3b51pib-68iFYLFbWkBoBzdaM/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/1ms5ml4mNaTGyyumOxf9Xjw0Y-ZzoUreo/view?usp=drive_link'}],
         },
         {
           topic: 'disc03: k-means, multivariate gaussians',
+          video: [{label: 'video', url: 'https://www.youtube.com/playlist?list=PL-ysCubq-Sa-bRfFhYJkcJ-TDF3oTAWQj'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1PAxeqyZj4QAEW4tc7MBPKhhjMcz0rBoZ/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/d/11YV3yrkNRU5VclX8xDaAM5xX__gHMiK8/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/1gdPa6p4cJVKVKwUqGKnGXXOHzmwQ1wOx/view?usp=drive_link'}],
+        },
+        {
+          topic: 'disc04: gradients, GMMs, ridge',
           video: [{label: 'video', url: ''}],
           pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
         },
@@ -482,7 +487,7 @@ export default function TeachingPage() {
                           } else {
                             const materialItem = item as Material
                             const value = materialItem[header as keyof Material]
-                            
+
                             if (header === 'lab' || header === 'disc' || header === 'video' || header === 'pdfs') {
                               const links = value as MaterialLink[]
                               return (
