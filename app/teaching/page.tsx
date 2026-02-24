@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 
 function parseLinks(text: string): React.ReactNode {
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
@@ -64,12 +64,12 @@ type CourseSection = {
   materials: Material[] | NacloMaterial[]
 }
 
-export default function TeachingPage() {
-  const [selectedCourse, setSelectedCourse] = useState<string | null>(null)
-  const [sortMode, setSortMode] = useState<'year' | 'popularity'>('year')
-  const [yearDir, setYearDir] = useState<'desc' | 'asc'>('desc')
-  
-  const courses: CourseSection[] = [
+// Map header names to NacloMaterial property names — defined once outside component
+const NACLO_HEADER_TO_PROP: Record<string, keyof NacloMaterial> = {
+  pdfs: 'blankSolution',
+}
+
+const courses: CourseSection[] = [
     {
       id: 'cs189',
       shortName: 'cs189',
@@ -263,7 +263,26 @@ export default function TeachingPage() {
         },
       ],
     },
-  ]
+]
+
+export default function TeachingPage() {
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null)
+  const [sortMode, setSortMode] = useState<'year' | 'popularity'>('year')
+  const [yearDir, setYearDir] = useState<'desc' | 'asc'>('desc')
+
+  const handleSelectAll = useCallback(() => setSelectedCourse(null), [])
+  const handleToggleYearDir = useCallback(() => {
+    setSortMode((prev) => {
+      if (prev === 'year') setYearDir((d) => (d === 'desc' ? 'asc' : 'desc'))
+      return 'year'
+    })
+  }, [])
+  const handleSortPopularity = useCallback(() => setSortMode('popularity'), [])
+
+  const visibleCourses = useMemo(
+    () => courses.filter((c) => selectedCourse === null || c.id === selectedCourse),
+    [selectedCourse]
+  )
 
   return (
     <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
@@ -273,7 +292,7 @@ export default function TeachingPage() {
         <span className="text-neutral-700 dark:text-neutral-300">filter by:</span>
         <button
           type="button"
-          onClick={() => setSelectedCourse(null)}
+          onClick={handleSelectAll}
           className={[
             'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
             selectedCourse === null
@@ -302,31 +321,24 @@ export default function TeachingPage() {
         ))}
       </div>
 
-      {courses
-        .filter((course) => selectedCourse === null || course.id === selectedCourse)
-        .map((course, courseIdx) => {
-        // Sort NACLO materials by year or popularity
-        const sortedMaterials = course.id === 'naclo' 
+      {visibleCourses.map((course, courseIdx) => {
+        const sortedMaterials = course.id === 'naclo'
           ? [...course.materials].sort((a, b) => {
               const aItem = a as NacloMaterial
               const bItem = b as NacloMaterial
-              
               if (sortMode === 'popularity') {
-                const aPop = aItem.popularity ?? 0
-                const bPop = bItem.popularity ?? 0
-                return bPop - aPop // Descending (most popular first)
-              } else {
-                const aYear = parseInt(aItem.year)
-                const bYear = parseInt(bItem.year)
-                return yearDir === 'desc' ? bYear - aYear : aYear - bYear
+                return (bItem.popularity ?? 0) - (aItem.popularity ?? 0)
               }
+              return yearDir === 'desc'
+                ? parseInt(bItem.year) - parseInt(aItem.year)
+                : parseInt(aItem.year) - parseInt(bItem.year)
             })
           : course.materials
 
         return (
         <div
-          key={courseIdx}
-          className={`space-y-3 ${courseIdx < courses.length - 1 ? 'mb-6' : ''}`}
+          key={course.id}
+          className={`space-y-3 ${courseIdx < visibleCourses.length - 1 ? 'mb-6' : ''}`}
         >
           <div>
             <h2 className="text-xl font-semibold tracking-tight">{course.title}</h2>
@@ -342,13 +354,7 @@ export default function TeachingPage() {
                 <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
                 <button
                   type="button"
-                  onClick={() => {
-                    if (sortMode === 'year') {
-                      setYearDir((d) => (d === 'desc' ? 'asc' : 'desc'))
-                    } else {
-                      setSortMode('year')
-                    }
-                  }}
+                  onClick={handleToggleYearDir}
                   className={[
                     'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
                     sortMode === 'year'
@@ -361,7 +367,7 @@ export default function TeachingPage() {
                 <span>|</span>
                 <button
                   type="button"
-                  onClick={() => setSortMode('popularity')}
+                  onClick={handleSortPopularity}
                   className={[
                     'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
                     sortMode === 'popularity'
@@ -405,11 +411,7 @@ export default function TeachingPage() {
                         {course.columnHeaders.map((header) => {
                           if (course.id === 'naclo') {
                             const nacloItem = item as NacloMaterial
-                            // Map header names to property names
-                            const headerToProp: Record<string, keyof NacloMaterial> = {
-                              'pdfs': 'blankSolution',
-                            }
-                            const propName = headerToProp[header] || header
+                            const propName = NACLO_HEADER_TO_PROP[header] || header
                             const value = nacloItem[propName as keyof NacloMaterial]
                             
                             if (header === 'video') {

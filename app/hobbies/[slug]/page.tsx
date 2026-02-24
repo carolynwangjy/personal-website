@@ -3,6 +3,11 @@ import { getHobbySections } from '../utils'
 import { CustomMDX } from 'app/components/mdx'
 import Link from 'next/link'
 
+export async function generateStaticParams() {
+  const sections = getHobbySections()
+  return sections.map((s) => ({ slug: s.id }))
+}
+
 export default async function HobbyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const sections = getHobbySections()

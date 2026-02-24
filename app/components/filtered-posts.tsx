@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { formatDate } from 'app/lib/format-date'
 import { useMemo, useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
@@ -39,6 +38,13 @@ const prettyDate = (date: string) => {
   })
 }
 
+const normCat = (p: Post) =>
+  p.metadata.category?.toLowerCase().trim() || 'miscellaneous'
+
+const dateCompare = (a: Post, b: Post) =>
+  new Date(a.metadata.publishedAt).getTime() -
+  new Date(b.metadata.publishedAt).getTime()
+
 export function FilteredPosts({ posts }: { posts: Post[] }) {
   const searchParams = useSearchParams()
   const initialSort = searchParams.get('sort') === 'topic' ? 'topic' : 'date'
@@ -51,13 +57,6 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
       setSortMode('topic')
     }
   }, [searchParams])
-
-  const normCat = (p: Post) =>
-    (p.metadata.category?.toLowerCase().trim() || 'miscellaneous')
-
-  const dateCompare = (a: Post, b: Post) =>
-    new Date(a.metadata.publishedAt).getTime() -
-    new Date(b.metadata.publishedAt).getTime()
 
   const dateSorted = useMemo(
     () =>

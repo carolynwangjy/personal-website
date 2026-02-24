@@ -46,17 +46,6 @@ export function Navbar() {
                 </Link>
               )
             })}
-            {/* duplicate map removed */}
-            {/* original links removed */}
-            {false && navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="transition-colors px-1 py-0.5 rounded hover:bg-[#f2e8da] hover:text-neutral-900 dark:hover:bg-neutral-800/70"
-              >
-                {item.name}
-              </Link>
-            ))}
             <div className="ml-4 md:ml-6 mt-0 md:mt-1">
               <ThemeToggle />
             </div>
