@@ -6,22 +6,24 @@ export function Collapsible({ title, children, defaultOpen = false }: { title: s
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
-    <div className="my-4">
+    <div className="mt-1 mb-1 pl-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 text-left w-full group"
+        className="inline-flex items-center gap-1.5 text-left group font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
       >
-        <span
-          className={`text-neutral-400 dark:text-neutral-500 transition-transform duration-200 text-sm ${isOpen ? 'rotate-90' : ''}`}
+        {title}
+        <svg
+          className={`w-3 h-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          viewBox="0 0 24 24"
         >
-          ▶
-        </span>
-        <span className="font-medium text-neutral-800 dark:text-neutral-200">
-          {title}
-        </span>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
       {isOpen && (
-        <div className="mt-2 pl-5">
+        <div className="mt-2">
           {children}
         </div>
       )}

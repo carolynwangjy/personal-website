@@ -195,6 +195,24 @@ function createHeading(level) {
   return Heading
 }
 
+function NotesLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <div className="mt-3 mb-1 pl-4">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+      >
+        {children}
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+      </a>
+    </div>
+  )
+}
+
 let components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -211,12 +229,19 @@ let components = {
   PullQuote,
   LargeQuote,
   Collapsible,
+  NotesLink,
 }
 
 export function CustomMDX(props) {
   return (
     <MDXRemote
       {...props}
+      options={{
+        ...props.options,
+        parseFrontmatter: true,
+        blockJS: false,
+        blockDangerousJS: false,
+      }}
       components={{ ...components, ...(props.components || {}) }}
     />
   )
