@@ -99,8 +99,8 @@ const courses: CourseSection[] = [
         },
         {
           topic: 'disc05: bias-variance decomposition',
-          video: [{label: 'video', url: ''}],
-          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa9TlqqkuL1y7ybVRtrA6l6w&si=9wl4JqRk8RTvrkJY'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1I0qfBd1cCc_QUU9wPcfCcEg6-5eCNbCb/view'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/1auD6wh7wN9QPGN52bMKZSc1KoSipxrVF/view?usp=sharing'}, {label: 'notes', url: 'https://drive.google.com/file/d/1VZQ2SUxIDqykqMY-_A30RdOKe1D759JK/view?usp=drive_link'}],
         },
         {
           topic: 'disc06: logistic regression',
