@@ -81,6 +81,10 @@ html.dark .prose button:hover {
   background-color: rgba(229, 231, 235, 0.18) !important;
 }
 
+html.dark section h2 a:hover {
+  background-color: rgba(229, 231, 235, 0.18) !important;
+}
+
 /* Override beige backgrounds on home page bio links in dark mode - use gray instead */
 html.dark .home-bio a {
   background-color: transparent !important; /* no background by default */
