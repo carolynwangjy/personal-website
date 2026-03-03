@@ -94,14 +94,24 @@ const courses: CourseSection[] = [
         },
         {
           topic: 'disc04: gradients, GMMs, ridge',
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa88y_YPkqtdNi_SQ3URFY2N&si=317QIm66ppncPqcO'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1GV_knujkL_ooo51cF7bM2PDCQo8z0e-B/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/d/18PGUKc33SP9Gyv8AILqQOpeDOFJ7aOsV/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/1vm69EWgOA0S-iVdj8ZJbybNnDS2_4SKT/view?usp=drive_link'}],
+        },
+        {
+          topic: 'disc05: bias-variance decomposition',
           video: [{label: 'video', url: ''}],
           pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
         },
         {
-          topic: 'hw01 (written): math refresher',
+          topic: 'disc06: logistic regression',
           video: [{label: 'video', url: ''}],
           pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
-        },  
+        },
+        {
+          topic: 'hw02: mle, map, regularization',
+          video: [{label: 'video', url: ''}],
+          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
+        },
       ],
     },
     {
