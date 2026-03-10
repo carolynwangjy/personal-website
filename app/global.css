@@ -451,26 +451,43 @@ table {
 
 /* Smaller text on mobile for blog posts and hobbies */
 @media (max-width: 767px) {
+  /* Reduce base font size site-wide on mobile */
+  body {
+    font-size: 17px !important;
+  }
+
+  /* Override Tailwind text-[21px] utilities on mobile */
+  .home-bio,
+  .home-bio p,
+  .writing-page,
+  .writing-page p,
+  .writing-page li,
+  nav a,
+  nav span,
+  nav button {
+    font-size: 17px !important;
+  }
+
   /* Prose content in blog posts and hobbies - reduce base font size */
   .prose {
-    font-size: 20px !important;
+    font-size: 17px !important;
   }
 
   .prose p,
   .prose li,
   .prose td,
   .prose th {
-    font-size: 20px !important;
+    font-size: 17px !important;
   }
-  
+
   /* Reduce heading sizes proportionally on mobile */
   .prose h1 {
-    font-size: 1.875rem !important; /* 30px instead of default */
+    font-size: 1.75rem !important; /* ~28px */
   }
-  
+
   .prose h2,
   .prose h3 {
-    font-size: 1.25rem !important; /* 20px */
+    font-size: 1.15rem !important; /* ~18px */
   }
   
   .prose h4 {
