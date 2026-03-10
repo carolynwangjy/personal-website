@@ -449,50 +449,21 @@ table {
   text-wrap: balance;
 }
 
-/* Smaller text on mobile for blog posts and hobbies */
+/* Consistent 19px text across all mobile */
 @media (max-width: 767px) {
-  /* Reduce base font size site-wide on mobile */
-  body {
-    font-size: 17px !important;
+  /* Target every text-bearing element to override Tailwind px utilities */
+  body,
+  body p, body li, body a, body span, body button, body label,
+  body div, body section, body nav, body main, body article,
+  body header, body footer, body ul, body ol, body td, body th,
+  body blockquote, body figcaption, body cite {
+    font-size: 19px !important;
   }
 
-  /* Override Tailwind text-[21px] utilities on mobile */
-  .home-bio,
-  .home-bio p,
-  .writing-page,
-  .writing-page p,
-  .writing-page li,
-  nav a,
-  nav span,
-  nav button {
-    font-size: 17px !important;
-  }
-
-  /* Prose content in blog posts and hobbies - reduce base font size */
-  .prose {
-    font-size: 17px !important;
-  }
-
-  .prose p,
-  .prose li,
-  .prose td,
-  .prose th {
-    font-size: 17px !important;
-  }
-
-  /* Reduce heading sizes proportionally on mobile */
-  .prose h1 {
-    font-size: 1.75rem !important; /* ~28px */
-  }
-
-  .prose h2,
-  .prose h3 {
-    font-size: 1.15rem !important; /* ~18px */
-  }
-  
-  .prose h4 {
-    font-size: 1.125rem !important; /* 18px */
-  }
+  /* Restore heading hierarchy proportionally */
+  body h1 { font-size: 1.75rem !important; }
+  body h2, body h3 { font-size: 1.2rem !important; }
+  body h4, body h5, body h6 { font-size: 1.05rem !important; }
 }
 
 /* Footer date link hover in dark mode */
