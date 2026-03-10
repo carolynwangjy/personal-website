@@ -74,7 +74,7 @@ export function FooterWithLinks({ dateString }: { dateString: string }) {
           href="https://github.com/carolynwangjy/personal-website"
           target="_blank"
           rel="noopener noreferrer"
-          className="footer-date-link underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.5px] rounded transition-colors hover:bg-[#f2e8da]"
+          className="footer-date-link underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.5px] rounded transition-colors hover:bg-[#f5dada]"
         >
           {dateString}
         </a>

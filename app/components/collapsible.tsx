@@ -9,7 +9,7 @@ export function Collapsible({ title, children, defaultOpen = false }: { title: s
     <div className="mt-1 mb-1 pl-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-1.5 text-left group font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+        className="inline-flex items-center gap-1.5 text-left group font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
       >
         {title}
         <svg

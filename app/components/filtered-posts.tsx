@@ -90,7 +90,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
 
   return (
     <div className="space-y-4 writing-page">
-      <div className="text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
+      <div className="text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
         <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
         <button
           type="button"
@@ -170,7 +170,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
               className="border-2 border-neutral-300 bg-transparent rounded-xl dark:border-neutral-700/70 dark:bg-transparent mb-3"
             >
               <div className="flex items-center justify-between px-4 py-3">
-                <span className="text-lg font-medium tracking-tight lowercase">
+                <span className="text-2xl font-medium tracking-tight lowercase">
                   {group.cat}
                 </span>
               </div>

@@ -30,7 +30,7 @@ function Table({ data }) {
 function CustomLink(props) {
   let href = props.href
   const { className = '', ...restProps } = props
-  const linkClasses = 'rounded bg-[#f2e8da] hover:bg-[#e1d4be] dark:bg-neutral-700/70 dark:hover:bg-neutral-600/70 transition-colors'
+  const linkClasses = 'rounded bg-[#f5dada] hover:bg-[#eacaca] dark:bg-neutral-700/70 dark:hover:bg-neutral-600/70 transition-colors'
   const mergedClassName = className ? `${linkClasses} ${className}` : linkClasses
 
   if (href.startsWith('/')) {
@@ -78,7 +78,7 @@ function parseCaptionWithLinks(caption: string): React.ReactNode {
           href={linkUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
         >
           {linkText}
         </a>
@@ -88,7 +88,7 @@ function parseCaptionWithLinks(caption: string): React.ReactNode {
         <Link
           key={key++}
           href={linkUrl}
-          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
         >
           {linkText}
         </Link>
@@ -202,7 +202,7 @@ function NotesLink({ href, children }: { href: string; children: React.ReactNode
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+        className="notes-link inline-flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors"
       >
         {children}
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

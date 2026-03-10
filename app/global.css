@@ -27,13 +27,14 @@ html.dark ::selection {
 
 /* Base page colors */
 body {
-  @apply text-black bg-[#f5f5f5];
+  @apply text-black bg-[#fefcf5];
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
 }
 
 /* Global dark mode palette */
 html.dark body {
-  background-color: #151515; /* neutral dark gray, no blue tint */
-  color: #d6d7da; /* softened light gray for lower contrast */
+  background-color: #120e09; /* neutral dark gray, no blue tint */
+  color: #d9cdb0; /* softened light gray for lower contrast */
 }
 
 /* In light mode, prevent accidental white/very-light text on light backgrounds */
@@ -58,7 +59,7 @@ html.dark .text-white,
 html.dark .dark\:text-white,
 html.dark .dark\:text-neutral-50,
 html.dark .dark\:text-neutral-100 {
-  color: #d6d7da !important; /* match softened body text */
+  color: #d9cdb0 !important; /* match softened body text */
 }
 
 /* In dark mode, make all text readable by default */
@@ -73,16 +74,16 @@ html.dark .prose a {
 }
 
 html.dark .prose a:hover {
-  background-color: rgba(229, 231, 235, 0.18) !important;
+  background-color: rgba(180, 120, 50, 0.22) !important;
   color: #f9fafb;
 }
 
 html.dark .prose button:hover {
-  background-color: rgba(229, 231, 235, 0.18) !important;
+  background-color: rgba(180, 120, 50, 0.22) !important;
 }
 
 html.dark section h2 a:hover {
-  background-color: rgba(229, 231, 235, 0.18) !important;
+  background-color: rgba(180, 120, 50, 0.22) !important;
 }
 
 /* Override beige backgrounds on home page bio links in dark mode - use gray instead */
@@ -91,7 +92,7 @@ html.dark .home-bio a {
 }
 
 html.dark .home-bio a:hover {
-  background-color: rgb(82 82 82 / 0.7) !important; /* neutral-600/70 on hover - lighter gray */
+  background-color: rgba(200, 140, 60, 0.3) !important; /* neutral-600/70 on hover - lighter gray */
 }
 
 /* Ensure home page bio links are readable in light mode on all devices */
@@ -101,7 +102,7 @@ html:not(.dark) .home-bio a {
 }
 
 html:not(.dark) .home-bio a:hover {
-  background-color: #f2e8da !important; /* beige only on hover */
+  background-color: #f5dada !important; /* beige only on hover */
 }
 
 /* Exclude icon links from beige background */
@@ -165,8 +166,8 @@ html:not(.dark) .home-bio * {
 html.dark .experience-card,
 html.dark .courses-card,
 html.dark .teaching-card {
-  background-color: #1f1f1f !important; /* slightly lighter than page background for subtle contrast */
-  border-color: #4a4a4a !important;     /* more visible neutral gray border, no blue tint */
+  background-color: #1e1710 !important; /* slightly lighter than page background for subtle contrast */
+  border-color: #5a2020 !important;     /* dark crimson border */
 }
 
 /* Writing page chips (sort controls + read more + list items) */
@@ -175,7 +176,7 @@ html.dark .teaching-card {
 }
 
 .writing-chip:hover {
-  background-color: #f5ecde; /* lighter beige like homepage */
+  background-color: #f2d6d6; /* lighter beige like homepage */
 }
 
 html.dark .writing-chip {
@@ -183,23 +184,23 @@ html.dark .writing-chip {
 }
 
 html.dark .writing-chip:hover {
-  background-color: rgb(64 64 64 / 0.7); /* neutral-700/70 */
+  background-color: rgba(180, 120, 50, 0.25); /* neutral-700/70 */
 }
 
 .writing-chip-active {
-  background-color: #f2e8da;
+  background-color: #f5dada;
 }
 
 .writing-chip-active:hover {
-  background-color: #e1d4be;
+  background-color: #eacaca;
 }
 
 html.dark .writing-chip-active {
-  background-color: rgb(64 64 64 / 0.7); /* neutral-700/70 */
+  background-color: rgba(180, 120, 50, 0.25); /* neutral-700/70 */
 }
 
 html.dark .writing-chip-active:hover {
-  background-color: rgb(82 82 82); /* neutral-600 */
+  background-color: rgba(200, 140, 60, 0.4); /* neutral-600 */
 }
 
 /* Back button hover highlights - exclude nav links */
@@ -210,12 +211,12 @@ html:not(.dark) section a[href="/hobbies"] {
 
 html:not(.dark) section a[href="/writing"]:hover,
 html:not(.dark) section a[href="/hobbies"]:hover {
-  background-color: #f2e8da !important; /* beige for light mode - only on hover */
+  background-color: #f5dada !important; /* beige for light mode - only on hover */
 }
 
 html.dark section a[href="/writing"]:hover,
 html.dark section a[href="/hobbies"]:hover {
-  background-color: rgb(64 64 64 / 0.7) !important; /* gray for dark mode */
+  background-color: rgba(180, 120, 50, 0.25) !important; /* gray for dark mode */
 }
 
 /* Ensure nav underline is light in dark mode */
@@ -230,7 +231,7 @@ html.dark nav a span {
 }
 
 html.dark .prose blockquote.pull-quote {
-  background-color: #151515 !important; /* neutral dark gray to match page */
+  background-color: #120e09 !important; /* neutral dark gray to match page */
   color: #f9fafb !important;            /* near-white text */
   border-color: #4b5563 !important;     /* neutral-600 border */
 }
@@ -281,12 +282,20 @@ html.dark {
 
 /* Blog post links: beige background by default in light mode (desktop and mobile) */
 /* Only apply to blog posts, not hobbies */
-html:not(.dark) section:not(.hobbies-page) .prose a {
-  background-color: #f2e8da !important; /* light beige default */
+html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link) {
+  background-color: #f5dada !important; /* light beige default */
 }
 
-html:not(.dark) section:not(.hobbies-page) .prose a:hover {
-  background-color: #e1d4be !important; /* darker beige on hover */
+html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link):hover {
+  background-color: #eacaca !important; /* darker beige on hover */
+}
+
+html:not(.dark) .prose a.notes-link:hover {
+  background-color: #f5dada !important;
+}
+
+html.dark .prose a.notes-link:hover {
+  background-color: rgba(180, 120, 50, 0.22) !important;
 }
 
 /* Hobbies links: no default background, only on hover in light mode */
@@ -295,7 +304,7 @@ html:not(.dark) .hobbies-page .prose a {
 }
 
 html:not(.dark) .hobbies-page .prose a:hover {
-  background-color: #f2e8da !important; /* beige only on hover */
+  background-color: #f5dada !important; /* beige only on hover */
 }
 
 /* Remove hover highlighting from links inside headings */
@@ -310,12 +319,12 @@ html:not(.dark) .hobbies-page .prose h6 a:hover {
 
 /* Mobile-specific: same rules apply */
 @media (max-width: 767px) {
-  html:not(.dark) section:not(.hobbies-page) .prose a {
-    background-color: #f2e8da !important; /* light beige default */
+  html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link) {
+    background-color: #f5dada !important; /* light beige default */
   }
 
-  html:not(.dark) section:not(.hobbies-page) .prose a:hover {
-    background-color: #e1d4be !important; /* darker beige on hover */
+  html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link):hover {
+    background-color: #eacaca !important; /* darker beige on hover */
   }
 
   html:not(.dark) .hobbies-page .prose a {
@@ -323,7 +332,7 @@ html:not(.dark) .hobbies-page .prose h6 a:hover {
   }
 
   html:not(.dark) .hobbies-page .prose a:hover {
-    background-color: #f2e8da !important; /* beige only on hover */
+    background-color: #f5dada !important; /* beige only on hover */
   }
 
   /* Remove hover highlighting from links inside headings on mobile */
@@ -378,7 +387,7 @@ html:not(.dark) .hobbies-page .prose h6 a:hover {
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
+  @apply text-2xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h3 {
@@ -444,14 +453,14 @@ table {
 @media (max-width: 767px) {
   /* Prose content in blog posts and hobbies - reduce base font size */
   .prose {
-    font-size: 16px !important;
+    font-size: 20px !important;
   }
-  
+
   .prose p,
   .prose li,
   .prose td,
   .prose th {
-    font-size: 16px !important;
+    font-size: 20px !important;
   }
   
   /* Reduce heading sizes proportionally on mobile */
@@ -471,7 +480,7 @@ table {
 
 /* Footer date link hover in dark mode */
 html.dark .footer-date-link:hover {
-  background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 */
+  background-color: rgba(180, 120, 50, 0.25) !important; /* neutral-700/70 */
 }
 
 /* Materials link in courses page - dark mode background only on hover */
@@ -480,7 +489,7 @@ html.dark .materials-link {
 }
 
 html.dark .materials-link:hover {
-  background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 on hover */
+  background-color: rgba(180, 120, 50, 0.25) !important; /* neutral-700/70 on hover */
 }
 
 /* All links in courses page - ensure dark mode uses gray highlights, not beige */
@@ -491,7 +500,7 @@ html.dark .courses-card a {
 
 html.dark section a[href^="https://drive.google.com"]:hover,
 html.dark .courses-card a:hover {
-  background-color: rgb(64 64 64 / 0.7) !important; /* neutral-700/70 on hover - gray, not beige */
+  background-color: rgba(180, 120, 50, 0.25) !important; /* neutral-700/70 on hover - gray, not beige */
 }
 
 /* Theme toggle button - ensure consistent styling on mobile and desktop */
@@ -505,7 +514,7 @@ button[aria-label="Toggle theme"]:hover {
 }
 
 html.dark button[aria-label="Toggle theme"] {
-  background-color: #151515 !important;
+  background-color: #120e09 !important;
   border-color: #404040 !important;
 }
 

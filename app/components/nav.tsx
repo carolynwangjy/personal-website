@@ -23,7 +23,7 @@ export function Navbar() {
           className="flex items-center justify-start relative px-0 pb-0 fade md:overflow-visible scroll-pr-6 md:relative py-3"
           id="nav"
         >
-          <div className="flex flex-wrap md:flex-nowrap items-center gap-x-4 gap-y-2 text-[17px] w-full md:w-auto">
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-x-4 gap-y-2 text-[21px] w-full md:w-auto">
             {navItems.map((item) => {
               const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
               return (
@@ -46,9 +46,6 @@ export function Navbar() {
                 </Link>
               )
             })}
-            <div className="ml-4 md:ml-6 mt-0 md:mt-1">
-              <ThemeToggle />
-            </div>
           </div>
         </nav>
       </div>

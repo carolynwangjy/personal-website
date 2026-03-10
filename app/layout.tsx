@@ -1,6 +1,5 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -37,7 +36,6 @@ export const metadata: Metadata = {
   },
 }
 
-const inter = Inter({ subsets: ['latin'] })
 const cx = (...classes) => classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
@@ -60,7 +58,7 @@ export default function RootLayout({
   const year = parts.find(p => p.type === 'year')?.value || ''
   const dateString = `${month} ${day}, ${year}`
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -75,10 +73,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={cx(
-          'antialiased max-w-[45rem] mx-6 mt-6 lg:mx-auto',
-          inter.className,
-        )}
+        className="antialiased max-w-[53rem] mx-6 mt-6 lg:mx-auto"
       >
         <ThemeProvider>
           <main className="flex-auto min-w-0 mt-4 flex flex-col px-4 md:px-8">

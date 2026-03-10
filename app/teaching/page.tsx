@@ -295,10 +295,10 @@ export default function TeachingPage() {
   )
 
   return (
-    <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">teaching <span className="ml-1">🎓</span></h1>
       
-      <div className="text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
+      <div className="text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
         <span className="text-neutral-700 dark:text-neutral-300">filter by:</span>
         <button
           type="button"
@@ -351,16 +351,16 @@ export default function TeachingPage() {
           className={`space-y-3 ${courseIdx < visibleCourses.length - 1 ? 'mb-6' : ''}`}
         >
           <div>
-            <h2 className="text-xl font-semibold tracking-tight">{course.title}</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">{course.title}</h2>
             {course.subtitle && (
-              <ul className="text-base text-neutral-700 dark:text-neutral-300 mt-1 list-disc pl-5 space-y-0.5">
+              <ul className="text-[21px] text-neutral-700 dark:text-neutral-300 mt-1 list-disc pl-5 space-y-0.5">
                 {course.subtitle.split('\n').map((line, idx) => (
                   <li key={idx}>{parseLinks(line.trim())}</li>
                 ))}
               </ul>
             )}
             {course.id === 'naclo' && (
-              <div className="text-base text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2 mt-3">
+              <div className="text-[21px] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2 mt-3">
                 <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
                 <button
                   type="button"
@@ -400,13 +400,13 @@ export default function TeachingPage() {
             )}
           </div>
           {sortedMaterials.length > 0 ? (
-            <div className="teaching-card border-2 border-neutral-200 bg-white/80 rounded-xl dark:border-neutral-700/70 dark:bg-transparent overflow-hidden">
+            <div className="teaching-card border border-[#c8a0a0] bg-white/80 rounded-xl dark:border-[#5a2020] dark:bg-transparent overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full teaching-table">
                   <thead>
-                    <tr className="border-b border-neutral-200 dark:border-neutral-700/70">
+                    <tr className="border-b border-[#c8a0a0] dark:border-[#5a2020]">
                       {course.columnHeaders.map((header, idx) => (
-                        <th key={idx} className="px-4 py-3 text-left text-lg font-semibold tracking-tight">
+                        <th key={idx} className="px-4 py-3 text-left text-xl font-semibold tracking-tight">
                           {header}
                         </th>
                       ))}
@@ -416,7 +416,7 @@ export default function TeachingPage() {
                     {sortedMaterials.map((item, idx) => (
                       <tr
                         key={idx}
-                        className="border-b border-neutral-200 dark:border-neutral-700/70 last:border-b-0"
+                        className="border-b border-[#c8a0a0] dark:border-[#5a2020] last:border-b-0"
                       >
                         {course.columnHeaders.map((header) => {
                           if (course.id === 'naclo') {

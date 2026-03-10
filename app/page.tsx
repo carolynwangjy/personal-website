@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <section className={`home-bio ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
       <div className="flex flex-col md:items-start">
-        <div className="text-[16.75px] md:text-[16.75px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:space-y-4 md:max-w-4xl">
+        <div className="text-[21px] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:space-y-4 md:max-w-4xl">
           <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center min-[421px]:mb-0">
             hi! i&apos;m carolyn <span className="ml-1">👋</span>
           </h1>
@@ -33,7 +33,7 @@ export default function Page() {
               href="https://www.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5ecde] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2d6d6] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               uc berkeley
             </a>{' '}
@@ -42,7 +42,7 @@ export default function Page() {
               href="https://eecs.berkeley.edu/cs/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5ecde] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2d6d6] dark:bg-neutral-700/70 dark:hover:bg-neutral-600"
             >
               computer science
             </a>{' '}
@@ -51,7 +51,7 @@ export default function Page() {
               href="https://ppl-minor.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
             >
               politics, philosophy &amp; law (ppl)
             </a>{' '}
@@ -60,7 +60,7 @@ export default function Page() {
               href="https://eecs.berkeley.edu/resources/undergrads/honors/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
             >
               eecs honors program
             </a>
@@ -72,27 +72,26 @@ export default function Page() {
               href="https://sky.cs.berkeley.edu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
             >
               sky lab
             </a>
             {' '}and teaching berkeley&apos;s machine learning course (
             <a
               href="https://www.carolynwang.me/teaching"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
             >
               cs189
             </a>
             ). in my free time, i like to{' '}
             <a
               href="/hobbies"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
             >
-              sidequest
+              sidequest!
             </a>
-            {' '}:)
+            {' '}🫶
           </p>
-          <p>welcome to my little corner of the internet! 🫶</p>
         </div>
       </div>
     </section>

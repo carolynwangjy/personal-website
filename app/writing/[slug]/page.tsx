@@ -25,7 +25,7 @@ function parseSubtitleLinks(text: string): React.ReactNode {
         key={key++}
         href={linkUrl}
         {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70"
+        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
       >
         {linkText}
       </a>
@@ -98,7 +98,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <section className="space-y-4 text-[17px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl -mt-4">
+    <section className="space-y-4 text-[21px] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl -mt-4">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -123,7 +123,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       />
       <Link
         href="/writing"
-        className="inline-flex items-center px-2 py-1 rounded text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-[#f2e8da] dark:hover:bg-neutral-700/70 transition-colors mb-2"
+        className="inline-flex items-center px-2 py-1 rounded text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-[#f5dada] dark:hover:bg-neutral-700/70 transition-colors mb-2"
       >
         ← back
       </Link>
@@ -131,7 +131,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
         {post.metadata.title}
       </h1>
       {post.metadata.subtitle && (
-        <h2 className="text-xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300">
+        <h2 className="text-2xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300">
           {parseSubtitleLinks(post.metadata.subtitle)}
         </h2>
       )}

@@ -234,7 +234,7 @@ export default function ExperiencePage() {
   }, [])
 
   return (
-    <section className="space-y-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">experience <span className="ml-1">🌱</span></h1>
       <p className="text-neutral-700 dark:text-neutral-300">some things i've been up to :)</p>
 
@@ -245,16 +245,16 @@ export default function ExperiencePage() {
             <div
               key={entry.year}
               id={targetId}
-              className={`experience-card border-2 rounded-xl scroll-mt-20 ${
+              className={`experience-card border rounded-xl scroll-mt-20 ${
                 activeYear === targetId
-                  ? 'border-[#e1d4be] bg-white/80 ring-8 ring-[#f5ecde]/60 dark:border-neutral-700/70 dark:bg-transparent dark:ring-neutral-800/60'
-                  : 'border-neutral-200 bg-white/80 dark:border-neutral-700/70 dark:bg-transparent'
+                  ? 'border-[#a83232] bg-white/80 ring-4 ring-[#f2d6d6]/60 dark:border-[#7a1a1a] dark:bg-transparent dark:ring-[#5a1010]/30'
+                  : 'border-[#c8a0a0] bg-white/80 dark:border-[#5a2020] dark:bg-transparent'
               }`}
             >
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">
                 <span className="text-lg font-semibold tracking-tight">{entry.year}</span>
               </div>
-              <div className="px-6 pb-4 text-[17px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
+              <div className="px-6 pb-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1.5 pl-5">
                   {entry.items.map((item, idx) => (
                     <li key={idx}>{item.label}</li>
