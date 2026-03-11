@@ -108,6 +108,11 @@ const courses: CourseSection[] = [
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/1FFNxd-TEkK53m8s-eHfN9V6xXsoSqMHa/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/d/1gfUeWtTRnIXlj_H8pnL3BSl4THOriQQG/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/17djiFE20PaLWtlba45uSNSAxr-vab0yS/view?usp=drive_link'}],
         },
         {
+          topic: 'disc07: gradient descent',
+          video: [{label: 'video', url: ''}],
+          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
+        },
+        {
           topic: 'hw02: mle, map, regularization',
           video: [{label: 'video', url: ''}],
           pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
