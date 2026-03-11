@@ -104,8 +104,8 @@ const courses: CourseSection[] = [
         },
         {
           topic: 'disc06: logistic regression',
-          video: [{label: 'video', url: ''}],
-          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa-JYWlXIx1NaT7fp5djA_gc&si=6LSoYkVLFLggA8Fa'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/1FFNxd-TEkK53m8s-eHfN9V6xXsoSqMHa/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/d/1gfUeWtTRnIXlj_H8pnL3BSl4THOriQQG/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/17djiFE20PaLWtlba45uSNSAxr-vab0yS/view?usp=drive_link'}],
         },
         {
           topic: 'hw02: mle, map, regularization',
