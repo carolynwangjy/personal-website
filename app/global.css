@@ -473,7 +473,7 @@ table {
   /* Footer and footnotes keep their own small size */
   body footer, body footer *,
   .courses-footnote {
-    font-size: revert !important;
+    font-size: 14px !important;
   }
 }
 
