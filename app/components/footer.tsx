@@ -68,7 +68,7 @@ export function FooterWithLinks({ dateString }: { dateString: string }) {
           </svg>
         </a>
       </div>
-      <p className="font-sm text-neutral-600 dark:text-neutral-300 text-xs mt-1">
+      <p className="font-sm text-neutral-600 dark:text-neutral-300 text-sm mt-1">
         last updated on{' '}
         <a
           href="https://github.com/carolynwangjy/personal-website"

@@ -252,7 +252,7 @@ export default function ExperiencePage() {
               }`}
             >
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">
-                <span className="text-lg font-semibold tracking-tight">{entry.year}</span>
+                <span className="text-[21px] font-semibold tracking-tight">{entry.year}</span>
               </div>
               <div className="px-6 pb-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1.5 pl-5">

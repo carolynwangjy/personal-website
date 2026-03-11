@@ -124,7 +124,7 @@ export default function CoursesPage() {
               }`}
             >
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">
-                <span className="text-lg font-semibold tracking-tight">{semester.term}</span>
+                <span className="text-[21px] font-semibold tracking-tight">{semester.term}</span>
               </div>
               <div className="px-6 pb-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1 pl-5">
@@ -261,7 +261,7 @@ export default function CoursesPage() {
           )
         })}
       </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-4">
+      <p className="courses-footnote text-sm text-neutral-600 dark:text-neutral-400 mt-4">
         * accredited courses taken outside of uc berkeley
       </p>
     </section>
