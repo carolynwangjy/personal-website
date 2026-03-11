@@ -88,8 +88,8 @@ export default function Page() {
               href="/hobbies"
               className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
             >
-              sidequest!
-            </a>
+              sidequest
+            </a>!
             {' '}🫶
           </p>
         </div>
