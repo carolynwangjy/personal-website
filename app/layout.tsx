@@ -76,7 +76,7 @@ export default function RootLayout({
         className="antialiased max-w-[53rem] mx-6 mt-6 lg:mx-auto"
       >
         <ThemeProvider>
-          <main className="flex-auto min-w-0 mt-4 flex flex-col px-4 md:px-8">
+          <main className="flex-auto min-w-0 mt-4 flex flex-col px-2 md:px-4">
             <Navbar />
             {children}
             <ConditionalFooter dateString={dateString} />

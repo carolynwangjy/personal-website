@@ -142,7 +142,7 @@ function ImageWithCaption({ caption, alt, href, ...props }: React.ComponentProps
 
 function PullQuote({ children }) {
   return (
-    <blockquote className="pull-quote border-l-4 border-neutral-300 dark:border-neutral-600 pl-4 italic text-neutral-800 dark:text-neutral-50 bg-neutral-50/80 dark:bg-neutral-800/90 rounded-md py-3 px-4">
+    <blockquote className="pull-quote border-l-4 border-red-800 dark:border-neutral-600 pl-4 italic text-neutral-800 dark:text-neutral-50 bg-neutral-50/80 dark:bg-neutral-800/90 rounded-md py-3 px-4">
       {children}
     </blockquote>
   )

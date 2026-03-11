@@ -127,7 +127,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       >
         ← back
       </Link>
-      <h1 className="title text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+      <h1 className="title text-4xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
         {post.metadata.title}
       </h1>
       {post.metadata.subtitle && (
@@ -135,7 +135,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           {parseSubtitleLinks(post.metadata.subtitle)}
         </h2>
       )}
-      <div className="flex flex-wrap items-center gap-3 mt-3 mb-8 text-sm text-neutral-600 dark:text-neutral-400">
+      <div className="flex flex-wrap items-center gap-3 mt-3 mb-8 text-base text-neutral-600 dark:text-neutral-400">
         <span>{formatDate(post.metadata.publishedAt)}</span>
         {post.metadata.originalLink && (
           <>
