@@ -235,7 +235,7 @@ export default function ExperiencePage() {
 
   return (
     <section className="space-y-4 text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
-      <h1 className="text-3xl font-semibold tracking-tight">experience <span className="ml-1">🌱</span></h1>
+      <h1 className="text-4xl font-semibold tracking-tight">experience <span className="ml-1">🌱</span></h1>
       <p className="text-neutral-700 dark:text-neutral-300">some things i've been up to :)</p>
 
       <div className="space-y-3">

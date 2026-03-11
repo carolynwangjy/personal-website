@@ -11,7 +11,7 @@ export default function Page() {
     <section className={`home-bio ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
       <div className="flex flex-col md:items-start">
         <div className="text-[var(--text-body)] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:space-y-4 md:max-w-4xl">
-          <h1 className="text-3xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center min-[421px]:mb-0">
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center min-[421px]:mb-0">
             hi! i&apos;m carolyn <span className="ml-1">👋</span>
           </h1>
         <div
