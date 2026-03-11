@@ -15,18 +15,18 @@ export default function Page() {
             hi! i&apos;m carolyn <span className="ml-1">👋</span>
           </h1>
         <div
-          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 min-[421px]:mt-2 min-[421px]:ml-4 min-[421px]:mb-4 max-[420px]:float-none max-[420px]:mx-auto max-[420px]:mt-6 max-[420px]:mb-8 max-[420px]:w-[160px] max-[420px]:min-w-[160px] max-[420px]:max-w-[160px]"
+          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 min-[421px]:mt-2 min-[421px]:ml-10 min-[421px]:mb-4 min-[421px]:mr-6 max-[420px]:float-none max-[420px]:mx-auto max-[420px]:mt-6 max-[420px]:mb-8 max-[420px]:w-[160px] max-[420px]:min-w-[160px] max-[420px]:max-w-[160px]"
         >
-            <div className="relative aspect-square w-full">
-              <Image
-                src="/carolyn.jpg"
-                alt="Carolyn Wang"
-                fill
+          <div className="relative aspect-square w-full">
+            <Image
+              src="/carolyn.jpg"
+              alt="Carolyn Wang"
+              fill
               className="object-cover scale-[1.12]"
-                priority
-              />
-            </div>
+              priority
+            />
           </div>
+        </div>
           <p>
             i&apos;m an undergraduate @{' '}
             <a
