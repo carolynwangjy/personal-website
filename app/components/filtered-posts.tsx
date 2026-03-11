@@ -90,7 +90,7 @@ export function FilteredPosts({ posts }: { posts: Post[] }) {
 
   return (
     <div className="space-y-4 writing-page">
-      <div className="text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
+      <div className="text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
         <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
         <button
           type="button"

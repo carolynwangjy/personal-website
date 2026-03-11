@@ -295,10 +295,10 @@ export default function TeachingPage() {
   )
 
   return (
-    <section className="space-y-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-4 text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">teaching <span className="ml-1">🎓</span></h1>
       
-      <div className="text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
+      <div className="text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2">
         <span className="text-neutral-700 dark:text-neutral-300">filter by:</span>
         <button
           type="button"
@@ -353,14 +353,14 @@ export default function TeachingPage() {
           <div>
             <h2 className="text-2xl font-semibold tracking-tight">{course.title}</h2>
             {course.subtitle && (
-              <ul className="text-[21px] text-neutral-700 dark:text-neutral-300 mt-1 list-disc pl-5 space-y-0.5">
+              <ul className="text-[var(--text-body)] text-neutral-700 dark:text-neutral-300 mt-1 list-disc pl-5 space-y-0.5">
                 {course.subtitle.split('\n').map((line, idx) => (
                   <li key={idx}>{parseLinks(line.trim())}</li>
                 ))}
               </ul>
             )}
             {course.id === 'naclo' && (
-              <div className="text-[21px] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2 mt-3">
+              <div className="text-[var(--text-body)] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2 mt-3">
                 <span className="text-neutral-700 dark:text-neutral-300">sort by:</span>
                 <button
                   type="button"

@@ -14,6 +14,7 @@ html.dark ::selection {
 }
 
 :root {
+  --text-body: 21px;
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -449,31 +450,10 @@ table {
   text-wrap: balance;
 }
 
-/* Consistent 19px text across all mobile */
+/* Scale body text on mobile via CSS variable */
 @media (max-width: 767px) {
-  /* Target every text-bearing element to override Tailwind px utilities */
-  body,
-  body p, body li, body a, body span, body button, body label,
-  body div, body section, body nav, body main, body article,
-  body header, body ul, body ol, body td, body th,
-  body blockquote, body figcaption, body cite {
-    font-size: 19px !important;
-  }
-
-  /* Footer keeps its own small size */
-  body footer, body footer * {
-    font-size: revert !important;
-  }
-
-  /* Restore heading hierarchy proportionally */
-  body h1 { font-size: 1.75rem !important; }
-  body h2, body h3 { font-size: 1.2rem !important; }
-  body h4, body h5, body h6 { font-size: 1.05rem !important; }
-
-  /* Footer and footnotes keep their own small size */
-  body footer, body footer *,
-  .courses-footnote {
-    font-size: 14px !important;
+  :root {
+    --text-body: 19px;
   }
 }
 

@@ -106,7 +106,7 @@ export default function CoursesPage() {
   ]
 
   return (
-    <section className="space-y-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-4 text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
       <h1 className="text-3xl font-semibold tracking-tight">coursework 📚</h1>
       <p className="text-neutral-700 dark:text-neutral-300">exam cheat sheets are linked and free to use as a resource :)</p>
 
@@ -124,9 +124,9 @@ export default function CoursesPage() {
               }`}
             >
               <div className="w-full flex items-center justify-between px-4 py-3 text-left">
-                <span className="text-[21px] font-semibold tracking-tight">{semester.term}</span>
+                <span className="text-[var(--text-body)] font-semibold tracking-tight">{semester.term}</span>
               </div>
-              <div className="px-6 pb-4 text-[21px] leading-[1.45] text-neutral-800 dark:text-neutral-200">
+              <div className="px-6 pb-4 text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200">
                 <ul className="list-disc space-y-1 pl-5">
                   {semester.courses.map((course, idx) => {
                     const linkClass = "underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
