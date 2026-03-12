@@ -33,14 +33,7 @@ export function ThemeProvider({
 
   useEffect(() => {
     setMounted(true)
-    const stored = localStorage.getItem(storageKey) as Theme | null
-    if (stored) {
-      setTheme(stored)
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      setTheme(prefersDark ? 'dark' : 'light')
-    }
+    setTheme('light')
   }, [storageKey])
 
   useEffect(() => {
@@ -49,7 +42,6 @@ export function ThemeProvider({
     const root = window.document.documentElement
     root.classList.remove('light', 'dark')
     root.classList.add(theme)
-    localStorage.setItem(storageKey, theme)
   }, [theme, mounted, storageKey])
 
   const value = {
