@@ -109,13 +109,11 @@ const courses: CourseSection[] = [
         },
         {
           topic: 'disc07: gradient descent',
-          video: [{label: 'video', url: ''}],
-          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa-ueQ6jkjrrr-qiTlBmv0zd&si=We5HXAwLE8t2U9aJ'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/1SloZ3iTpq9qEJ-0uWhQtcdT0fhZh5VVH/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/d/16jrdhv1s9cgvaU76tTZdVFIA_zE1sgWf/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/1qn8gUyZ2FkTx1woK_hkOEmKMRxgiLZ4_/view?usp=drive_link'}],
         },
         {
-          topic: 'hw02: mle, map, regularization',
-          video: [{label: 'video', url: ''}],
-          pdfs: [{label: 'blank', url: ''}, {label: 'solution', url: ''}, {label: 'notes', url: ''}],
+          topic: 'disc08: convergence, kl-divergence',
         },
       ],
     },
