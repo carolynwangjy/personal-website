@@ -60,7 +60,7 @@ thanks for reading these ramblings! onto next week :)
 
 this lecture had two big underlying ideas. 
 
-firstly, limitations in llm development are not necessarily what we think; they are largely dictated by the hardware lottery and the memory wall, as described below:
+firstly, limitations in llm development are not necessarily what we think; they are largely dictated by the "hardware lottery" and the "memory wall," as described below:
 
     - the "hardware lottery" dictates the direction of llm advancement. the uncomfortable truth reveals itself when we ask ourselves: are transformers, the current state of the art (sota) architecture, necessarily the best architecture for large reasoning models? 
     we may never know, because the success or failure of research ideas often depends on what available hardware we have: in our case, NVIDIA GPUs. better ideas may never be explored.
@@ -84,10 +84,10 @@ language model against this reward model. this pipeline requires FOUR models in 
 
 - DPO: super popular method proposed as an alternative to traditional RLHF (and a lot cheaper compared to PPO): instead of training another reward model, DPO directly optimizes the original language model based on (prompt, good_model, bad_model) input labels
 
-- GRPO: a method specifically used in verifiable domains (i.e. coding, math, where there is a right answer) and requiring NO human labels (unliek RLHF and DPO). given a prompt, GRPO starts by
+- GRPO: a method specifically used in verifiable domains (i.e. coding, math, where there is a right answer) and requiring NO human labels (unlike RLHF and DPO). given a prompt, GRPO starts by
 generating a group of N responses, and then verifying which ones are correct. correct answers become "preferred," incorrect answers become "not preferred," and these outcome-based pairs are then used to train the model.
 
-overall, this lecture was a great high-level overview of modern architectures and machine learning pipelines for training llms. i hear a lot of these terms (SFT, PPO, DPO etc.) thrown around in my lab (shameless plug for sky lab!) so it's
+overall, this lecture was a great high-level overview of modern architectures and machine learning pipelines for training llms. i hear a lot of these terms (SFT, PPO, DPO etc.) thrown around in my lab (shameless plug for [sky lab](https://sky.cs.berkeley.edu/)!) so it's
 nice to have a big picture that connects all of their functionalities together.
 </Collapsible>
 
