@@ -58,6 +58,37 @@ thanks for reading these ramblings! onto next week :)
 
 <Collapsible title="thoughts">
 
+this lecture had two big underlying ideas. 
+
+firstly, limitations in llm development are not necessarily what we think; they are largely dictated by the hardware lottery and the memory wall, as described below:
+
+    - the "hardware lottery" dictates the direction of llm advancement. the uncomfortable truth reveals itself when we ask ourselves: are transformers, the current state of the art (sota) architecture, necessarily the best architecture for large reasoning models? 
+    we may never know, because the success or failure of research ideas often depends on what available hardware we have: in our case, NVIDIA GPUs. better ideas may never be explored.
+
+    -  the "memory wall" is the largest bottleneck for efficiency. it's not how fast a GPU can compute matrix multiplications, nor is it their compute capacity, but rather
+    how fast data can be fed to GPUs in the first place. in other words, memory accesses are the most costly, the prime bottleneck. that's why many of the most common
+    optimization techniques developed in research are meant to skip re-loading data (KV caching), avoid unnecessary memory trips (FlashAttention), or optimize computations on data that is ALREADY loaded (batching).
+
+the second big idea we talked about was the sota training pipeline for llms: (1) pre-training and (2) postraining, the latter being further split into supervised finetuning (SFT) -> preference optimization -> safety layers.
+i provide a quick rundown below:
+
+- pretraining: the training process that takes months and is often done by frontier labs ($10M-$100M+). they create general capabilities, and decisions made during pretraining
+are baked into the weights...which means that there's no changing them later on (unless you re-train the entire model). three key decisions constrain downstream inference: attention variants (i.e. mult-headed attention, grouped-query attention), vocab size, and context length.
+luckily, we (as individuals without millions of dollars) are not too concerned with pre-training in this class, as we primarily have leverage over the posttraining process :)
+
+- SFT: takes the base, pre-trained model (which literally just predicts the next most likely word), and trains it on examples of desired behavior via thousands of high-quality human
+prompts and ideal responses. examples of desired behavior include conversational formatting (i.e. Q&A), when to stop generating etc.
+
+- RLHF: method for aligning responses with human preferences. trains a separate reward model (based on humans ranking whether they like model_a or model_b's responses better) and then uses PPO to optimize the
+language model against this reward model. this pipeline requires FOUR models in memory: policy, reference, reward, AND value ... so it's a lot of memory being used. but it's very powerful nevertheless!
+
+- DPO: super popular method proposed as an alternative to traditional RLHF (and a lot cheaper compared to PPO): instead of training another reward model, DPO directly optimizes the original language model based on (prompt, good_model, bad_model) input labels
+
+- GRPO: a method specifically used in verifiable domains (i.e. coding, math, where there is a right answer) and requiring NO human labels (unliek RLHF and DPO). given a prompt, GRPO starts by
+generating a group of N responses, and then verifying which ones are correct. correct answers become "preferred," incorrect answers become "not preferred," and these outcome-based pairs are then used to train the model.
+
+overall, this lecture was a great high-level overview of modern architectures and machine learning pipelines for training llms. i hear a lot of these terms (SFT, PPO, DPO etc.) thrown around in my lab (shameless plug for sky lab!) so it's
+nice to have a big picture that connects all of their functionalities together.
 </Collapsible>
 
 ## [2/9/26] post-training: post-training foundations
