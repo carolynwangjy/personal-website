@@ -112,7 +112,8 @@ instead of being explicitly taught physics, the model learns physics because phy
 - however, there is a ceiling to this idea of "scale", as instances that have extremely high Kolmogorov complexity often cannot be adequately compressed no matter how
 grand our scale is. (in lecture, we hypothesized that this area may be where the most distinctly-human capabilities live)
 
-- post-training is all about compressing a specific subset of what you actually want. i won't go into details here, since my notes describe the post-training landscape (i.e. SFT, RLHF, DPO, CAI, RL on Verifiable Rewards, GRPO) far better than i can here. see lecture notes for more :)
+- post-training is all about compressing a specific subset of what you actually want. i won't go into details here, since my notes describe the post-training landscape (i.e. SFT, RLHF, DPO, CAI, RL on Verifiable Rewards, GRPO) far better than i can here. the
+biggest takeaway is that each method (listed previously) has its own purpose, benefits, and drawbacks. see my lecture notes for more,  :)
 
 
 </Collapsible>
@@ -122,7 +123,36 @@ grand our scale is. (in lecture, we hypothesized that this area may be where the
 <NotesLink href="https://drive.google.com/file/d/1VChjiNUP9YG9Kziew6dXzjsXWsrMUXjR/view?usp=drive_link">lecture notes</NotesLink>
 
 <Collapsible title="thoughts">
+kullback–leibler (KL) divergence is the bread and butter of modern llm post-training. it essentially measures the "dissimilarity" between two distributions P and Q,
+and serves as a pretty essential regularization mechanism to ensure that even when models follow reward signals, they don't deviate too far from their general capabilities. if a model did not have a KL constraint,
+it could lead to a myriad of problems including but not limited to drifting, collapsing, losing language fluency, producing unnatural output, and reward hacking--all in an attempt to maximize some reward signal. the KL constraint
+essentially forces the model not to stray too far from its original, pre-trained behavior. 
 
+KL divergence can be mathematically expressed as the following:
+$$
+\text{KL}(P||Q) = \sum_{x} P(x) \cdot \log\frac{P(x)}{Q(x)}
+$$ 
+where we can interpret $\text{KL}(P || Q)$ as the extra bits needed when using distribution $Q$ to encode data actually drawn from $P$.
+almost all post-training methods implicitly or explicitly manage some kind of KL budget, and we can see that in SFT (forward KL)
+and RLHF (reverse KL), amongst other methods. 
+
+due to the asymmetric nature of KL divergence, two distinct usages arise:
+
+(1) forward KL can be represented as $\text{KL}(P_\text{data} || \pi_\text{model}$). we can interpret this as sampling from $P_\text{data}$ and asking ourselves, "for each data point, does my model $\pi_\text{model}$ assign a high probability?" if no, (i.e. there exists mass at
+some part of $P_\text{data}$ but not in $\pi_\text{model}$), then the penalty is large. this effectively encourages broad, generic coverage for our model. (in other words, forward KL is data-driven: to minimize the penalty, our model seeks to cover as many data points as possible.)
+
+(2) reverse KL can be represented as $\text{KL}(\pi_\text{model} || P_\text{target}$). we can interpret this as sampling from our model $\pi_\text{model}$, and penalizing our model for generating things that our reference distribution $P_\text{target}$ does not approve of. this results in narrow, mode-seeking behavior. (reverse-KL
+is model-driven. the model essentially makes an educated guess by sampling from $x\sim\pi_\text{model}$, and we only want to generate mass probability where our data actually exists.) the model is not encouraged full coverage of all regions; rather, it is encouraged to cover high-density regions of the target distribution $P_\text{target}$.
+
+because supervised finetuning (SFT) loss utilizes forward-KL, we can say that it is data-driven. reinforcement learning with human feedback (RLHF) utilizes reverse KL, so we can say that it is model-driven.
+
+one of the biggest debates today is whether RL actually "teaches" a model new things, versus sharpening what the model knows. one argument is that because RL concentrates mass on the correct paths that the model
+already has, it simply acts as a "sharpener"; the counterargument is that RL introduces emergent behaviors like self-verification and progressive lengthening of reasoning chains, so if one were to measure the reasoning steps of the model, they would
+discover behaviors that did not exist during the SFT checkpoint (see CoT-Pass@K, 2025 Wen et al). 
+
+regardless of which side ultimately gains favor (one could argue that the question of teaching v. sharpening is mainly a question of benchmarks), i think this is all great food for thought.
+
+that's all i have for today! onto next week :)
 
 </Collapsible>
 

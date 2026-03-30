@@ -4,6 +4,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
 import { Collapsible } from './collapsible'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -241,6 +243,10 @@ export function CustomMDX(props) {
         parseFrontmatter: true,
         blockJS: false,
         blockDangerousJS: false,
+        mdxOptions: {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        },
       }}
       components={{ ...components, ...(props.components || {}) }}
     />

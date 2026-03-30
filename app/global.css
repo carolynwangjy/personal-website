@@ -547,6 +547,11 @@ html.dark button[aria-label="Toggle theme"] span {
   animation: fade-in 0.8s ease-out 0.15s both;
 }
 
+/* Inline KaTeX: match surrounding text size (display math stays default) */
+:not(.katex-display) > .katex {
+  font-size: 1em !important;
+}
+
 /* Image overlay text - force white text in light mode */
 html:not(.dark) .image-overlay-text,
 html:not(.dark) .image-overlay-text * {
