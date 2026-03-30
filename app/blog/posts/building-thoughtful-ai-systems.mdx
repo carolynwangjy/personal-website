@@ -58,9 +58,9 @@ thanks for reading these ramblings! onto next week :)
 
 <Collapsible title="thoughts">
 
-this lecture had two big underlying ideas. 
+this lecture has two big underlying ideas. 
 
-firstly, limitations in llm development are not necessarily what we think; they are largely dictated by the "hardware lottery" and the "memory wall," as described below:
+first of all, limitations in llm development are not necessarily what we think; rather than remaining strictly constrained by compute, llm advancement is largely dictated by the "hardware lottery" and the "memory wall," as described below:
 
     - the "hardware lottery" dictates the direction of llm advancement. the uncomfortable truth reveals itself when we ask ourselves: are transformers, the current state of the art (sota) architecture, necessarily the best architecture for large reasoning models? 
     we may never know, because the success or failure of research ideas often depends on what available hardware we have: in our case, NVIDIA GPUs. better ideas may never be explored.
@@ -74,7 +74,7 @@ i provide a quick rundown below:
 
 - pretraining: the training process that takes months and is often done by frontier labs ($10M-$100M+). they create general capabilities, and decisions made during pretraining
 are baked into the weights...which means that there's no changing them later on (unless you re-train the entire model). three key decisions constrain downstream inference: attention variants (i.e. mult-headed attention, grouped-query attention), vocab size, and context length.
-luckily, we (as individuals without millions of dollars) are not too concerned with pre-training in this class, as we primarily have leverage over the posttraining process :)
+luckily, we (as individuals without millions of dollars) are not too concerned with pre-training in this class, as we primarily have leverage over the post-training process :)
 
 - SFT: takes the base, pre-trained model (which literally just predicts the next most likely word), and trains it on examples of desired behavior via thousands of high-quality human
 prompts and ideal responses. examples of desired behavior include conversational formatting (i.e. Q&A), when to stop generating etc.
@@ -97,6 +97,24 @@ nice to have a big picture that connects all of their functionalities together.
 
 <Collapsible title="thoughts">
 
+takeaways from this lecture:
+- prediction is compression, and compression requires the ability to understand and model the world. kolmogorov complexity helps provides us with a theoretical limit of compression.
+you can think of it as the minimum description or smallest program needed to completely capture some [string] x
+
+- math, logic, code, grammar, syntax, and factual knowledge (i.e. rule-based methods) are easy to compress (low K).
+emotional nuance, creative taste, and individual voice (i.e. per-instance and unique traits) are difficult to compress (high K) 
+
+- during model training, next-token prediction loss rewards easily-compressible patterns first (i.e. ones with low K) before learning more difficult patterns (i.e. ones with high K)
+
+- the bias-variance tradeoff from classical ML is somewhat misleading (see double descent)--at some point, the more complexity (i.e. the more parameters and the more data), the more effective modeling and compression. in simple words, "scale works."
+instead of being explicitly taught physics, the model learns physics because physics helps with prediction.
+
+- however, there is a ceiling to this idea of "scale", as instances that have extremely high Kolmogorov complexity often cannot be adequately compressed no matter how
+grand our scale is. (in lecture, we hypothesized that this area may be where the most distinctly-human capabilities live)
+
+- post-training is all about compressing a specific subset of what you actually want. i won't go into details here, since my notes describe the post-training landscape (i.e. SFT, RLHF, DPO, CAI, RL on Verifiable Rewards, GRPO) far better than i can here. see lecture notes for more :)
+
+
 </Collapsible>
 
 ## [2/23/26] post-training: RL methods and reward hacks
@@ -104,6 +122,7 @@ nice to have a big picture that connects all of their functionalities together.
 <NotesLink href="https://drive.google.com/file/d/1VChjiNUP9YG9Kziew6dXzjsXWsrMUXjR/view?usp=drive_link">lecture notes</NotesLink>
 
 <Collapsible title="thoughts">
+
 
 </Collapsible>
 
