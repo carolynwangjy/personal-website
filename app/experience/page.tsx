@@ -117,7 +117,7 @@ const data: { year: string; items: YearItem[] }[] = [
       {
         label: (
           <>
-            building tech policy opportunities at the{' '}
+            built tech policy opportunities at the{' '}
             <a
               href="https://www.paragonfellowship.org/"
               target="_blank"
@@ -147,7 +147,7 @@ const data: { year: string; items: YearItem[] }[] = [
       {
         label: (
           <>
-            taught berkeley students how to program at{' '}
+            taught berkeley students at{' '}
             <a
               href="https://csmentors.studentorg.berkeley.edu/#/"
               target="_blank"
