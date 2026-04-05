@@ -91,7 +91,7 @@ export default function ExperiencePage() {
 
   return (
     <section className="space-y-5 leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl -mt-3">
-      <h1 className="text-4xl font-semibold tracking-tight">experience <span className="ml-1">🌱</span></h1>
+      <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">experience <span className="ml-1">🌱</span></h1>
       <p className="text-neutral-500 dark:text-neutral-400">
         official resume available upon{' '}
         <a
@@ -109,7 +109,7 @@ export default function ExperiencePage() {
       {sections.map((section) => (
         <div key={section.label}>
           {/* Label */}
-          <p className="text-2xl font-semibold text-neutral-400 dark:text-neutral-500 mb-2">
+          <p className="text-xl sm:text-2xl font-semibold text-neutral-400 dark:text-neutral-500 mb-2">
             {section.label}
           </p>
 
@@ -121,7 +121,7 @@ export default function ExperiencePage() {
             <div className="flex-1 divide-y divide-neutral-100 dark:divide-neutral-800 pt-1.5 pb-2">
             {section.entries.map((entry, idx) => (
               <div key={idx} className="px-5 py-2.5">
-                <div className="flex items-baseline justify-between gap-6">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 gap-0.5">
                   <div>
                     <span className="font-semibold">{entry.title}</span>
                     {', '}
@@ -138,17 +138,17 @@ export default function ExperiencePage() {
                       <span className="text-neutral-500 dark:text-neutral-400">{entry.org}</span>
                     )}
                     {entry.description && (
-                      <span className="text-neutral-500 dark:text-neutral-400"> {parseLinks(entry.description)}</span>
+                      <span className="text-neutral-500 dark:text-neutral-400 text-left"> <span>{parseLinks(entry.description)}</span></span>
                     )}
                   </div>
-                  <p className="shrink-0 text-neutral-400 dark:text-neutral-500">
+                  <p className="shrink-0 text-neutral-400 dark:text-neutral-500 text-[0.95rem] sm:text-[length:var(--text-body)]">
                     {entry.date ?? ''}
                   </p>
                 </div>
                 {entry.bullets.length > 0 && (
-                  <ul className="pl-9 list-disc mt-1.5 space-y-1">
+                  <ul className="list-disc pl-5 mt-1.5 space-y-1">
                     {entry.bullets.map((b, i) => (
-                      <li key={i} className="experience-bullet text-[1.3rem] leading-snug text-neutral-800 dark:text-neutral-200">{parseLinks(b)}</li>
+                      <li key={i} className="experience-bullet leading-snug text-neutral-800 dark:text-neutral-200 text-left text-[18px] sm:text-[length:var(--text-body)]"><span>{parseLinks(b)}</span></li>
                     ))}
                   </ul>
                 )}

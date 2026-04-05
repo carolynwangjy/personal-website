@@ -11,11 +11,11 @@ export default function Page() {
     <section className={`home-bio ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
       <div className="flex flex-col md:items-start">
         <div className="text-[var(--text-body)] leading-relaxed text-neutral-900 dark:text-neutral-100 space-y-6 md:space-y-4 md:max-w-4xl">
-          <h1 className="text-4xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[420px]:text-center min-[421px]:mb-0">
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight mb-4 text-neutral-900 dark:text-neutral-100 text-left max-[600px]:text-center min-[601px]:mb-0">
             hi! i&apos;m carolyn <span className="ml-1">👋</span>
           </h1>
         <div
-          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 min-[421px]:mt-2 min-[421px]:ml-10 min-[421px]:mb-4 min-[421px]:mr-6 max-[420px]:float-none max-[420px]:mx-auto max-[420px]:mt-6 max-[420px]:mb-8 max-[420px]:w-[160px] max-[420px]:min-w-[160px] max-[420px]:max-w-[160px]"
+          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 min-[601px]:mt-2 min-[601px]:ml-10 min-[601px]:mb-4 min-[601px]:mr-6 max-[600px]:float-none max-[600px]:mx-auto max-[600px]:mt-6 max-[600px]:mb-8 max-[600px]:w-[160px] max-[600px]:min-w-[160px] max-[600px]:max-w-[160px]"
         >
           <div className="relative aspect-square w-full">
             <Image

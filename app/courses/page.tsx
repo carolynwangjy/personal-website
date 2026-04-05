@@ -135,7 +135,7 @@ export default function CoursesPage() {
                     if (course.includes('materials')) {
                       const parts = course.split('materials')
                       return (
-                        <li key={idx}>
+                        <li key={idx}><span>
                           {parts[0]}
                           <Link
                             href="/teaching"
@@ -144,7 +144,7 @@ export default function CoursesPage() {
                             materials
                           </Link>
                           {parts[1]}
-                        </li>
+                        </span></li>
                       )
                     }
 
@@ -152,7 +152,7 @@ export default function CoursesPage() {
                     if (course.includes('notes')) {
                       const parts = course.split('notes')
                       return (
-                        <li key={idx}>
+                        <li key={idx}><span>
                           {parts[0]}
                           <Link
                             href="/writing/building-thoughtful-ai-systems"
@@ -161,7 +161,7 @@ export default function CoursesPage() {
                             notes
                           </Link>
                           {parts[1]}
-                        </li>
+                        </span></li>
                       )
                     }
                     
@@ -250,7 +250,7 @@ export default function CoursesPage() {
                         parts.push(remainingText.substring(lastIndex))
                       }
                       
-                      return <li key={idx}>{parts}</li>
+                      return <li key={idx}><span>{parts}</span></li>
                     }
                     
                     return <li key={idx}>{course}</li>
