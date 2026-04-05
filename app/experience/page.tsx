@@ -118,7 +118,7 @@ export default function ExperiencePage() {
             <div className="w-1 bg-[#c8a0a0] dark:bg-[#5a2020] shrink-0" />
 
             {/* Entries */}
-            <div className="flex-1 divide-y divide-neutral-100 dark:divide-neutral-800 pb-2">
+            <div className="flex-1 divide-y divide-neutral-100 dark:divide-neutral-800 pt-1.5 pb-2">
             {section.entries.map((entry, idx) => (
               <div key={idx} className="px-5 py-2.5">
                 <div className="flex items-baseline justify-between gap-6">
