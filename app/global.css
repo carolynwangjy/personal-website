@@ -13,6 +13,38 @@ html.dark ::selection {
   color: #fefefe;
 }
 
+/* Tiny star bullets globally */
+ul li {
+  list-style: none;
+  position: relative;
+}
+
+ul li::before {
+  content: '✦';
+  position: absolute;
+  left: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.5em;
+  line-height: 1;
+  color: currentColor;
+}
+
+/* In prose (MDX), list items can contain nested lists — anchor bullet to first line */
+.prose ul li::before {
+  top: 0.75em;
+  transform: none;
+}
+
+/* Use 📍 as bullet for group header items (those containing a nested list) */
+.prose ul li:has(> ul)::before {
+  content: '📍';
+  font-size: 0.9em;
+  top: 0.85em;
+  left: -1.6rem;
+  transform: translateY(-50%);
+}
+
 :root {
   --text-body: 21px;
   --sh-class: #2d5e9d;
@@ -470,6 +502,12 @@ table {
 
 /* Scale body text on mobile via CSS variable */
 @media (max-width: 767px) {
+  :root {
+    --text-body: 20px;
+  }
+}
+
+@media (max-width: 480px) {
   :root {
     --text-body: 19px;
   }

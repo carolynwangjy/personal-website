@@ -21,7 +21,7 @@ export function FooterWithLinks({ dateString }: { dateString: string }) {
     <footer className="mb-12">
       <div className="home-icons flex items-center gap-0.5 mt-8 mb-1">
         <a
-          href="mailto:carolynwang.jy@berkeley.edu"
+          href="https://mail.google.com/mail/?view=cm&to=carolynwang.jy@berkeley.edu"
           target="_blank"
           rel="noopener noreferrer"
           className="p-1 rounded-full writing-chip transition-colors"

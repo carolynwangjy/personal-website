@@ -1,270 +1,164 @@
-'use client'
+import fs from 'fs'
+import path from 'path'
+import React from 'react'
 
-import { useState, useEffect } from 'react'
+type Entry = {
+  date?: string
+  title: string
+  org: string
+  orgUrl?: string
+  description?: string
+  bullets: string[]
+}
 
-type YearItem = { label: string | JSX.Element }
+type Section = {
+  label: string
+  entries: Entry[]
+}
 
-const data: { year: string; items: YearItem[] }[] = [
-  {
-    year: '2026',
-    items: [
-      {
-        label: 'many fun things in progress ;)',
-      },
-    ],
-  },
-  {
-    year: '2025',
-    items: [
-      {
-        label: (
-            <>
-              taught{' '}
-            <a
-              href="https://cs61a.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-              >
-                uc berkeley&apos;s cs61a course
-              </a>
-              , leading the{' '}
-              <a
-              href="https://eecs.berkeley.edu/cs-scholars/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-                cs scholars program
-              </a>
-            </>
-        ),
-      },
-      {
-        label: (
-          <>
-            ran the eecs-dept sponsored{' '}
-            <a
-              href="https://www.cskickstart.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              cs kickstart program
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            built ai agents for finance reconciliation systems at{' '}
-            <a
-              href="https://amazon.jobs/content/en/teams/fgbs/finance-automation"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] hover:bg-[#fbf4e6] dark:hover:bg-neutral-800/50"
-            >
-              amazon
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            computationally solved puzzles at{' '}
-            <a
-              href="https://gamescrafters.berkeley.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              gamescrafters
-            </a>
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    year: '2024',
-    items: [
-      {
-        label: (
-          <>
-            conducted{' '}
-            <a
-              href="https://www.brookings.edu/projects/artificial-intelligence-and-emerging-technology-initiative/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              ai + election research
-            </a>{' '}
-            at{' '}
-            <a
-              href="https://www.brookings.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              the brookings institution
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            built tech policy opportunities at the{' '}
-            <a
-              href="https://www.paragonfellowship.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              paragon policy fellowship
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            authored for the{' '}
-            <a
-              href="https://www.techpolicy.press/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              tech policy press
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            taught berkeley students at{' '}
-            <a
-              href="https://csmentors.studentorg.berkeley.edu/#/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              computer science mentors
-            </a>
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    year: '2023 - prior',
-    items: [
-      {
-        label: (
-          <>
-            wrote for the{' '}
-            <a
-              href="https://bpr.studentorg.berkeley.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              berkeley political review
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            led the{' '}
-            <a
-              href="https://saratogafalcon.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              saratoga falcon newspaper
-            </a>
-          </>
-        ),
-      },
-      {
-        label: (
-          <>
-            served on the{' '}
-            <a
-              href="https://www.saratoga.ca.us/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
-            >
-              city of saratoga&apos;s
-            </a>{' '}
-            youth commission
-          </>
-        ),
-      },
-    ],
-  },
-]
+function parseLinks(text: string): React.ReactNode {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+  const parts: React.ReactNode[] = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+  let key = 0
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) parts.push(text.substring(lastIndex, match.index))
+    const [, linkText, linkUrl] = match
+    parts.push(
+      <a
+        key={key++}
+        href={linkUrl}
+        target={linkUrl.startsWith('http') ? '_blank' : undefined}
+        rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
+      >
+        {linkText}
+      </a>
+    )
+    lastIndex = linkRegex.lastIndex
+  }
+
+  if (lastIndex < text.length) parts.push(text.substring(lastIndex))
+  return parts.length > 0 ? parts : text
+}
+
+function parseExperience(): Section[] {
+  const filePath = path.join(process.cwd(), 'app', 'experience', 'content.mdx')
+  const raw = fs.readFileSync(filePath, 'utf-8')
+  const content = raw.replace(/^---[\s\S]*?---\n?/, '').trim()
+
+  return content
+    .split(/^## /m)
+    .slice(1)
+    .map((sectionRaw) => {
+      const firstNl = sectionRaw.indexOf('\n')
+      const label = sectionRaw.slice(0, firstNl).trim()
+      const body = sectionRaw.slice(firstNl)
+
+      const entries: Entry[] = body
+        .split(/^### /m)
+        .slice(1)
+        .map((entryRaw) => {
+          const nl = entryRaw.indexOf('\n')
+          const header = nl >= 0 ? entryRaw.slice(0, nl).trim() : entryRaw.trim()
+          const bodyLines = nl >= 0
+            ? entryRaw.slice(nl + 1).split('\n').map((l) => l.trim()).filter(Boolean)
+            : []
+
+          const [rawDate, rawTitle, rawOrg, rawUrl] = header.split(' | ')
+
+          const description = bodyLines[0] && !bodyLines[0].startsWith('-') ? bodyLines[0] : undefined
+          const bullets = bodyLines.filter((l) => l.startsWith('- ')).map((l) => l.slice(2))
+
+          return {
+            date: rawDate?.trim() || undefined,
+            title: rawTitle?.trim() ?? '',
+            org: rawOrg?.trim() ?? '',
+            orgUrl: rawUrl?.trim() || undefined,
+            description,
+            bullets,
+          }
+        })
+
+      return { label, entries }
+    })
+}
 
 export default function ExperiencePage() {
-  const [activeYear, setActiveYear] = useState<string | null>(null)
-
-  useEffect(() => {
-    // Get the hash from URL on mount and when hash changes
-    const updateActiveYear = () => {
-      const hash = window.location.hash.replace('#', '')
-      if (hash.startsWith('year-')) {
-        setActiveYear(hash)
-      } else {
-        setActiveYear(null)
-      }
-    }
-
-    updateActiveYear()
-    window.addEventListener('hashchange', updateActiveYear)
-    return () => window.removeEventListener('hashchange', updateActiveYear)
-  }, [])
+  const sections = parseExperience()
 
   return (
-    <section className="space-y-4 text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl">
+    <section className="space-y-5 leading-[1.45] text-neutral-800 dark:text-neutral-200 max-w-3xl -mt-3">
       <h1 className="text-4xl font-semibold tracking-tight">experience <span className="ml-1">🌱</span></h1>
-      <p className="text-neutral-700 dark:text-neutral-300">some things i've been up to :)</p>
+      <p className="text-neutral-500 dark:text-neutral-400">
+        official resume available upon{' '}
+        <a
+          href="https://mail.google.com/mail/?view=cm&to=carolynwang.jy@berkeley.edu"
+          className="inline-flex items-baseline gap-0.5 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
+        >
+          request
+          <svg width="0.65em" height="0.65em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[-0.05em]">
+            <path d="M7 17L17 7"/>
+            <path d="M7 7h10v10"/>
+          </svg>
+        </a>
+      </p>
 
-      <div className="space-y-3">
-        {data.map((entry) => {
-          const targetId = `year-${entry.year.replace(/\s+/g, '-').toLowerCase()}`
-          return (
-            <div
-              key={entry.year}
-              id={targetId}
-              className={`experience-card border rounded-xl scroll-mt-20 ${
-                activeYear === targetId
-                  ? 'border-[#a83232] bg-white/80 ring-4 ring-[#f2d6d6]/60 dark:border-[#7a1a1a] dark:bg-transparent dark:ring-[#5a1010]/30'
-                  : 'border-[#c8a0a0] bg-white/80 dark:border-[#5a2020] dark:bg-transparent'
-              }`}
-            >
-              <div className="w-full flex items-center justify-between px-4 py-3 text-left">
-                <span className="text-[var(--text-body)] font-semibold tracking-tight">{entry.year}</span>
+      {sections.map((section) => (
+        <div key={section.label}>
+          {/* Label */}
+          <p className="text-2xl font-semibold text-neutral-400 dark:text-neutral-500 mb-2">
+            {section.label}
+          </p>
+
+          <div className="flex gap-0 items-stretch experience-card bg-white border border-neutral-200 rounded-lg overflow-hidden">
+            {/* Vertical rose line */}
+            <div className="w-1 bg-[#c8a0a0] dark:bg-[#5a2020] shrink-0" />
+
+            {/* Entries */}
+            <div className="flex-1 divide-y divide-neutral-100 dark:divide-neutral-800 pb-2">
+            {section.entries.map((entry, idx) => (
+              <div key={idx} className="px-5 py-2.5">
+                <div className="flex items-baseline justify-between gap-6">
+                  <div>
+                    <span className="font-semibold">{entry.title}</span>
+                    {', '}
+                    {entry.orgUrl ? (
+                      <a
+                        href={entry.orgUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-500 dark:text-neutral-400 underline decoration-neutral-300 dark:decoration-neutral-600 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
+                      >
+                        {entry.org}
+                      </a>
+                    ) : (
+                      <span className="text-neutral-500 dark:text-neutral-400">{entry.org}</span>
+                    )}
+                    {entry.description && (
+                      <span className="text-neutral-500 dark:text-neutral-400"> {parseLinks(entry.description)}</span>
+                    )}
+                  </div>
+                  <p className="shrink-0 text-neutral-400 dark:text-neutral-500">
+                    {entry.date ?? ''}
+                  </p>
+                </div>
+                {entry.bullets.length > 0 && (
+                  <ul className="pl-9 list-disc mt-1.5 space-y-1">
+                    {entry.bullets.map((b, i) => (
+                      <li key={i} className="experience-bullet text-[1.3rem] leading-snug text-neutral-800 dark:text-neutral-200">{parseLinks(b)}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
-              <div className="px-6 pb-4 text-[var(--text-body)] leading-[1.45] text-neutral-800 dark:text-neutral-200">
-                <ul className="list-disc space-y-1.5 pl-5">
-                  {entry.items.map((item, idx) => (
-                    <li key={idx}>{item.label}</li>
-                  ))}
-                </ul>
-              </div>
+            ))}
             </div>
-          )
-        })}
-      </div>
+          </div>
+        </div>
+      ))}
+
     </section>
   )
 }
