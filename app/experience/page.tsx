@@ -32,7 +32,7 @@ function parseLinks(text: string): React.ReactNode {
         href={linkUrl}
         target={linkUrl.startsWith('http') ? '_blank' : undefined}
         rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
+        className="underline decoration-neutral-300 dark:decoration-neutral-600 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
       >
         {linkText}
       </a>
