@@ -113,7 +113,9 @@ const courses: CourseSection[] = [
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/1SloZ3iTpq9qEJ-0uWhQtcdT0fhZh5VVH/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/d/16jrdhv1s9cgvaU76tTZdVFIA_zE1sgWf/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/1qn8gUyZ2FkTx1woK_hkOEmKMRxgiLZ4_/view?usp=drive_link'}],
         },
         {
-          topic: 'disc08: convergence, kl-divergence',
+          topic: 'disc08: convergence, approximation',
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa9sA7c_KW-WwRudeMkxQZu_&si=zCLLkbY4A2pW07rk'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/1XNAVahEf4jiRfGyUCr-x4XGSSseohf2M/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/12OuB5CcxfG4Ega4_BREMC1cyijm0FUd7/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/1X6DD1NSvbFoIMfiPy-MMNMQM6U9mtD9q/view?usp=drive_link'}],
         },
       ],
     },
