@@ -15,14 +15,14 @@ export default function Page() {
             hi! i&apos;m carolyn <span className="ml-1">👋</span>
           </h1>
         <div
-          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-300 shadow-sm dark:border-neutral-700 dark:bg-neutral-900 min-[601px]:mt-2 min-[601px]:ml-10 min-[601px]:mb-4 min-[601px]:mr-6 max-[600px]:float-none max-[600px]:mx-auto max-[600px]:mt-6 max-[600px]:mb-8 max-[600px]:w-[160px] max-[600px]:min-w-[160px] max-[600px]:max-w-[160px]"
+          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-full overflow-hidden border-2 border-neutral-300 shadow-sm dark:border-neutral-700 min-[601px]:mt-2 min-[601px]:ml-10 min-[601px]:mb-4 min-[601px]:mr-6 max-[600px]:float-none max-[600px]:mx-auto max-[600px]:mt-6 max-[600px]:mb-8 max-[600px]:w-[160px] max-[600px]:min-w-[160px] max-[600px]:max-w-[160px]"
         >
-          <div className="relative aspect-square w-full">
+          <div className="relative w-full aspect-[9.2/10] overflow-hidden rounded-full">
             <Image
-              src="/carolyn.jpg"
+              src="/carolyn-wang.jpg"
               alt="Carolyn Wang"
               fill
-              className="object-cover scale-[1.12]"
+              className="object-cover object-[center_62%]"
               priority
             />
           </div>
