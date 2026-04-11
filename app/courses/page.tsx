@@ -43,7 +43,7 @@ export default function CoursesPage() {
       courses: [
         'cs 186: database systems',
         'cdss 94: building thoughtful ai systems (notes)',
-        'legalst 106wi: philosophy of law',
+        'legalst 106wi: philosophy of law (paper)',
         'legalst 199: writing intensive seminar',
         'cs 199: research (sky lab)',
         'cs 197: 189 course staff - tutor (materials)',
@@ -143,6 +143,25 @@ export default function CoursesPage() {
                           >
                             materials
                           </Link>
+                          {parts[1]}
+                        </span></li>
+                      )
+                    }
+
+                    // Check if course contains "paper" and make just that word a link
+                    if (course.includes('paper')) {
+                      const parts = course.split('paper')
+                      return (
+                        <li key={idx}><span>
+                          {parts[0]}
+                          <a
+                            href="https://drive.google.com/file/d/1KArZevFmUtyeSp__GnQg0kmts45s8IkR/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={linkClass}
+                          >
+                            paper
+                          </a>
                           {parts[1]}
                         </span></li>
                       )
