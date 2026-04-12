@@ -15,17 +15,16 @@ export default function Page() {
             hi! i&apos;m carolyn <span className="ml-1">👋</span>
           </h1>
         <div
-          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] rounded-full overflow-hidden border-2 border-neutral-300 shadow-sm dark:border-neutral-700 min-[601px]:mt-2 min-[601px]:ml-10 min-[601px]:mb-4 min-[601px]:mr-6 max-[600px]:float-none max-[600px]:mx-auto max-[600px]:mt-6 max-[600px]:mb-8 max-[600px]:w-[160px] max-[600px]:min-w-[160px] max-[600px]:max-w-[160px]"
+          className="float-right mb-4 w-[190px] min-w-[190px] max-w-[190px] shadow-sm rotate-1 [clip-path:polygon(5%_10%,15%_0%,40%_5%,65%_0%,90%_8%,100%_20%,95%_45%,100%_70%,88%_95%,65%_100%,22.5%_100%,0%_80%,5%_55%,0%_30%)] min-[601px]:mt-2 min-[601px]:ml-10 min-[601px]:mb-4 min-[601px]:mr-6 max-[600px]:float-none max-[600px]:mx-auto max-[600px]:mt-6 max-[600px]:mb-8 max-[600px]:w-[160px] max-[600px]:min-w-[160px] max-[600px]:max-w-[160px]"
         >
-          <div className="relative w-full aspect-[9.2/10] overflow-hidden rounded-full">
-            <Image
-              src="/carolyn-wang.jpg"
-              alt="Carolyn Wang"
-              fill
-              className="object-cover object-[center_62%]"
-              priority
-            />
-          </div>
+          <Image
+            src="/carolyn-wang.jpg"
+            alt="Carolyn Wang"
+            width={500}
+            height={500}
+            className="w-full h-auto object-cover object-[0%_75%]"
+            priority
+          />
         </div>
           <p>
             i&apos;m an undergraduate @{' '}
