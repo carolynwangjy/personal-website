@@ -116,6 +116,11 @@ const courses: CourseSection[] = [
           topic: 'disc08: convergence, approximation',
           video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa9sA7c_KW-WwRudeMkxQZu_&si=zCLLkbY4A2pW07rk'}],
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/1XNAVahEf4jiRfGyUCr-x4XGSSseohf2M/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/12OuB5CcxfG4Ega4_BREMC1cyijm0FUd7/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/1X6DD1NSvbFoIMfiPy-MMNMQM6U9mtD9q/view?usp=drive_link'}],
+        },        
+        {
+          topic: 'disc09: back propogation, cnns',
+          video: [{label: 'video', url: 'https://www.youtube.com/playlist?list=PL-ysCubq-Sa8dQDvhNbABwFT3JWWBTRAW'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1Aa40Z2Ufa91YBNAlhfwsHG2JCT23T2SA/view'}, {label: 'solution', url: 'https://drive.google.com/file/d/16n2T86Vx2bneCubkQ7b52MV8c8wwFUyF/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/16n2T86Vx2bneCubkQ7b52MV8c8wwFUyF/view'}],
         },
       ],
     },
