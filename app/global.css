@@ -437,7 +437,7 @@ html:not(.dark) .hobbies-page .prose h6 a:hover {
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-bold;
 }
 
 .prose ul {

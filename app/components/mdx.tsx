@@ -197,6 +197,14 @@ function createHeading(level) {
   return Heading
 }
 
+function SectionHeader({ children }) {
+  return (
+    <div className="text-2xl font-semibold mt-8 mb-0 text-neutral-900 dark:text-neutral-100">
+      {children}
+    </div>
+  )
+}
+
 function NotesLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <div className="mt-3 mb-1 pl-4">
@@ -230,6 +238,7 @@ let components = {
   Table,
   PullQuote,
   LargeQuote,
+  SectionHeader,
   Collapsible,
   NotesLink,
 }
