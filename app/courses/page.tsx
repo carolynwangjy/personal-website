@@ -43,8 +43,8 @@ export default function CoursesPage() {
       courses: [
         'cs 186: database systems',
         'cdss 94: building thoughtful ai systems (notes)',
-        'legalst 106wi: philosophy of law (paper)',
-        'legalst 199: writing intensive seminar',
+        'legalst 106wi: philosophy of law',
+        'legalst 199: writing intensive seminar (paper)',
         'cs 199: research (sky lab)',
         'cs 197: 189 course staff - tutor (materials)',
       ],
@@ -155,7 +155,7 @@ export default function CoursesPage() {
                         <li key={idx}><span>
                           {parts[0]}
                           <a
-                            href="https://drive.google.com/file/d/1KArZevFmUtyeSp__GnQg0kmts45s8IkR/view?usp=sharing"
+                            href="https://drive.google.com/file/d/16pYakjV4H3pjYCi_RfuHE88-YzeAn4hb/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={linkClass}
