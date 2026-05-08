@@ -122,6 +122,21 @@ const courses: CourseSection[] = [
           video: [{label: 'video', url: 'https://www.youtube.com/playlist?list=PL-ysCubq-Sa8dQDvhNbABwFT3JWWBTRAW'}],
           pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1Aa40Z2Ufa91YBNAlhfwsHG2JCT23T2SA/view'}, {label: 'solution', url: 'https://drive.google.com/file/d/16n2T86Vx2bneCubkQ7b52MV8c8wwFUyF/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/1R3WzVrljeXRbPMphABDOwS0NDg72XCEE/view?usp=drive_link'}],
         },
+        {
+          topic: 'disc10: transformers, attention',
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa8nZKoYa7TbLsNlBgXQ3xQR&si=a8Fq28Su6ehuIIda'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/16H_chNl76tHPrRUkf6T1G0pQaM1W0eKm/view'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/1QV5d9Mr2XAaYv7QAT_6ttZ37CKBRCdfu/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/1pjI2ZbnE8mQNGqJ2GlmeZ6LexqrBIfrN/view?usp=drive_link'}],
+        },
+        {
+          topic: 'disc11: positional encoding, kv caching',
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa9h8mIf8s2L-vL68rx8_hx8&si=JXS8O-n86Jxr5CJg'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/11WJr0gQUuMON1ub34DSUhSMsDl8GuM06/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/11KGelwaG_trTVtxBHPgkUFrG_BhlZE7E/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/17DaygICVtmFdSdRCaaEJ-JpRB_gFthMJ/view?usp=drive_link'}],
+        },
+        {
+          topic: 'disc12: finetuning, generative models',
+          video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa-e6UXPAnaIlmaHf_Wv3HPX&si=Gnm3eYuw6bC5brGQ'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/d/1DWLHmY5RVWolf0KVyPDFDfpouBiwALuz/view'}, {label: 'solution', url: 'https://drive.google.com/file/d/1iT9kueFCRKrU47y0eKiIEzMJteH4zPJD/view'}, {label: 'notes', url: 'https://drive.google.com/file/d/17y88D1csn6EWcncrAsZ0Tqte9VsT0wN7/view?usp=drive_link'}],
+        },
       ],
     },
     {
