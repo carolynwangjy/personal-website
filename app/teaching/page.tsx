@@ -135,7 +135,7 @@ const courses: CourseSection[] = [
         {
           topic: 'disc11: positional encoding, kv caching',
           video: [{label: 'video', url: 'https://youtube.com/playlist?list=PL-ysCubq-Sa9h8mIf8s2L-vL68rx8_hx8&si=JXS8O-n86Jxr5CJg'}],
-          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/11WJr0gQUuMON1ub34DSUhSMsDl8GuM06/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/11KGelwaG_trTVtxBHPgkUFrG_BhlZE7E/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/17DaygICVtmFdSdRCaaEJ-JpRB_gFthMJ/view?usp=drive_link'}],
+          pdfs: [{label: 'blank', url: 'https://drive.google.com/file/u/1/d/11WJr0gQUuMON1ub34DSUhSMsDl8GuM06/view?usp=drive_link'}, {label: 'solution', url: 'https://drive.google.com/file/u/1/d/11KGelwaG_trTVtxBHPgkUFrG_BhlZE7E/view?usp=drive_link'}, {label: 'notes', url: 'https://drive.google.com/file/d/1xP3YdonJTGlFpjxJ56KoIv9dj7iUa-r7/view?usp=drive_link'}],
         },
         {
           topic: 'disc12: finetuning, generative models',
