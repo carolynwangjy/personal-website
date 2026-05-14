@@ -39,6 +39,14 @@ export default function CoursesPage() {
 
   const semesters = [
     {
+      term: 'fall 2026',
+      courses: [
+        'cs 182: deep neural networks',
+        'cs 168: internet architecture & computer networking',
+        'poleconc160: origins of capitalism',
+      ],
+    },
+    {
       term: 'spring 2026',
       courses: [
         'cs 186: database systems',
