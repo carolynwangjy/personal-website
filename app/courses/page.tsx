@@ -43,7 +43,7 @@ export default function CoursesPage() {
       courses: [
         'cs 182: deep neural networks',
         'cs 168: internet architecture & computer networking',
-        'poleconc160: origins of capitalism',
+        'polecon c160: origins of capitalism',
       ],
     },
     {
