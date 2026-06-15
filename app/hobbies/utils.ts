@@ -48,7 +48,8 @@ export function getHobbySections(): HobbySection[] {
       title: metadata.title || id,
       id: metadata.id || id,
       content,
+      hidden: metadata.hidden === 'true',
     }
-  })
+  }).filter((section) => !section.hidden)
 }
 
