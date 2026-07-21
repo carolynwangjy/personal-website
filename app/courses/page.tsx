@@ -42,6 +42,7 @@ export default function CoursesPage() {
       term: 'fall 2026',
       courses: [
         'cs 182: deep neural networks',
+        'cs 168: internet architecture & networking',
         'english 143a: advanced short fiction workshop',
         'polecon c160: origins of capitalism',
       ],
