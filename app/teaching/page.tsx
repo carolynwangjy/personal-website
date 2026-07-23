@@ -74,7 +74,7 @@ const courses: CourseSection[] = [
       id: 'cs189',
       shortName: 'cs189',
       title: 'CS 189: Introduction to Machine Learning (Spring 2026)',
-      subtitle: 'Course Website: [eecs189.org](https://eecs189.org)',
+      subtitle: 'Course Website: [eecs189.org](https://eecs189.org)\n[Discussion Videos](https://www.youtube.com/@cs189-sp26/playlists)',
       columnHeaders: ['topic', 'video', 'pdfs'],
       materials: [
         {
