@@ -2,16 +2,32 @@
 
 import React, { useState, useMemo, useCallback } from 'react'
 
+// Supports [text](url) links plus ***bold italic***, **bold**, and *italic* spans
 function parseLinks(text: string): React.ReactNode {
-  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+  const tokenRegex = /\[([^\]]+)\]\(([^)]+)\)|\*\*\*([^*]+)\*\*\*|\*\*([^*]+)\*\*|\*([^*]+)\*/g
   const parts: React.ReactNode[] = []
   let lastIndex = 0
   let match
   let key = 0
 
-  while ((match = linkRegex.exec(text)) !== null) {
+  while ((match = tokenRegex.exec(text)) !== null) {
     if (match.index > lastIndex) {
       parts.push(text.substring(lastIndex, match.index))
+    }
+    if (match[3] !== undefined) {
+      parts.push(<strong key={key++}><em>{match[3]}</em></strong>)
+      lastIndex = tokenRegex.lastIndex
+      continue
+    }
+    if (match[4] !== undefined) {
+      parts.push(<strong key={key++}>{match[4]}</strong>)
+      lastIndex = tokenRegex.lastIndex
+      continue
+    }
+    if (match[5] !== undefined) {
+      parts.push(<em key={key++}>{match[5]}</em>)
+      lastIndex = tokenRegex.lastIndex
+      continue
     }
     const linkText = match[1]
     const linkUrl = match[2]
@@ -26,7 +42,7 @@ function parseLinks(text: string): React.ReactNode {
         {linkText}
       </a>
     )
-    lastIndex = linkRegex.lastIndex
+    lastIndex = tokenRegex.lastIndex
   }
 
   if (lastIndex < text.length) {
@@ -57,11 +73,15 @@ type NacloMaterial = {
 
 type CourseSection = {
   id: string
+  // Sections sharing a filterKey (defaults to id) collapse into one filter chip
+  filterKey?: string
   shortName: string
   title: string
   subtitle?: string
-  columnHeaders: string[]
-  materials: Material[] | NacloMaterial[]
+  // Rendered below the subtitle in the same bordered card as the materials tables
+  note?: string
+  columnHeaders?: string[]
+  materials?: Material[] | NacloMaterial[]
 }
 
 // Map header names to NacloMaterial property names — defined once outside component
@@ -71,10 +91,18 @@ const NACLO_HEADER_TO_PROP: Record<string, keyof NacloMaterial> = {
 
 const courses: CourseSection[] = [
     {
+      id: 'fa26',
+      filterKey: 'cs189',
+      shortName: 'cs189',
+      title: 'CS 189: Introduction to Machine Learning (Fall 2026)',
+      subtitle: 'Office Hours: Wed 10-11am (Gateway 1040 Bear)\nCourse Website: [eecs189.org/fa26/](https://eecs189.org/fa26/)',
+      note: '**note:** i\'m leading all cs189 course logistics for this semester, so most of my resources will be posted on ed! see below for my materials from previous semesters :)',
+    },
+    {
       id: 'cs189',
       shortName: 'cs189',
       title: 'CS 189: Introduction to Machine Learning (Spring 2026)',
-      subtitle: 'Course Website: [eecs189.org](https://eecs189.org)\nDiscussion Videos: [youtube.com/@cs189-sp26](https://www.youtube.com/@cs189-sp26/playlists)',
+      subtitle: 'Course Website: [eecs189.org/sp26/](https://eecs189.org/sp26/)\nDiscussion Videos: [youtube.com/@cs189-sp26](https://www.youtube.com/@cs189-sp26/playlists)',
       columnHeaders: ['topic', 'video', 'pdfs'],
       materials: [
         {
@@ -319,8 +347,18 @@ export default function TeachingPage() {
   }, [])
   const handleSortPopularity = useCallback(() => setSortMode('popularity'), [])
 
+  // One chip per filterKey, in first-appearance order
+  const courseFilters = useMemo(() => {
+    const seen = new Map<string, string>()
+    for (const c of courses) {
+      const key = c.filterKey ?? c.id
+      if (!seen.has(key)) seen.set(key, c.shortName)
+    }
+    return Array.from(seen, ([key, shortName]) => ({ key, shortName }))
+  }, [])
+
   const visibleCourses = useMemo(
-    () => courses.filter((c) => selectedCourse === null || c.id === selectedCourse),
+    () => courses.filter((c) => selectedCourse === null || (c.filterKey ?? c.id) === selectedCourse),
     [selectedCourse]
   )
 
@@ -342,28 +380,30 @@ export default function TeachingPage() {
         >
           all
         </button>
-        {courses.map((course) => (
-          <React.Fragment key={course.id}>
+        {courseFilters.map((filter) => (
+          <React.Fragment key={filter.key}>
             <span>|</span>
             <button
               type="button"
-              onClick={() => setSelectedCourse(selectedCourse === course.id ? null : course.id)}
+              onClick={() => setSelectedCourse(selectedCourse === filter.key ? null : filter.key)}
               className={[
                 'px-1 rounded transition-colors underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em]',
-                selectedCourse === course.id
+                selectedCourse === filter.key
                   ? 'text-neutral-900 dark:text-neutral-100 writing-chip-active'
                   : 'text-neutral-700 dark:text-neutral-300 writing-chip',
               ].join(' ')}
             >
-              {course.shortName}
+              {filter.shortName}
             </button>
           </React.Fragment>
         ))}
       </div>
 
       {visibleCourses.map((course, courseIdx) => {
+        const materials = course.materials ?? []
+        const columnHeaders = course.columnHeaders ?? []
         const sortedMaterials = course.id === 'naclo'
-          ? [...course.materials].sort((a, b) => {
+          ? [...materials].sort((a, b) => {
               const aItem = a as NacloMaterial
               const bItem = b as NacloMaterial
               if (sortMode === 'popularity') {
@@ -373,7 +413,15 @@ export default function TeachingPage() {
                 ? parseInt(bItem.year) - parseInt(aItem.year)
                 : parseInt(aItem.year) - parseInt(bItem.year)
             })
-          : course.materials
+          : materials
+
+        const subtitleList = course.subtitle ? (
+          <ul className="text-[var(--text-body)] text-neutral-700 dark:text-neutral-300 list-disc pl-5 space-y-0.5">
+            {course.subtitle.split('\n').map((line, idx) => (
+              <li key={idx}>{parseLinks(line.trim())}</li>
+            ))}
+          </ul>
+        ) : null
 
         return (
         <div
@@ -382,12 +430,13 @@ export default function TeachingPage() {
         >
           <div>
             <h2 className="text-2xl font-semibold tracking-tight">{course.title}</h2>
-            {course.subtitle && (
-              <ul className="text-[var(--text-body)] text-neutral-700 dark:text-neutral-300 mt-1 list-disc pl-5 space-y-0.5">
-                {course.subtitle.split('\n').map((line, idx) => (
-                  <li key={idx}>{parseLinks(line.trim())}</li>
-                ))}
-              </ul>
+            {subtitleList && <div className="mt-1">{subtitleList}</div>}
+            {course.note && (
+              <div className="teaching-card border border-[#c8a0a0] bg-white/80 rounded-xl dark:border-[#5a2020] dark:bg-transparent overflow-hidden mt-2 px-4 py-3">
+                <p className="text-[var(--text-body)] text-neutral-700 dark:text-neutral-300">
+                  {parseLinks(course.note)}
+                </p>
+              </div>
             )}
             {course.id === 'naclo' && (
               <div className="text-[var(--text-body)] text-neutral-800 dark:text-neutral-200 flex flex-wrap items-center gap-2 mt-3">
@@ -429,13 +478,13 @@ export default function TeachingPage() {
               </div>
             )}
           </div>
-          {sortedMaterials.length > 0 ? (
+          {sortedMaterials.length > 0 && (
             <div className="teaching-card border border-[#c8a0a0] bg-white/80 rounded-xl dark:border-[#5a2020] dark:bg-transparent overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full teaching-table">
                   <thead>
                     <tr className="border-b border-[#c8a0a0] dark:border-[#5a2020]">
-                      {course.columnHeaders.map((header, idx) => (
+                      {columnHeaders.map((header, idx) => (
                         <th key={idx} className="px-4 py-3 text-left text-xl font-semibold tracking-tight">
                           {header}
                         </th>
@@ -448,7 +497,7 @@ export default function TeachingPage() {
                         key={idx}
                         className="border-b border-[#c8a0a0] dark:border-[#5a2020] last:border-b-0"
                       >
-                        {course.columnHeaders.map((header) => {
+                        {columnHeaders.map((header) => {
                           if (course.id === 'naclo') {
                             const nacloItem = item as NacloMaterial
                             const propName = NACLO_HEADER_TO_PROP[header] || header
@@ -591,8 +640,6 @@ export default function TeachingPage() {
                 </table>
               </div>
             </div>
-          ) : (
-            <p className="text-neutral-600 dark:text-neutral-400">Coming soon.</p>
           )}
         </div>
         )
