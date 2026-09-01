@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 export type FilterOption = { id: string; short: string }
 
@@ -16,14 +16,27 @@ export function CourseFilter({
   children: React.ReactNode[]
 }) {
   const [active, setActive] = useState<string | null>(null)
+  const controls = useRef<HTMLParagraphElement>(null)
+
+  /**
+   * Filtering can shrink the page by thousands of pixels, and the browser
+   * clamps the scroll position to the new height — which dumps you at the
+   * bottom. Pull the controls back into view when they've scrolled off.
+   */
+  function choose(next: string | null) {
+    setActive(next)
+    if (controls.current && controls.current.getBoundingClientRect().top < 0) {
+      controls.current.scrollIntoView({ block: 'start' })
+    }
+  }
 
   return (
     <>
-      <p className="filter">
+      <p className="filter" ref={controls}>
         filter by{' '}
         <button
           type="button"
-          onClick={() => setActive(null)}
+          onClick={() => choose(null)}
           aria-pressed={active === null}
         >
           all
@@ -35,7 +48,7 @@ export function CourseFilter({
             </span>
             <button
               type="button"
-              onClick={() => setActive(active === option.id ? null : option.id)}
+              onClick={() => choose(active === option.id ? null : option.id)}
               aria-pressed={active === option.id}
             >
               {option.short}

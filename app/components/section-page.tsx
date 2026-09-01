@@ -146,7 +146,6 @@ function Tabs({ sections, current }: { sections: Section[]; current: SectionId }
           )}
           <Link
             href={section.href}
-            scroll={false}
             aria-current={section.id === current ? 'page' : undefined}
           >
             {section.label}
