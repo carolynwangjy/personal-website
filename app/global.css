@@ -61,6 +61,15 @@ h1 {
 
 p { margin: 0 0 1em; }
 
+/* markdown `---` divider. tailwind's preflight sets a border width but no
+   border-style, so without this an <hr> renders as nothing */
+hr {
+  height: 0;
+  margin: 1.6em 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
 em { font-style: italic; }
 
 a {
