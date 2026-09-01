@@ -307,11 +307,6 @@ footer .links svg { display: block; }
 .prose > :first-child { margin-top: 0; }
 .prose > :last-child { margin-bottom: 0; }
 .prose p { margin: 0 0 1.1em; }
-
-/* short stories breathe: roughly an extra blank line between paragraphs.
-   Leading tabs in the mdx source are stripped by the parser, so this has to
-   come from css */
-.prose.story p { margin-bottom: 2.2em; }
 .prose h1 { font-size: 22px; margin: 1.8em 0 0.5em; }
 .prose h2,
 .prose h3,
