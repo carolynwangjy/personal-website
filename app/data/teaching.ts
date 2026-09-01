@@ -309,7 +309,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'junk mail (part 1)',
+        text: 'junk mail: part 1',
         meta: '2021, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/apUjOpDGN5s?si=KTOiM_v-gLIlGGkk&t=0' },
@@ -318,7 +318,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'junk mail (part 2)',
+        text: 'junk mail: part 2',
         meta: '2021, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/Z2tqvwqPeBI?si=WGUiIBGoGjpizUNS&t=0' },
@@ -327,7 +327,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'set in stone (part 1)',
+        text: 'set in stone: part 1',
         meta: '2020, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/5mrZbv3OMHc?si=EiIKjQSwIPmmPE6n&t=0' },
@@ -336,7 +336,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'set in stone (part 2)',
+        text: 'set in stone: part 2',
         meta: '2020, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/pQrb64Dkku8?si=HULTukl6RVSSBs9T&t=0' },
@@ -345,7 +345,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'set in stone (part 3)',
+        text: 'set in stone: part 3',
         meta: '2020, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/v3lUbchwCw0?si=ZH2JN3y4jDtHXO6e&t=0' },
@@ -354,7 +354,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'chess tournament (part 1)',
+        text: 'chess tournament: part 1',
         meta: '2016, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/4d35qAkGvQo?si=0G0aM4i-kS6c8SC8&t=0' },
@@ -363,7 +363,7 @@ export const teaching: Group[] = [
         ],
       },
       {
-        text: 'chess tournament (part 2)',
+        text: 'chess tournament: part 2',
         meta: '2016, round 1',
         links: [
           { label: 'video', url: 'https://youtu.be/c18R-9w7ldc?si=dedewZrNbG-3ZDl0&t=0' },
