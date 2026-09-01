@@ -118,6 +118,7 @@ const CONTENT: Record<SectionId, React.ReactNode> = {
   teaching: <TeachingList />,
   experience: <GroupedEntries groups={experience} />,
   service: <GroupedEntries groups={service} />,
+  hobbies: null,
 }
 
 function Tabs({ sections, current }: { sections: Section[]; current: SectionId }) {
