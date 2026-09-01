@@ -8,7 +8,7 @@
   --under:   #a3a3a3;   /* thin grey link underline */
   --wash:    #f5dada;   /* pink hover wash */
   --wash-2:  #eacaca;   /* pink, one shade deeper (pressed tab) */
-  --wash-3:  #fcf1f1;   /* pink, lighter than --wash (the tab you're on) */
+  --wash-3:  #f8e4e4;   /* pink, lighter than --wash (the tab you're on) */
   --rule:    #c8a0a0;   /* dusty-rose rule under the tabs */
   --size:    15px;      /* nudge this one number to rescale everything */
 }
@@ -20,7 +20,7 @@
     --under:   #7a7466;
     --wash:    rgba(180, 120, 50, 0.22);
     --wash-2:  rgba(200, 140, 60, 0.32);
-    --wash-3:  rgba(180, 120, 50, 0.10);
+    --wash-3:  rgba(180, 120, 50, 0.16);
     --rule:    #5a2020;
   }
 }
