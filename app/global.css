@@ -155,8 +155,9 @@ section h3 {
 ul { list-style: none; padding: 0; margin: 0 0 1em; }
 li {
   position: relative;
-  margin: 0 0 0.6em;
+  margin: 0 0 0.25em;
   padding-left: 1.4em;
+  line-height: 1.4;
 }
 /* absolute so the marker sits in the gutter whether the item's content is
    inline or wrapped in block-level <p>s, as loose markdown lists are */
@@ -170,7 +171,7 @@ li::before {
 li:last-child { margin-bottom: 0; }
 
 /* nested lists take a plain dash so the depth reads */
-li > ul { margin: 0.3em 0 0; }
+li > ul { margin: 0.15em 0 0; }
 li > ul > li::before { content: "-"; }
 
 /* an item heading a nested list leads with its own mark (📍), so no ~ */
@@ -324,7 +325,7 @@ footer .links svg { display: block; }
 .prose ol li::before { content: none; }
 
 /* loose lists wrap each item in a <p>; keep them from double-spacing */
-.prose li > p { margin: 0 0 0.5em; }
+.prose li > p { margin: 0 0 0.35em; }
 .prose li > :last-child { margin-bottom: 0; }
 
 .prose strong { font-weight: 700; }
