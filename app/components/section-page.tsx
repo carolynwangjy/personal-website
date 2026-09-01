@@ -10,7 +10,6 @@ import { inline } from 'app/lib/inline'
 import { getHobbies } from 'app/lib/hobbies'
 import { getIntro } from 'app/lib/intro'
 import { getSections, type Section, type SectionId } from 'app/lib/sections'
-import { courses } from 'app/data/courses'
 import { teaching, type Item } from 'app/data/teaching'
 import { experience, service, type Group } from 'app/data/experience'
 
@@ -48,23 +47,6 @@ function Resources({ item }: { item: Item }) {
           ) : (
             <span className="rule">{link.label}</span>
           )}
-        </React.Fragment>
-      ))}
-    </>
-  )
-}
-
-function CourseList() {
-  return (
-    <>
-      {courses.map((semester) => (
-        <React.Fragment key={semester.term}>
-          <h2>{semester.term}</h2>
-          <ul>
-            {semester.courses.map((course, i) => (
-              <li key={i}>{inline(course)}</li>
-            ))}
-          </ul>
         </React.Fragment>
       ))}
     </>
@@ -148,7 +130,6 @@ const CONTENT: Record<SectionId, React.ReactNode> = {
   fiction: <PostList collection="fiction" />,
   blog: <PostList collection="blog" />,
   teaching: <TeachingList />,
-  courses: <CourseList />,
   experience: <GroupedEntries groups={experience} />,
   service: <GroupedEntries groups={service} />,
   hobbies: <HobbyList />,
