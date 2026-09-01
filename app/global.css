@@ -98,8 +98,8 @@ a:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 6px;
-  margin-top: 2px;
+  border-radius: 50%;
+  margin-top: 44px;   /* aligns with the first paragraph, not the h1 */
 }
 
 /* tabs */
@@ -135,8 +135,19 @@ section h2 {
 section h2:first-child { margin-top: 0; }
 
 ul { list-style: none; padding: 0; margin: 0 0 1em; }
-li { margin: 0 0 0.45em; padding-left: 1.25em; text-indent: -1.25em; }
-li::before { content: "~ "; color: var(--muted); }
+li {
+  margin: 0 0 0.6em;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+}
+li::before {
+  content: "~";
+  color: var(--muted);
+  display: inline-block;
+  width: 1.4em;      /* exactly fills the indent, so text aligns on every line */
+  text-indent: 0;
+}
+li:last-child { margin-bottom: 0; }
 li .meta { color: var(--muted); }
 
 /* footer */
@@ -155,7 +166,7 @@ footer .links a { margin-right: 0.7em; }
 @media (max-width: 480px) {
   main { padding-top: 8vh; }
   .intro { flex-direction: column-reverse; gap: 16px; }
-  .intro img { width: 96px; height: 96px; }
+  .intro img { width: 96px; height: 96px; margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
