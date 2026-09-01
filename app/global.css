@@ -98,7 +98,7 @@ a:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 18%;   /* rounded square: 50% = circle, 0 = sharp corners */
   margin-top: 44px;   /* aligns with the first paragraph, not the h1 */
 }
 
