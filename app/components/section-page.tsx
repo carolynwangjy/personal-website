@@ -11,7 +11,7 @@ import { getHobbies } from 'app/lib/hobbies'
 import { getIntro } from 'app/lib/intro'
 import { getSections, type Section, type SectionId } from 'app/lib/sections'
 import { teaching, type Item } from 'app/data/teaching'
-import { experience, service, type Group } from 'app/data/experience'
+import { experience, type Group } from 'app/data/experience'
 
 /** `2022-11-11` → `nov 2022` */
 function monthYear(publishedAt: string) {
@@ -131,7 +131,6 @@ const CONTENT: Record<SectionId, React.ReactNode> = {
   blog: <PostList collection="blog" />,
   teaching: <TeachingList />,
   experience: <GroupedEntries groups={experience} />,
-  service: <GroupedEntries groups={service} />,
   hobbies: <HobbyList />,
 }
 

@@ -11,7 +11,7 @@ export type Entry = {
 export type Group = { heading: string; entries: Entry[] }
 
 
-/** the experience page: industry, research, teaching — newest first within each group */
+/** industry, research, teaching, service, writing — newest first within each group */
 export const experience: Group[] = [
   {
     heading: "industry",
@@ -137,12 +137,8 @@ export const experience: Group[] = [
       },
     ],
   },
-]
-
-/** the service page: unpaid community and editorial roles — newest first within each group */
-export const service: Group[] = [
   {
-    heading: "community",
+    heading: "service",
     entries: [
       {
         role: "undergrad representative",
