@@ -180,28 +180,6 @@ footer .links a {
 footer .links a:hover, footer .links a:focus-visible { background: var(--wash); }
 footer .links svg { display: block; }
 
-/* sort control above the post lists */
-.sort { color: var(--muted); margin: 0 0 0.9em; }
-.sort button {
-  font: inherit;
-  color: var(--ink);
-  background: none;
-  border: 0;
-  padding: 0 4px;
-  cursor: pointer;
-  border-radius: 3px;
-  text-decoration: underline;
-  text-decoration-thickness: 0.5px;
-  text-underline-offset: 2px;
-  text-decoration-color: var(--under);
-  transition: background-color 120ms ease;
-}
-.sort button:hover, .sort button:focus-visible {
-  background: var(--wash);
-  outline: none;
-}
-.sort button:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
-@media (prefers-reduced-motion: reduce) { .sort button { transition: none; } }
 
 @media (max-width: 480px) {
   main { padding-top: 8vh; }

@@ -2,27 +2,32 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { CustomMDX } from 'app/components/mdx'
-import { PostList, type PostEntry } from 'app/components/post-list'
 import { getPosts, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
 import { getIntro } from 'app/lib/intro'
 import { getSections, type Section, type SectionId } from 'app/lib/sections'
 import { teaching, type Item } from 'app/data/teaching'
-import { work } from 'app/data/work'
+import { experience, service, type Group } from 'app/data/experience'
 
 /** `2022-11-11` → `nov 2022` */
 function monthYear(publishedAt: string) {
   return formatDate(publishedAt.slice(0, 7)).toLowerCase()
 }
 
-function postEntries(collection: Collection): PostEntry[] {
-  return getPosts(collection).map((post) => ({
-    slug: post.slug,
-    title: post.metadata.displayTitle || post.metadata.title,
-    date: monthYear(post.metadata.publishedAt),
-    time: new Date(post.metadata.publishedAt).getTime(),
-  }))
+function PostList({ collection }: { collection: Collection }) {
+  return (
+    <ul>
+      {getPosts(collection).map((post) => (
+        <li key={post.slug}>
+          <Link href={`/writing/${post.slug}`}>
+            {post.metadata.displayTitle || post.metadata.title}{' '}
+            <span className="meta">({monthYear(post.metadata.publishedAt)})</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 function TeachingItem({ item }: { item: Item }) {
@@ -68,30 +73,39 @@ function TeachingList() {
   )
 }
 
-function WorkList() {
+/** industry / research / teaching, or community / writing — an h2 per group */
+function GroupedEntries({ groups }: { groups: Group[] }) {
   return (
-    <ul>
-      {work.map((entry, i) => (
-        <li key={i}>
-          {entry.url ? (
-            <a href={entry.url} target="_blank" rel="noopener noreferrer">
-              {entry.org}
-            </a>
-          ) : (
-            entry.org
-          )}{' '}
-          <span className="meta">({entry.dates})</span>. {inline(entry.line)}
-        </li>
+    <>
+      {groups.map((group) => (
+        <React.Fragment key={group.heading}>
+          <h2>{group.heading}</h2>
+          <ul>
+            {group.entries.map((entry, i) => (
+              <li key={i}>
+                {entry.url ? (
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                    {entry.org}
+                  </a>
+                ) : (
+                  entry.org
+                )}{' '}
+                <span className="meta">({entry.dates})</span>. {inline(entry.line)}
+              </li>
+            ))}
+          </ul>
+        </React.Fragment>
       ))}
-    </ul>
+    </>
   )
 }
 
 const CONTENT: Record<SectionId, React.ReactNode> = {
-  fiction: <PostList posts={postEntries('fiction')} />,
-  blog: <PostList posts={postEntries('blog')} />,
+  fiction: <PostList collection="fiction" />,
+  blog: <PostList collection="blog" />,
   teaching: <TeachingList />,
-  work: <WorkList />,
+  experience: <GroupedEntries groups={experience} />,
+  service: <GroupedEntries groups={service} />,
 }
 
 function Tabs({ sections, current }: { sections: Section[]; current: SectionId }) {

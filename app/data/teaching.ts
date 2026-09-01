@@ -13,20 +13,6 @@ export const teaching: Group[] = [
   {
     heading: 'cs 189 / 289a: introduction to machine learning',
     items: [
-      {
-        text: 'lead teaching assistant',
-        meta: 'fall 2026 – present',
-      },
-      {
-        text: 'running course logistics for 400+ ml students :), wrangling spreadsheets and hounding the rest of course staff',
-      },
-      {
-        text: 'tutor (video lead)',
-        meta: 'spring 2026 – fall 2026',
-      },
-      {
-        text: 'became a youtuber for 900+ students :D (see the [cs189 channel](https://www.youtube.com/@cs189-sp26)); pimental proctoring at 90 degrees, or opera wordle dinosaur game?',
-      },
       { text: 'office hours: wed 10-11am (gateway 1040 bear)', meta: 'fall 2026' },
       {
         text: 'course website',
@@ -174,12 +160,6 @@ export const teaching: Group[] = [
   {
     heading: 'cs 61a: structure & interpretation of computer programs',
     items: [
-      { text: 'lead teaching assistant', meta: 'fall 2025' },
-      {
-        text: 'ran logistics for [cs scholars](https://eecs.berkeley.edu/cs-scholars/)! (i love my students <3); received highest TA ratings in lab and discussion for 61a’s fa25 iteration; 4.7/5 teaching effectiveness',
-      },
-      { text: 'tutor', meta: 'fall 2024 – spring 2025' },
-      { text: 'learned how to teach, how to critique, and how to learn; met and befriended the great john denero' },
       { text: 'lab: tues 5-6:30pm (soda 330)', meta: 'fall 2025' },
       { text: 'discussion: thurs 12:30-2pm (wheeler 106)', meta: 'fall 2025' },
       { text: 'office hours: wed 7-8pm (warren 101B)', meta: 'fall 2025' },
@@ -400,16 +380,6 @@ export const teaching: Group[] = [
           { label: 'solution', url: 'https://naclo.org/resources/problems/2007/N2007-AS.pdf' },
         ],
       },
-    ],
-  },
-  {
-    heading: 'other',
-    items: [
-      {
-        text: 'senior mentor, [computer science mentors](https://csmentors.studentorg.berkeley.edu/#/)',
-        meta: 'spring 2024 – fall 2024',
-      },
-      { text: 'learned how to teach teachers, learned how to teach students' },
     ],
   },
 ]
