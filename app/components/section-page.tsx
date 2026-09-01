@@ -33,16 +33,10 @@ function PostList({ collection }: { collection: Collection }) {
   )
 }
 
-function Resources({ item }: { item: Item }) {
+function Links({ links }: { links?: Item['links'] }) {
   return (
     <>
-      {item.meta && (
-        <>
-          <span className="meta">{item.meta}</span>
-          {item.links && ' '}
-        </>
-      )}
-      {item.links?.map((link, i) => (
+      {links?.map((link, i) => (
         <React.Fragment key={link.label}>
           {i > 0 && <span className="rule"> / </span>}
           {link.url ? (
@@ -54,6 +48,21 @@ function Resources({ item }: { item: Item }) {
           )}
         </React.Fragment>
       ))}
+    </>
+  )
+}
+
+/** for the bullet branch: the meta reads inline, before the links */
+function Resources({ item }: { item: Item }) {
+  return (
+    <>
+      {item.meta && (
+        <>
+          <span className="meta">{item.meta}</span>
+          {item.links && ' '}
+        </>
+      )}
+      <Links links={item.links} />
     </>
   )
 }
@@ -80,9 +89,12 @@ function TeachingList() {
             <div className="rows">
               {group.items.map((item, i) => (
                 <div className="row" key={i}>
-                  <span className="row-topic">{inline(item.text)}</span>
+                  <span className="row-topic">
+                    {inline(item.text)}
+                    {item.meta && <span className="meta"> ({item.meta})</span>}
+                  </span>
                   <span className="row-links">
-                    <Resources item={item} />
+                    <Links links={item.links} />
                   </span>
                 </div>
               ))}
