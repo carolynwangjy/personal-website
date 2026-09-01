@@ -134,17 +134,17 @@ nav[aria-label="sections"] .sep { color: var(--muted); user-select: none; }
 section { margin: 0 0 3em; }
 section:last-of-type { margin-bottom: 0; }
 
-section h2 {
+section > h2 {
   font-size: var(--size);
   font-weight: 400;
   font-style: italic;
   color: var(--muted);
   margin: 1.5em 0 0.4em;
 }
-section h2:first-child { margin-top: 0; }
+section > h2:first-child { margin-top: 0; }
 
 /* sub-headings inside a section's prose (hobbies: races, routes) */
-section h3 {
+section > h3 {
   font-size: var(--size);
   font-weight: 400;
   font-style: italic;
@@ -310,6 +310,8 @@ footer .links svg { display: block; }
   font-family: Georgia, "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", serif;
   font-size: var(--size);
   font-weight: 600;
+  font-style: italic;
+  color: var(--ink);
   margin: 1.8em 0 0.5em;
   line-height: 1.3;
 }

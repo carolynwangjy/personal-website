@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 
 export type FilterOption = { id: string; short: string }
 
@@ -19,14 +20,17 @@ export function CourseFilter({
   const controls = useRef<HTMLParagraphElement>(null)
 
   /**
-   * Filtering can shrink the page by thousands of pixels, and the browser
-   * clamps the scroll position to the new height — which dumps you at the
-   * bottom. Pull the controls back into view when they've scrolled off.
+   * Filtering changes the page height by thousands of pixels, and the browser
+   * re-clamps the scroll position, which yanks the page. Measure where the
+   * controls sit, apply the change synchronously, then scroll by the
+   * difference — so the row stays exactly where it was, before any paint.
    */
   function choose(next: string | null) {
-    setActive(next)
-    if (controls.current && controls.current.getBoundingClientRect().top < 0) {
-      controls.current.scrollIntoView({ block: 'start' })
+    const before = controls.current?.getBoundingClientRect().top
+    flushSync(() => setActive(next))
+    const after = controls.current?.getBoundingClientRect().top
+    if (before !== undefined && after !== undefined && after !== before) {
+      window.scrollBy(0, after - before)
     }
   }
 
