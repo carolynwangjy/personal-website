@@ -90,9 +90,10 @@ function GroupedEntries({ groups }: { groups: Group[] }) {
       {groups.map((group) => (
         <React.Fragment key={group.heading}>
           <h2>{group.heading}</h2>
-          <ul>
+          <ul className="entries">
             {group.entries.map((entry, i) => (
               <li key={i}>
+                {entry.role},{' '}
                 {entry.url ? (
                   <a href={entry.url} target="_blank" rel="noopener noreferrer">
                     {entry.org}
@@ -100,8 +101,7 @@ function GroupedEntries({ groups }: { groups: Group[] }) {
                 ) : (
                   entry.org
                 )}{' '}
-                <span className="meta">({entry.dates})</span>. {entry.role}.{' '}
-                {inline(entry.bullets.join('; '))}
+                <span className="meta">({entry.dates})</span>
               </li>
             ))}
           </ul>
@@ -130,7 +130,7 @@ function Tabs({ sections, current }: { sections: Section[]; current: SectionId }
             </span>
           )}
           <Link
-            href={section.href}
+            href={`${section.href}#top`}
             aria-current={section.id === current ? 'page' : undefined}
           >
             {section.label}
@@ -149,7 +149,7 @@ export function SectionPage({ current }: { current: SectionId }) {
 
   return (
     <>
-      <div className="intro">
+      <div className="intro" id="top">
         <div className="text">
           <CustomMDX source={intro.content} />
         </div>

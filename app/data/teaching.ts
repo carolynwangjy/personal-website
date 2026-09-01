@@ -17,24 +17,11 @@ export type Group = {
 export const teaching: Group[] = [
   {
     heading: 'cs 189 / 289a: introduction to machine learning',
-    items: [
-      { text: 'office hours: wed 10-11am (gateway 1040 bear)', meta: 'fall 2026' },
-      {
-        text: 'course website',
-        links: [{ label: 'eecs189.org/fa26/', url: 'https://eecs189.org/fa26/' }],
-      },
-      {
-        text: "**note:** i'm leading all cs189 course logistics for this semester, so most of my resources will be posted on ed! see below for my materials from previous semesters :)",
-      },
-    ],
-  },
-  {
-    heading: 'cs 189 discussion materials (spring 2026)',
     table: true,
     items: [
       {
         text: 'course website',
-        links: [{ label: 'eecs189.org/sp26/', url: 'https://eecs189.org/sp26/' }],
+        links: [{ label: 'eecs189.org', url: 'https://eecs189.org/' }],
       },
       {
         text: 'discussion videos',
@@ -165,17 +152,12 @@ export const teaching: Group[] = [
   },
   {
     heading: 'cs 61a: structure & interpretation of computer programs',
-    items: [
-      { text: 'lab: tues 5-6:30pm (soda 330)', meta: 'fall 2025' },
-      { text: 'discussion: thurs 12:30-2pm (wheeler 106)', meta: 'fall 2025' },
-      { text: 'office hours: wed 7-8pm (warren 101B)', meta: 'fall 2025' },
-      { text: 'course website', links: [{ label: 'cs61a.org', url: 'https://cs61a.org' }] },
-    ],
-  },
-  {
-    heading: 'cs 61a lab & discussion materials (fall 2025)',
     table: true,
     items: [
+      {
+        text: 'course website',
+        links: [{ label: 'cs61a.org', url: 'https://cs61a.org' }],
+      },
       {
         text: 'getting started',
         links: [
