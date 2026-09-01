@@ -17,8 +17,8 @@ export const experience: Group[] = [
     heading: "industry",
     entries: [
       {
-        role: "swe intern",
-        org: "amazon (finauto division)",
+        role: "software engineer intern",
+        org: "amazon finauto division",
         url: "https://amazon.jobs/content/en/teams/fgbs/finance-automation",
         dates: "summer 2026",
         bullets: [
@@ -27,8 +27,8 @@ export const experience: Group[] = [
         ],
       },
       {
-        role: "swe intern",
-        org: "amazon (finauto division)",
+        role: "software engineer intern",
+        org: "amazon finauto division",
         url: "https://amazon.jobs/content/en/teams/fgbs/finance-automation",
         dates: "summer 2025",
         bullets: [
@@ -38,7 +38,7 @@ export const experience: Group[] = [
         ],
       },
       {
-        role: "research intern",
+        role: "research & events intern",
         org: "the brookings institution",
         url: "https://www.brookings.edu/projects/artificial-intelligence-and-emerging-technology-initiative/",
         dates: "summer 2024",
@@ -87,7 +87,7 @@ export const experience: Group[] = [
     entries: [
       {
         role: "lead teaching assistant",
-        org: "cs189 (machine learning)",
+        org: "cs189: machine learning",
         url: "https://eecs189.org/",
         dates: "fall 2026 - present",
         bullets: [
@@ -97,7 +97,7 @@ export const experience: Group[] = [
       },
       {
         role: "tutor (video lead)",
-        org: "cs189 (machine learning)",
+        org: "cs189: machine learning",
         url: "https://eecs189.org/",
         dates: "spring 2026 - fall 2026",
         bullets: [
@@ -107,7 +107,7 @@ export const experience: Group[] = [
       },
       {
         role: "lead teaching assistant",
-        org: "cs61a (computer programs)",
+        org: "cs61a: computer programs",
         url: "https://cs61a.org/",
         dates: "fall 2025",
         bullets: [
@@ -118,7 +118,7 @@ export const experience: Group[] = [
       },
       {
         role: "tutor",
-        org: "cs61a (computer programs)",
+        org: "cs61a: computer programs",
         url: "https://cs61a.org/",
         dates: "fall 2024 - spring 2025",
         bullets: [
