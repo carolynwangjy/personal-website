@@ -8,6 +8,10 @@ export type Item = {
 }
 
 export type Group = {
+  /** filter key */
+  id: string
+  /** filter chip label */
+  short: string
   heading: string
   /** true for material lists, which render as aligned topic/link rows */
   table?: boolean
@@ -16,7 +20,9 @@ export type Group = {
 
 export const teaching: Group[] = [
   {
-    heading: 'cs 189 / 289a: introduction to machine learning',
+    id: 'cs189',
+    short: 'cs189',
+    heading: 'cs 189 / 289a: introduction to machine learning (spring 2026)',
     table: true,
     items: [
       {
@@ -151,7 +157,9 @@ export const teaching: Group[] = [
     ],
   },
   {
-    heading: 'cs 61a: structure & interpretation of computer programs',
+    id: 'cs61a',
+    short: 'cs61a',
+    heading: 'cs 61a: structure & interpretation of computer programs (fall 2025)',
     table: true,
     items: [
       {
@@ -285,6 +293,8 @@ export const teaching: Group[] = [
     ],
   },
   {
+    id: 'naclo',
+    short: 'naclo',
     heading: 'naclo: north american computational linguistics olympiad',
     table: true,
     items: [

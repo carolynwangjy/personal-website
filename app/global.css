@@ -159,6 +159,29 @@ li .meta { color: var(--muted); font-style: italic; }
 .entries .meta { font-style: normal; }
 li .rule { color: var(--muted); }
 
+/* course filter above the teaching tables */
+.filter { color: var(--muted); margin: 0 0 1.1em; }
+.filter button {
+  font: inherit;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 0 4px;
+  margin: 0 0.1em;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 120ms ease;
+}
+.filter button:hover { background: var(--wash); }
+.filter button:active { background: var(--wash-2); }
+.filter button[aria-pressed='true'] { background: var(--wash-3); }
+.filter button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--wash-2);
+}
+.filter .sep { color: var(--muted); user-select: none; }
+@media (prefers-reduced-motion: reduce) { .filter button { transition: none; } }
+
 /* teaching materials: topic on the left, resources on the right */
 .rows { margin: 0 0 1em; }
 .row {

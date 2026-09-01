@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { CustomMDX } from 'app/components/mdx'
+import { CourseFilter } from 'app/components/course-filter'
 import { getPosts, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
@@ -52,9 +53,9 @@ function Resources({ item }: { item: Item }) {
 
 function TeachingList() {
   return (
-    <>
+    <CourseFilter options={teaching.map(({ id, short }) => ({ id, short }))}>
       {teaching.map((group) => (
-        <React.Fragment key={group.heading}>
+        <React.Fragment key={group.id}>
           <h2>{group.heading}</h2>
           {group.table ? (
             <div className="rows">
@@ -79,7 +80,7 @@ function TeachingList() {
           )}
         </React.Fragment>
       ))}
-    </>
+    </CourseFilter>
   )
 }
 
