@@ -90,28 +90,21 @@ function GroupedEntries({ groups }: { groups: Group[] }) {
       {groups.map((group) => (
         <React.Fragment key={group.heading}>
           <h2>{group.heading}</h2>
-          {group.entries.map((entry, i) => (
-            <div className="entry" key={i}>
-              <p className="entry-head">
-                <span className="role">{entry.role}</span>,{' '}
+          <ul>
+            {group.entries.map((entry, i) => (
+              <li key={i}>
                 {entry.url ? (
                   <a href={entry.url} target="_blank" rel="noopener noreferrer">
                     {entry.org}
                   </a>
                 ) : (
                   entry.org
-                )}
-                <span className="meta">{entry.dates}</span>
-              </p>
-              {entry.bullets.length > 0 && (
-                <ul>
-                  {entry.bullets.map((bullet, j) => (
-                    <li key={j}>{inline(bullet)}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+                )}{' '}
+                <span className="meta">({entry.dates})</span>. {entry.role}.{' '}
+                {inline(entry.bullets.join('; '))}
+              </li>
+            ))}
+          </ul>
         </React.Fragment>
       ))}
     </>
@@ -137,7 +130,7 @@ function Tabs({ sections, current }: { sections: Section[]; current: SectionId }
             </span>
           )}
           <Link
-            href={`${section.href}#${section.id}`}
+            href={section.href}
             aria-current={section.id === current ? 'page' : undefined}
           >
             {section.label}
