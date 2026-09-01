@@ -12,25 +12,13 @@
   --rule:    #c8a0a0;   /* dusty-rose rule under the tabs */
   --size:    16px;      /* nudge this one number to rescale everything */
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:      #120e09;
-    --ink:     #d9cdb0;
-    --muted:   #9d917a;
-    --under:   #7a7466;
-    --wash:    rgba(180, 120, 50, 0.22);
-    --wash-2:  rgba(200, 140, 60, 0.32);
-    --wash-3:  rgba(180, 120, 50, 0.16);
-    --rule:    #5a2020;
-  }
-}
 /* ─────────────────────────────────────────────────────────── */
 
 * { box-sizing: border-box; }
 
 html {
   background: var(--bg);
-  color-scheme: light dark;
+  color-scheme: light only;
   min-width: 360px;
 }
 
@@ -444,14 +432,6 @@ pre {
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: #d9cdb0;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
 }
 
 /* inline KaTeX: match surrounding text size (display math stays default) */
