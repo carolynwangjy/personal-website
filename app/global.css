@@ -136,16 +136,18 @@ section h2:first-child { margin-top: 0; }
 
 ul { list-style: none; padding: 0; margin: 0 0 1em; }
 li {
+  position: relative;
   margin: 0 0 0.6em;
   padding-left: 1.4em;
-  text-indent: -1.4em;
 }
+/* absolute so the marker sits in the gutter whether the item's content is
+   inline or wrapped in block-level <p>s, as loose markdown lists are */
 li::before {
   content: "~";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--muted);
-  display: inline-block;
-  width: 1.4em;      /* exactly fills the indent, so text aligns on every line */
-  text-indent: 0;
 }
 li:last-child { margin-bottom: 0; }
 li .meta { color: var(--muted); font-style: italic; }
@@ -235,8 +237,12 @@ footer .links svg { display: block; }
 
 .prose ul { list-style: none; padding: 0; margin: 0 0 1.1em; }
 .prose ol { list-style: decimal; padding-left: 1.4em; margin: 0 0 1.1em; }
-.prose ol li { padding-left: 0; text-indent: 0; }
+.prose ol li { position: static; padding-left: 0; }
 .prose ol li::before { content: none; }
+
+/* loose lists wrap each item in a <p>; keep them from double-spacing */
+.prose li > p { margin: 0 0 0.5em; }
+.prose li > :last-child { margin-bottom: 0; }
 
 .prose strong { font-weight: 700; }
 
