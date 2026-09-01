@@ -6,6 +6,7 @@ import { CourseFilter } from 'app/components/course-filter'
 import { getPosts, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
+import { getHobbies } from 'app/lib/hobbies'
 import { getIntro } from 'app/lib/intro'
 import { getSections, type Section, type SectionId } from 'app/lib/sections'
 import { teaching, type Item } from 'app/data/teaching'
@@ -48,6 +49,18 @@ function Resources({ item }: { item: Item }) {
         </React.Fragment>
       ))}
     </>
+  )
+}
+
+function HobbyList() {
+  return (
+    <ul>
+      {getHobbies().map((hobby) => (
+        <li key={hobby.slug}>
+          <Link href={`/hobbies/${hobby.slug}`}>{hobby.title}</Link>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -118,7 +131,7 @@ const CONTENT: Record<SectionId, React.ReactNode> = {
   teaching: <TeachingList />,
   experience: <GroupedEntries groups={experience} />,
   service: <GroupedEntries groups={service} />,
-  hobbies: null,
+  hobbies: <HobbyList />,
 }
 
 function Tabs({ sections, current }: { sections: Section[]; current: SectionId }) {

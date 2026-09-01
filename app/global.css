@@ -61,16 +61,14 @@ h1 {
 
 p { margin: 0 0 1em; }
 
-/* markdown `---` renders as three small dashes, not a rule across the page */
+/* markdown `---` divider. tailwind's preflight sets a border width but no
+   border-style, so without this an <hr> renders as nothing */
 hr {
-  height: auto;
-  margin: 1.8em 0;
+  height: 0;
+  margin: 1.6em 0;
   border: 0;
-  color: var(--muted);
-  text-align: center;
-  line-height: 1;
+  border-top: 1px solid var(--rule);
 }
-hr::before { content: "- - -"; }
 
 em { font-style: italic; }
 
@@ -174,6 +172,10 @@ li:last-child { margin-bottom: 0; }
 /* nested lists take a plain dash so the depth reads */
 li > ul { margin: 0.3em 0 0; }
 li > ul > li::before { content: "-"; }
+
+/* an item heading a nested list leads with its own mark (📍), so no ~ */
+li:has(> ul) { padding-left: 0; }
+li:has(> ul)::before { content: none; }
 li .meta { color: var(--muted); font-style: italic; }
 /* experience & service read as plain text, no italics */
 .entries .meta { font-style: normal; }
