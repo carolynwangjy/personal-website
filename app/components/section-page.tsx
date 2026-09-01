@@ -36,7 +36,12 @@ function PostList({ collection }: { collection: Collection }) {
 function Resources({ item }: { item: Item }) {
   return (
     <>
-      {item.meta && <span className="meta">{item.meta}</span>}
+      {item.meta && (
+        <>
+          <span className="meta">{item.meta}</span>
+          {item.links && ' '}
+        </>
+      )}
       {item.links?.map((link, i) => (
         <React.Fragment key={link.label}>
           {i > 0 && <span className="rule"> / </span>}
