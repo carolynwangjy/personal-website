@@ -3,9 +3,9 @@ import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
-import { Collapsible } from './collapsible'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
+import { inline } from 'app/lib/inline'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -31,131 +31,48 @@ function Table({ data }) {
 
 function CustomLink(props) {
   let href = props.href
-  const { className = '', ...restProps } = props
-  const linkClasses = 'rounded bg-[#f5dada] hover:bg-[#eacaca] dark:bg-neutral-700/70 dark:hover:bg-neutral-600/70 transition-colors'
-  const mergedClassName = className ? `${linkClasses} ${className}` : linkClasses
 
   if (href.startsWith('/')) {
     return (
-      <Link href={href} className={mergedClassName} {...restProps}>
+      <Link href={href} {...props}>
         {props.children}
       </Link>
     )
   }
 
   if (href.startsWith('#')) {
-    return <a className={mergedClassName} {...restProps} />
+    return <a {...props} />
   }
 
-  return <a target="_blank" rel="noopener noreferrer" className={mergedClassName} {...restProps} />
+  return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
 function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />
+  return <Image alt={props.alt} {...props} />
 }
 
-function parseCaptionWithLinks(caption: string): React.ReactNode {
-  // Match markdown-style links: [text](url)
-  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
-  const parts: React.ReactNode[] = []
-  let lastIndex = 0
-  let match
-  let key = 0
-
-  while ((match = linkRegex.exec(caption)) !== null) {
-    // Add text before the link
-    if (match.index > lastIndex) {
-      parts.push(caption.substring(lastIndex, match.index))
-    }
-    
-    // Add the link
-    const linkText = match[1]
-    const linkUrl = match[2]
-    const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://')
-    
-    if (isExternal) {
-      parts.push(
-        <a
-          key={key++}
-          href={linkUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
-        >
-          {linkText}
-        </a>
-      )
-    } else {
-      parts.push(
-        <Link
-          key={key++}
-          href={linkUrl}
-          className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
-        >
-          {linkText}
-        </Link>
-      )
-    }
-    
-    lastIndex = linkRegex.lastIndex
-  }
-  
-  // Add remaining text after the last link
-  if (lastIndex < caption.length) {
-    parts.push(caption.substring(lastIndex))
-  }
-  
-  return parts.length > 0 ? parts : caption
-}
-
-function ImageWithCaption({ caption, alt, href, ...props }: React.ComponentProps<typeof Image> & { caption?: string; href?: string }) {
-  const imageContent = (
-    <div className="relative group cursor-pointer">
-      <div className="relative overflow-hidden rounded-lg">
-        <Image alt={alt || caption || ''} className="rounded-lg transition-opacity duration-300 group-hover:opacity-50 dark:opacity-90" {...props} />
-        {href && (
-          <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center image-overlay-text">
-            <span className="text-lg font-medium px-4 text-center">
-              {alt || caption || ''}
-            </span>
-          </div>
-        )}
-      </div>
-    </div>
-  )
+function ImageWithCaption({
+  caption,
+  alt,
+  href,
+  ...props
+}: React.ComponentProps<typeof Image> & { caption?: string; href?: string }) {
+  const image = <Image alt={alt || caption || ''} {...props} />
 
   return (
-    <figure className="my-6">
-      {href ? (
-        <Link href={href} className="block">
-          {imageContent}
-        </Link>
-      ) : (
-        imageContent
-      )}
-      {caption && (
-        <figcaption className="mt-2 text-sm text-center text-neutral-600 dark:text-neutral-400">
-          {parseCaptionWithLinks(caption)}
-        </figcaption>
-      )}
+    <figure>
+      {href ? <Link href={href}>{image}</Link> : image}
+      {caption && <figcaption>{inline(caption)}</figcaption>}
     </figure>
   )
 }
 
 function PullQuote({ children }) {
-  return (
-    <blockquote className="pull-quote border-l-4 border-red-800 dark:border-neutral-600 pl-4 italic text-neutral-800 dark:text-neutral-50 bg-neutral-50/80 dark:bg-neutral-800/90 rounded-md py-3 px-4">
-      {children}
-    </blockquote>
-  )
+  return <blockquote className="pull-quote">{children}</blockquote>
 }
 
 function LargeQuote({ children }) {
-  return (
-    <blockquote className="text-xl md:text-2xl text-neutral-500 dark:text-neutral-400 my-6 leading-relaxed pl-6 md:pl-8">
-      {children}
-    </blockquote>
-  )
+  return <blockquote className="large-quote">{children}</blockquote>
 }
 
 function Code({ children, ...props }) {
@@ -165,7 +82,7 @@ function Code({ children, ...props }) {
 
 function SmallText({ children, ...props }) {
   return (
-    <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2 mb-4" {...props}>
+    <p className="small-text" {...props}>
       {children}
     </p>
   )
@@ -185,11 +102,7 @@ function slugify(str) {
 function createHeading(level) {
   const Heading = ({ children }) => {
     let slug = slugify(children)
-    return React.createElement(
-      `h${level}`,
-      { id: slug },
-      children
-    )
+    return React.createElement(`h${level}`, { id: slug }, children)
   }
 
   Heading.displayName = `Heading${level}`
@@ -198,28 +111,31 @@ function createHeading(level) {
 }
 
 function SectionHeader({ children }) {
-  return (
-    <div className="text-2xl font-semibold mt-8 mb-0 text-neutral-900 dark:text-neutral-100">
-      {children}
-    </div>
-  )
+  return <p className="section-header">{children}</p>
 }
 
 function NotesLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <div className="mt-3 mb-1 pl-4">
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="notes-link inline-flex items-center gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 decoration-[0.1em] rounded transition-colors"
-      >
-        {children}
-        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-        </svg>
-      </a>
-    </div>
+    <a className="notes-link" href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  )
+}
+
+function Collapsible({
+  title,
+  children,
+  defaultOpen = false,
+}: {
+  title: string
+  children: React.ReactNode
+  defaultOpen?: boolean
+}) {
+  return (
+    <details open={defaultOpen}>
+      <summary>{title}</summary>
+      {children}
+    </details>
   )
 }
 

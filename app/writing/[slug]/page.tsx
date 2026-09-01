@@ -1,44 +1,12 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { CustomMDX } from 'app/components/mdx'
 import { getBlogPosts } from 'app/blog/utils'
 import { formatDate } from 'app/lib/format-date'
+import { inline } from 'app/lib/inline'
 import { baseUrl } from 'app/sitemap'
-import Link from 'next/link'
-import React from 'react'
 
-function parseSubtitleLinks(text: string): React.ReactNode {
-  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
-  const parts: React.ReactNode[] = []
-  let lastIndex = 0
-  let match
-  let key = 0
-
-  while ((match = linkRegex.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(text.substring(lastIndex, match.index))
-    }
-    const linkText = match[1]
-    const linkUrl = match[2]
-    const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://')
-    parts.push(
-      <a
-        key={key++}
-        href={linkUrl}
-        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        className="underline decoration-neutral-400 dark:decoration-neutral-500 underline-offset-2 rounded transition-colors hover:bg-[#f5dada] dark:hover:bg-neutral-700/70"
-      >
-        {linkText}
-      </a>
-    )
-    lastIndex = linkRegex.lastIndex
-  }
-
-  if (lastIndex < text.length) {
-    parts.push(text.substring(lastIndex))
-  }
-
-  return parts.length > 0 ? parts : text
-}
+const FICTION_CATEGORY = 'short stories'
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -97,8 +65,11 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     notFound()
   }
 
+  const backHref =
+    post.metadata.category === FICTION_CATEGORY ? '/#fiction' : '/#blog'
+
   return (
-    <section className="space-y-4 text-[var(--text-body)] leading-relaxed text-neutral-900 dark:text-neutral-100 md:max-w-4xl -mt-4">
+    <section>
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -116,45 +87,36 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             url: `${baseUrl}/writing/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
+              name: 'Carolyn Wang',
             },
           }),
         }}
       />
-      <Link
-        href="/writing"
-        className="inline-flex items-center px-2 py-1 rounded text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-[#f5dada] dark:hover:bg-neutral-700/70 transition-colors mb-2"
-      >
+      <Link href={backHref} className="post-back">
         ← back
       </Link>
-      <h1 className="title text-4xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-        {post.metadata.title}
-      </h1>
+      <h1 className="post-title">{post.metadata.title}</h1>
       {post.metadata.subtitle && (
-        <h2 className="text-2xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300">
-          {parseSubtitleLinks(post.metadata.subtitle)}
-        </h2>
+        <p className="post-subtitle">{inline(post.metadata.subtitle)}</p>
       )}
-      <div className="flex flex-wrap items-center gap-3 mt-3 mb-8 text-base text-neutral-600 dark:text-neutral-400">
-        <span>{formatDate(post.metadata.publishedAt)}</span>
+      <p className="post-meta">
+        {formatDate(post.metadata.publishedAt)}
         {post.metadata.originalLink && (
           <>
-            <span className="text-neutral-400">|</span>
+            <span className="sep">|</span>
             <a
-              href={post.metadata.originalLink}
+              href={post.metadata.originalLink.trim()}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-1 rounded transition-colors text-neutral-900 dark:text-neutral-100 underline decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em] writing-chip"
             >
-              Read Original
+              read original
             </a>
           </>
         )}
-      </div>
-      <article className="prose prose-neutral dark:prose-invert max-w-none">
+      </p>
+      <article className="prose">
         <CustomMDX source={post.content} />
       </article>
     </section>
   )
 }
-

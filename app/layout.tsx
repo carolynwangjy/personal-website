@@ -1,26 +1,26 @@
 import './global.css'
 import 'katex/dist/katex.min.css'
 import type { Metadata } from 'next'
-import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { ConditionalFooter } from './components/conditional-footer'
-import { ThemeProvider } from './components/theme-provider'
 import { baseUrl } from './sitemap'
 import { getLatestCommitDate } from './lib/git-date'
+
+const description =
+  "carolyn is an undergrad at uc berkeley majoring in computer science and minoring in politics, philosophy & law (ppl) as part of the eecs honors program. she's doing nlp research at bair, teaching cs189, and inhabiting a little intellectual burrow between machine learning and social systems."
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Carolyn Wang - Personal Website",
-    template: "%s | Carolyn Wang",
+    default: 'carolyn wang',
+    template: '%s | carolyn wang',
   },
-  description: "Carolyn is an undergraduate @ UC Berkeley studying computer science and politics, philosophy & law (PPL). Her interests lie in machine learning, social systems, and public service.",
+  description,
   openGraph: {
-    title: "carolyn wang's personal website :)",
-    description: "carolyn is an undergraduate @ uc berkeley studying computer science and politics, philosophy & law (ppl). her interests lie in machine learning, social systems, and public service.",
+    title: 'carolyn wang',
+    description,
     url: baseUrl,
-    siteName: "carolyn wang's personal website :)",
+    siteName: 'carolyn wang',
     locale: 'en_US',
     type: 'website',
   },
@@ -37,8 +37,6 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
-
 export default function RootLayout({
   children,
 }: {
@@ -54,34 +52,53 @@ export default function RootLayout({
     year: 'numeric',
   })
   const parts = formatter.formatToParts(commitDate)
-  const month = (parts.find(p => p.type === 'month')?.value || '').toLowerCase()
-  const day = parts.find(p => p.type === 'day')?.value || ''
-  const year = parts.find(p => p.type === 'year')?.value || ''
+  const month = (parts.find((p) => p.type === 'month')?.value || '').toLowerCase()
+  const day = parts.find((p) => p.type === 'day')?.value || ''
+  const year = parts.find((p) => p.type === 'year')?.value || ''
   const dateString = `${month} ${day}, ${year}`
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <meta name="color-scheme" content="light only" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.documentElement.classList.add('light');
-            `,
-          }}
-        />
+        <meta name="color-scheme" content="light dark" />
       </head>
-      <body
-        className="antialiased max-w-[53rem] mx-6 mt-6 lg:mx-auto"
-      >
-        <ThemeProvider>
-          <main className="flex-auto min-w-0 mt-4 flex flex-col px-2 md:px-4">
-            <Navbar />
-            {children}
-            <ConditionalFooter dateString={dateString} />
-            <Analytics />
-            <SpeedInsights />
-          </main>
-        </ThemeProvider>
+      <body>
+        <main>
+          {children}
+          <footer>
+            <p className="links">
+              <a href="mailto:carolynwang.jy@berkeley.edu">email</a>
+              <a
+                href="https://www.linkedin.com/in/carolyn-wang-jy/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin
+              </a>
+              <a
+                href="https://github.com/carolynwangjy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github
+              </a>
+              <a href="/rss">rss</a>
+            </p>
+            <p>
+              last updated{' '}
+              <a
+                href="https://github.com/carolynwangjy/personal-website"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {dateString}
+              </a>
+              . built with love ᯓ ᥫ᭡
+            </p>
+          </footer>
+          <Analytics />
+          <SpeedInsights />
+        </main>
       </body>
     </html>
   )

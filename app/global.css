@@ -1,584 +1,296 @@
 @import 'tailwindcss';
-@custom-variant dark (&:where(.dark, .dark *));
 
-/* Light mode selection */
-html:not(.dark) ::selection {
-  background-color: #bfdbfe !important;
-  color: #1e293b !important;
-}
-
-/* Dark mode selection */
-html.dark ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
-}
-
-/* Location header items (📍) — no disc, flush to left edge of prose block */
-.prose ul:has(li > ul) {
-  padding-left: 0;
-  list-style: none;
-}
-
-.prose ul li:has(> ul) {
-  list-style: none;
-}
-
-.prose ul li:has(> ul) > ul {
-  padding-left: 3rem;
-  list-style: disc;
-}
-
+/* palette ─────────────────────────────────────────────────── */
 :root {
-  --text-body: 21px;
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
+  --bg:      #fefcf5;   /* ivory page background */
+  --ink:     #111827;   /* body text */
+  --muted:   #6b6b6b;   /* secondary text, dates, footer */
+  --under:   #a3a3a3;   /* thin grey link underline */
+  --wash:    #f5dada;   /* pink hover wash */
+  --wash-2:  #eacaca;   /* pink, one shade deeper (active tab) */
+  --rule:    #c8a0a0;   /* dusty-rose rule under the tabs */
+  --size:    14px;      /* nudge this one number to rescale everything */
 }
-
-/* Base page colors */
-body {
-  @apply text-black bg-[#fefcf5];
-  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-  font-size: var(--text-body);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      #120e09;
+    --ink:     #d9cdb0;
+    --muted:   #9d917a;
+    --under:   #7a7466;
+    --wash:    rgba(180, 120, 50, 0.22);
+    --wash-2:  rgba(200, 140, 60, 0.32);
+    --rule:    #5a2020;
+  }
 }
+/* ─────────────────────────────────────────────────────────── */
 
-/* Global dark mode palette */
-html.dark body {
-  background-color: #120e09; /* neutral dark gray, no blue tint */
-  color: #d9cdb0; /* softened light gray for lower contrast */
-}
+* { box-sizing: border-box; }
 
-/* In light mode, prevent accidental white/very-light text on light backgrounds */
-html:not(.dark) .text-white,
-html:not(.dark) .text-neutral-50,
-html:not(.dark) .text-neutral-100,
-html:not(.dark) .text-neutral-200,
-html:not(.dark) .dark\:text-neutral-50,
-html:not(.dark) .dark\:text-neutral-100,
-html:not(.dark) .dark\:text-neutral-200 {
-  color: #111827 !important; /* neutral-900-ish */
-}
-
-/* Light mode global text safety: force readable text across all pages */
-html:not(.dark) body,
-html:not(.dark) body :where(*):not(svg):not(path):not(.home-icons):not(.home-icons *):not(.image-overlay-text):not(.image-overlay-text *) {
-  color: #111827 !important;
-}
-
-/* In dark mode, slightly dim any pure-white utility text so it's not stark */
-html.dark .text-white,
-html.dark .dark\:text-white,
-html.dark .dark\:text-neutral-50,
-html.dark .dark\:text-neutral-100 {
-  color: #d9cdb0 !important; /* match softened body text */
-}
-
-/* In dark mode, make all text readable by default */
-html.dark body * {
-  color: inherit;
-}
-
-/* In dark mode, strip light highlight backgrounds and use subtle hover for prose content */
-html.dark .prose a {
-  background-color: transparent !important;
-  text-decoration-color: #e5e7eb;
-}
-
-html.dark .prose a:hover {
-  background-color: rgba(180, 120, 50, 0.22) !important;
-  color: #f9fafb;
-}
-
-html.dark .prose button:hover {
-  background-color: rgba(180, 120, 50, 0.22) !important;
-}
-
-html.dark section h2 a:hover {
-  background-color: rgba(180, 120, 50, 0.22) !important;
-}
-
-/* Override beige backgrounds on home page bio links in dark mode - use gray instead */
-html.dark .home-bio a {
-  background-color: transparent !important; /* no background by default */
-}
-
-html.dark .home-bio a:hover {
-  background-color: rgba(200, 140, 60, 0.3) !important; /* neutral-600/70 on hover - lighter gray */
-}
-
-/* Ensure home page bio links are readable in light mode on all devices */
-html:not(.dark) .home-bio a {
-  background-color: transparent !important; /* no background by default */
-  color: #111827 !important;           /* near-black text */
-}
-
-html:not(.dark) .home-bio a:hover {
-  background-color: #f5dada !important; /* beige only on hover */
-}
-
-/* Exclude icon links from beige background */
-html:not(.dark) .home-icons a {
-  background-color: transparent !important;
-  color: #d4d4d4 !important; /* neutral-300 - lighter gray */
-}
-
-html:not(.dark) .home-icons a svg {
-  color: #9a9a9a !important; /* darker gray */
-  shape-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* For SVGs that use fill (LinkedIn, GitHub) */
-html:not(.dark) .home-icons a svg[fill="currentColor"] * {
-  fill: #9a9a9a !important;
-  stroke: none !important;
-}
-
-/* For SVGs that use stroke (Email, RSS) */
-html:not(.dark) .home-icons a svg[stroke="currentColor"] * {
-  stroke: #9a9a9a !important;
-  fill: none !important;
-}
-
-html:not(.dark) .home-icons a:hover {
-  color: #111827 !important; /* dark on hover */
-}
-
-html:not(.dark) .home-icons a:hover svg {
-  color: #111827 !important;
-}
-
-html:not(.dark) .home-icons a:hover svg[fill="currentColor"] * {
-  fill: #111827 !important;
-  stroke: none !important;
-}
-
-html:not(.dark) .home-icons a:hover svg[stroke="currentColor"] * {
-  stroke: #111827 !important;
-  fill: none !important;
-}
-
-html:not(.dark) .home-icons a.writing-chip:hover {
-  background-color: transparent !important;
-}
-
-html.dark .home-icons a {
-  background-color: transparent !important;
-}
-
-/* Ensure all home page bio text is dark in light mode (iOS sometimes keeps light text) */
-html:not(.dark) .home-bio,
-html:not(.dark) .home-bio * {
-  color: #111827 !important;
-}
-
-/* Prevent iOS dark mode from overriding experience card divider borders */
-html:not(.dark) .experience-card .divide-y > :not(:first-child) {
-  border-color: #f5f5f5 !important;
-}
-
-/* Force dark-mode backgrounds for large cards so light bg doesn't leak through */
-html.dark .experience-card,
-html.dark .courses-card,
-html.dark .teaching-card {
-  background-color: #1e1710 !important; /* slightly lighter than page background for subtle contrast */
-  border-color: #5a2020 !important;     /* dark crimson border */
-}
-
-/* Writing page chips (sort controls + read more + list items) */
-.writing-chip {
-  background-color: transparent;
-}
-
-.writing-chip:hover {
-  background-color: #f2d6d6; /* lighter beige like homepage */
-}
-
-html.dark .writing-chip {
-  background-color: transparent;
-}
-
-html.dark .writing-chip:hover {
-  background-color: rgba(180, 120, 50, 0.25); /* neutral-700/70 */
-}
-
-.writing-chip-active {
-  background-color: #f5dada;
-}
-
-.writing-chip-active:hover {
-  background-color: #eacaca;
-}
-
-html.dark .writing-chip-active {
-  background-color: rgba(180, 120, 50, 0.25); /* neutral-700/70 */
-}
-
-html.dark .writing-chip-active:hover {
-  background-color: rgba(200, 140, 60, 0.4); /* neutral-600 */
-}
-
-/* Back button hover highlights - exclude nav links */
-html:not(.dark) section a[href="/writing"],
-html:not(.dark) section a[href="/hobbies"] {
-  background-color: transparent !important; /* no background by default in light mode */
-}
-
-html:not(.dark) section a[href="/writing"]:hover,
-html:not(.dark) section a[href="/hobbies"]:hover {
-  background-color: #f5dada !important; /* beige for light mode - only on hover */
-}
-
-html.dark section a[href="/writing"]:hover,
-html.dark section a[href="/hobbies"]:hover {
-  background-color: rgba(180, 120, 50, 0.25) !important; /* gray for dark mode */
-}
-
-/* Ensure nav underline is light in dark mode */
-html.dark nav a span {
-  background-color: rgb(245 245 245) !important; /* neutral-100 - matches text color */
-}
-
-/* Pull quote styling inside prose */
-.prose blockquote.pull-quote {
-  background-color: #e8d5b7 !important; /* deeper beige card in light mode */
-  color: #111827 !important;           /* near-black text */
-}
-
-html.dark .prose blockquote.pull-quote {
-  background-color: #120e09 !important; /* neutral dark gray to match page */
-  color: #f9fafb !important;            /* near-white text */
-  border-color: #4b5563 !important;     /* neutral-600 border */
-}
-
-/* Syntax highlighting colors + base color scheme */
 html {
-  color-scheme: light only;
-
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
-
+  background: var(--bg);
+  color-scheme: light dark;
   min-width: 360px;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  /* compact serif for body text; the name stays in Palatino */
+  font-family: "Times New Roman", Times, "Liberation Serif", "Nimbus Roman", serif;
+  font-size: var(--size);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
 }
 
-html.dark {
-  --sh-class: #4c97f8;
-  --sh-identifier: white;
-  --sh-keyword: #f47067;
-  --sh-string: #0fa295;
-  color-scheme: dark;
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 9vh 32px 8vh;
 }
 
-.prose .anchor {
-  @apply absolute invisible no-underline;
+h1 {
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
 
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
+p { margin: 0 0 1em; }
+
+em { font-style: italic; }
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--under);
+  border-radius: 3px;
+  padding: 0 1px;
+  margin: 0 -1px;
+  transition: background-color 120ms ease;
+}
+a:hover, a:focus-visible {
+  background: var(--wash);
+  outline: none;
+}
+a:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
+
+::selection {
+  background: var(--wash-2);
+  color: var(--ink);
+}
+
+.intro {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 1.4em;
+}
+.intro .text { flex: 1; min-width: 0; }
+.intro p:last-child, .intro ul { margin-bottom: 0; }
+.intro img {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 2px;
+}
+
+/* tabs */
+nav[aria-label="sections"] {
+  margin: 1.6em 0 1.2em;
+  padding-bottom: 0.55em;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.55em;
+}
+nav[aria-label="sections"] a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0 4px;
+  margin: 0;
+}
+nav[aria-label="sections"] a:hover { background: var(--wash); }
+nav[aria-label="sections"] a:active { background: var(--wash-2); }
+nav[aria-label="sections"] .sep { color: var(--muted); user-select: none; }
+
+/* sections stack; tabs scroll to them */
+section { margin: 0 0 3em; scroll-margin-top: 28px; }
+section:last-of-type { margin-bottom: 0; }
+
+section h2 {
+  font-size: var(--size);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  margin: 1.5em 0 0.4em;
+}
+section h2:first-child { margin-top: 0; }
+
+ul { list-style: none; padding: 0; margin: 0 0 1em; }
+li { margin: 0 0 0.45em; padding-left: 1.25em; text-indent: -1.25em; }
+li::before { content: "~ "; color: var(--muted); }
+li .meta { color: var(--muted); }
+
+/* footer */
+footer {
+  margin-top: 4em;
+  padding-top: 0.8em;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+footer p { margin: 0; }
+footer a { color: var(--muted); }
+footer .links a { margin-right: 0.7em; }
+
+@media (max-width: 480px) {
+  main { padding-top: 8vh; }
+  .intro { flex-direction: column-reverse; gap: 16px; }
+  .intro img { width: 96px; height: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  a { transition: none; }
+}
+
+/* ── post pages ─────────────────────────────────────────────── */
+
+.post-back { display: inline-block; margin-bottom: 1.6em; }
+
+.post-title { margin-bottom: 0.25em; }
+
+.post-subtitle {
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-size: var(--size);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 0.5em;
+}
+
+.post-meta {
+  color: var(--muted);
+  margin: 0 0 2em;
+}
+.post-meta .sep { padding: 0 0.4em; }
+
+.prose { font-size: var(--size); line-height: 1.6; }
+.prose p { margin: 0 0 1.1em; }
+.prose h1 { font-size: 20px; margin: 1.8em 0 0.5em; }
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-size: var(--size);
+  font-weight: 600;
+  margin: 1.8em 0 0.5em;
+  line-height: 1.3;
+}
+.prose h1 {
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-weight: 600;
+}
+
+.prose ul { list-style: none; padding: 0; margin: 0 0 1.1em; }
+.prose ol { list-style: decimal; padding-left: 1.4em; margin: 0 0 1.1em; }
+.prose ol li { padding-left: 0; text-indent: 0; }
+.prose ol li::before { content: none; }
+
+.prose strong { font-weight: 700; }
+
+.prose blockquote {
+  margin: 1.4em 0;
+  padding-left: 1em;
+  border-left: 1px solid var(--rule);
+  color: var(--muted);
+  font-style: italic;
+}
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+.prose figure { margin: 1.6em 0; }
+.prose figure img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.prose figcaption {
+  margin-top: 0.5em;
+  text-align: center;
+  color: var(--muted);
+}
+
+.prose .small-text { color: var(--muted); margin: 0.5em 0 1.1em; }
+
+.prose .section-header {
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-weight: 600;
+  margin: 1.8em 0 0.4em;
+}
+
+.prose .notes-link { display: inline-block; margin-bottom: 1em; }
+
+.prose details { margin: 0 0 1.1em; }
+.prose details > summary {
   cursor: pointer;
-}
-
-.anchor:hover {
-  @apply visible;
-}
-
-.prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-400 underline-offset-2 decoration-[0.1em];
-}
-
-/* Blog post links: beige background by default in light mode (desktop and mobile) */
-/* Only apply to blog posts, not hobbies */
-html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link):not(figcaption a) {
-  background-color: #f5dada !important; /* light beige default */
-}
-
-/* Image caption links: no background until hover */
-html:not(.dark) .prose figcaption a {
-  background-color: transparent !important;
-}
-
-html:not(.dark) .prose figcaption a:hover {
-  background-color: #f5dada !important;
-}
-
-html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link):hover {
-  background-color: #eacaca !important; /* darker beige on hover */
-}
-
-html:not(.dark) .prose a.notes-link:hover {
-  background-color: #f5dada !important;
-}
-
-html.dark .prose a.notes-link:hover {
-  background-color: rgba(180, 120, 50, 0.22) !important;
-}
-
-/* Hobbies links: no default background, only on hover in light mode */
-html:not(.dark) .hobbies-page .prose a {
-  background-color: transparent !important; /* no background by default */
-}
-
-html:not(.dark) .hobbies-page .prose a:hover {
-  background-color: #f5dada !important; /* beige only on hover */
-}
-
-/* Remove hover highlighting from links inside headings */
-html:not(.dark) .hobbies-page .prose h1 a:hover,
-html:not(.dark) .hobbies-page .prose h2 a:hover,
-html:not(.dark) .hobbies-page .prose h3 a:hover,
-html:not(.dark) .hobbies-page .prose h4 a:hover,
-html:not(.dark) .hobbies-page .prose h5 a:hover,
-html:not(.dark) .hobbies-page .prose h6 a:hover {
-  background-color: transparent !important;
-}
-
-/* Mobile-specific: same rules apply */
-@media (max-width: 767px) {
-  html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link) {
-    background-color: #f5dada !important; /* light beige default */
-  }
-
-  html:not(.dark) section:not(.hobbies-page) .prose a:not(.notes-link):hover {
-    background-color: #eacaca !important; /* darker beige on hover */
-  }
-
-  html:not(.dark) .prose figcaption a {
-    background-color: transparent !important;
-  }
-
-  html:not(.dark) .prose figcaption a:hover {
-    background-color: #f5dada !important;
-  }
-
-  html:not(.dark) .hobbies-page .prose a {
-    background-color: transparent !important; /* no background by default */
-  }
-
-  html:not(.dark) .hobbies-page .prose a:hover {
-    background-color: #f5dada !important; /* beige only on hover */
-  }
-
-  /* Remove hover highlighting from links inside headings on mobile */
-  html:not(.dark) .hobbies-page .prose h1 a:hover,
-  html:not(.dark) .hobbies-page .prose h2 a:hover,
-  html:not(.dark) .hobbies-page .prose h3 a:hover,
-  html:not(.dark) .hobbies-page .prose h4 a:hover,
-  html:not(.dark) .hobbies-page .prose h5 a:hover,
-  html:not(.dark) .hobbies-page .prose h6 a:hover {
-    background-color: transparent !important;
-  }
-}
-
-.prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
-}
-
-.prose *:hover > .anchor {
-  @apply visible;
+  color: var(--muted);
+  font-style: italic;
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  overflow-x: auto;
+  padding: 0.6em 0.8em;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
 }
+.prose pre code { padding: 0; line-height: 1.5; }
+.prose code { font-size: 0.95em; }
 
-.prose code {
-  @apply px-1 py-0.5 rounded-lg;
-}
-
-.prose pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
-}
-
-.prose code span {
-  @apply font-medium;
-}
-
-.prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
-
-.prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
-}
-
-.prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
-}
-
-.prose h2 {
-  @apply text-2xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
-}
-
-.prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
-}
-
-.prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
-}
-
-.prose strong {
-  @apply font-bold;
-}
-
-.prose ul {
-  @apply list-disc pl-6;
-}
-
-.prose ol {
-  @apply list-decimal pl-6;
-}
-
-.prose > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-table {
+.prose table {
   display: block;
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
+  border-collapse: collapse;
+  margin: 0 0 1.1em;
+}
+.prose th, .prose td {
+  text-align: left;
+  padding: 0.2em 1em 0.2em 0;
+}
+.prose th { font-weight: 600; }
+
+pre::-webkit-scrollbar { display: none; }
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
 }
 
-.teaching-table {
-  width: 100%;
-  max-width: 100%;
+/* syntax highlighting (sugar-high) */
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #007f7a;
+  --sh-keyword: #e02518;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
 }
-
-.title {
-  text-wrap: pretty;
-}
-
-/* Scale body text on mobile via CSS variable */
-@media (max-width: 767px) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --text-body: 20px;
+    --sh-class: #4c97f8;
+    --sh-identifier: #d9cdb0;
+    --sh-keyword: #f47067;
+    --sh-string: #0fa295;
   }
 }
 
-@media (max-width: 480px) {
-  :root {
-    --text-body: 19px;
-  }
-}
-
-/* Footer date link hover in dark mode */
-html.dark .footer-date-link:hover {
-  background-color: rgba(180, 120, 50, 0.25) !important; /* neutral-700/70 */
-}
-
-/* Materials link in courses page - dark mode background only on hover */
-html.dark .materials-link {
-  background-color: transparent !important; /* no background by default */
-}
-
-html.dark .materials-link:hover {
-  background-color: rgba(180, 120, 50, 0.25) !important; /* neutral-700/70 on hover */
-}
-
-/* All links in courses page - ensure dark mode uses gray highlights, not beige */
-html.dark section a[href^="https://drive.google.com"],
-html.dark .courses-card a {
-  background-color: transparent !important; /* no background by default */
-}
-
-html.dark section a[href^="https://drive.google.com"]:hover,
-html.dark .courses-card a:hover {
-  background-color: rgba(180, 120, 50, 0.25) !important; /* neutral-700/70 on hover - gray, not beige */
-}
-
-/* Theme toggle button - ensure consistent styling on mobile and desktop */
-button[aria-label="Toggle theme"] {
-  background-color: #e5e7eb !important; /* neutral-200 */
-  border-color: #737373 !important; /* neutral-500 */
-}
-
-button[aria-label="Toggle theme"]:hover {
-  background-color: #d4d4d4 !important; /* neutral-300 */
-}
-
-html.dark button[aria-label="Toggle theme"] {
-  background-color: #120e09 !important;
-  border-color: #404040 !important;
-}
-
-html.dark button[aria-label="Toggle theme"]:hover {
-  background-color: #1a1a1a !important;
-}
-
-html.dark button[aria-label="Toggle theme"] span {
-  background-color: #525252 !important; /* neutral-600 */
-}
-
-/* Larger footer icons on mobile */
-@media (max-width: 767px) {
-  .home-icons svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-}
-
-/* Homepage fade-in entrance animation */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in 0.8s ease-out 0.15s both;
-}
-
-/* Inline KaTeX: match surrounding text size (display math stays default) */
-:not(.katex-display) > .katex {
-  font-size: 1em !important;
-}
-
-/* Image overlay text - force white text in light mode */
-html:not(.dark) .image-overlay-text,
-html:not(.dark) .image-overlay-text * {
-  color: #ffffff !important;
-}
+/* inline KaTeX: match surrounding text size (display math stays default) */
+:not(.katex-display) > .katex { font-size: 1em; }
