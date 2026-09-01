@@ -10,7 +10,7 @@
   --wash-2:  #eacaca;   /* pink, one shade deeper (pressed tab) */
   --wash-3:  #f8e4e4;   /* pink, lighter than --wash (the tab you're on) */
   --rule:    #c8a0a0;   /* dusty-rose rule under the tabs */
-  --size:    15px;      /* nudge this one number to rescale everything */
+  --size:    16px;      /* nudge this one number to rescale everything */
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -52,7 +52,7 @@ main {
 
 h1 {
   font-family: Georgia, "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 600;
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
@@ -104,8 +104,8 @@ a:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
 .intro p:last-child, .intro ul { margin-bottom: 0; }
 .intro img {
   flex: 0 0 auto;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 18%;   /* rounded square: 50% = circle, 0 = sharp corners */
   margin-top: 44px;   /* aligns with the first paragraph, not the h1 */
@@ -242,7 +242,7 @@ footer {
   padding-top: 0.8em;
   border-top: 1px solid var(--rule);
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 13px;
   line-height: 1.5;
 }
 footer p { margin: 0; }
@@ -269,7 +269,7 @@ footer .links svg { display: block; }
 @media (max-width: 480px) {
   main { padding-top: 8vh; }
   .intro { flex-direction: column-reverse; gap: 16px; }
-  .intro img { width: 96px; height: 96px; margin-top: 0; }
+  .intro img { width: 112px; height: 112px; margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
@@ -301,7 +301,7 @@ footer .links svg { display: block; }
 .prose > :first-child { margin-top: 0; }
 .prose > :last-child { margin-bottom: 0; }
 .prose p { margin: 0 0 1.1em; }
-.prose h1 { font-size: 21px; margin: 1.8em 0 0.5em; }
+.prose h1 { font-size: 22px; margin: 1.8em 0 0.5em; }
 .prose h2,
 .prose h3,
 .prose h4,

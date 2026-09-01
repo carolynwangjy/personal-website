@@ -172,8 +172,8 @@ export function SectionPage({ current }: { current: SectionId }) {
         <Image
           src={intro.image}
           alt={intro.imageAlt}
-          width={120}
-          height={120}
+          width={150}
+          height={150}
           priority
         />
       </div>

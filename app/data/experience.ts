@@ -54,6 +54,14 @@ export const experience: Group[] = [
     entries: [
       {
         role: "undergraduate researcher",
+        org: "bair",
+        url: "https://bair.berkeley.edu/",
+        dates: "fall 2026 - present",
+        bullets: [
+        ],
+      },
+      {
+        role: "undergraduate researcher",
         org: "sky computing lab",
         url: "https://sky.cs.berkeley.edu/",
         dates: "spring 2026",

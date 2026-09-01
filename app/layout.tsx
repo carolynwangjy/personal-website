@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from 'app/lib/site'
 import { getLatestCommitDate } from './lib/git-date'
+import { VisitorCount } from './components/visitor-count'
 
 const description =
   "carolyn is an undergrad at uc berkeley majoring in computer science and minoring in politics, philosophy & law (ppl) as part of the eecs honors program. she's doing nlp research at bair, teaching cs189, and inhabiting a little intellectual burrow between machine learning and social systems."
@@ -110,7 +111,7 @@ export default function RootLayout({
               >
                 {dateString}
               </a>
-              . built with love ᯓ ᥫ᭡
+              . <VisitorCount />built with love ᯓ ᥫ᭡
             </p>
           </footer>
           <Analytics />
