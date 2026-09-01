@@ -5,6 +5,7 @@ import { getAllPosts } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
 import { baseUrl } from 'app/lib/site'
+import { SECTION_HREFS } from 'app/lib/sections'
 
 export async function generateStaticParams() {
   let posts = getAllPosts()
@@ -63,8 +64,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     notFound()
   }
 
-  const backHref =
-    post.collection === 'fiction' ? '/#fiction' : '/#blog'
+  const backHref = SECTION_HREFS[post.collection]
 
   return (
     <section>

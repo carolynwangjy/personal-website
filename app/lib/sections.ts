@@ -5,8 +5,18 @@ import { parseFrontmatter } from './frontmatter'
 export const SECTION_IDS = ['fiction', 'blog', 'teaching', 'work'] as const
 export type SectionId = (typeof SECTION_IDS)[number]
 
+/** each section is its own page; fiction lives at the root */
+export const SECTION_HREFS: Record<SectionId, string> = {
+  fiction: '/',
+  blog: '/blog',
+  teaching: '/teaching',
+  work: '/work',
+}
+
 export type Section = {
   id: SectionId
+  /** the page this tab links to */
+  href: string
   /** tab label in the nav */
   label: string
   /** prose above the generated list */
@@ -32,6 +42,7 @@ export function getSections(): Record<SectionId, Section> {
       id,
       {
         id,
+        href: SECTION_HREFS[id],
         label: meta.label || id,
         before: parts[0].trim(),
         after: parts.slice(1).join('\n\n').trim(),
