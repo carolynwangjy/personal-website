@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { CustomMDX } from 'app/components/mdx'
+import { PostList, type PostEntry } from 'app/components/post-list'
 import { getPosts, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
@@ -15,19 +16,13 @@ function monthYear(publishedAt: string) {
   return formatDate(publishedAt.slice(0, 7)).toLowerCase()
 }
 
-function PostList({ collection }: { collection: Collection }) {
-  return (
-    <ul>
-      {getPosts(collection).map((post) => (
-        <li key={post.slug}>
-          <Link href={`/writing/${post.slug}`}>
-            {post.metadata.displayTitle || post.metadata.title}{' '}
-            <span className="meta">({monthYear(post.metadata.publishedAt)})</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  )
+function postEntries(collection: Collection): PostEntry[] {
+  return getPosts(collection).map((post) => ({
+    slug: post.slug,
+    title: post.metadata.displayTitle || post.metadata.title,
+    date: monthYear(post.metadata.publishedAt),
+    time: new Date(post.metadata.publishedAt).getTime(),
+  }))
 }
 
 function TeachingItem({ item }: { item: Item }) {
@@ -93,8 +88,8 @@ function WorkList() {
 }
 
 const CONTENT: Record<SectionId, React.ReactNode> = {
-  fiction: <PostList collection="fiction" />,
-  blog: <PostList collection="blog" />,
+  fiction: <PostList posts={postEntries('fiction')} />,
+  blog: <PostList posts={postEntries('blog')} />,
   teaching: <TeachingList />,
   work: <WorkList />,
 }
