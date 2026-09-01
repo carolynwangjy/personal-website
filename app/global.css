@@ -126,9 +126,15 @@ nav[aria-label="sections"] a {
   padding: 0 4px;
   margin: 0;
 }
-nav[aria-label="sections"] a[aria-current="page"] { background: var(--wash-3); }
 nav[aria-label="sections"] a:hover { background: var(--wash); }
 nav[aria-label="sections"] a:active { background: var(--wash-2); }
+/* the tab you're on holds its wash in every state — otherwise :hover ties on
+   specificity and wins on order, so it flickers as the cursor state settles */
+nav[aria-label="sections"] a[aria-current="page"],
+nav[aria-label="sections"] a[aria-current="page"]:hover,
+nav[aria-label="sections"] a[aria-current="page"]:active {
+  background: var(--wash-3);
+}
 nav[aria-label="sections"] .sep { color: var(--muted); user-select: none; }
 
 section { margin: 0 0 3em; }
