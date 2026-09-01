@@ -307,6 +307,10 @@ footer .links svg { display: block; }
 .prose > :first-child { margin-top: 0; }
 .prose > :last-child { margin-bottom: 0; }
 .prose p { margin: 0 0 1.1em; }
+
+/* short stories get a first-line indent — leading tabs in the mdx source are
+   stripped by the parser, so the indent has to be typographic */
+.prose.story p { text-indent: 2em; }
 .prose h1 { font-size: 22px; margin: 1.8em 0 0.5em; }
 .prose h2,
 .prose h3,

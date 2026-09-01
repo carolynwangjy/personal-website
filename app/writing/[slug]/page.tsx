@@ -112,7 +112,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           </>
         )}
       </p>
-      <article className="prose">
+      <article className={post.collection === 'fiction' ? 'prose story' : 'prose'}>
         <CustomMDX source={post.content} />
       </article>
     </section>
