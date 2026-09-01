@@ -98,7 +98,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
         <p className="post-subtitle">{inline(post.metadata.subtitle)}</p>
       )}
       <p className="post-meta">
-        {formatDate(post.metadata.publishedAt)}
+        {formatDate(post.metadata.publishedAt).toLowerCase()}
         {post.metadata.originalLink && (
           <>
             <span className="sep">|</span>

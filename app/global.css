@@ -207,11 +207,14 @@ footer .links svg { display: block; }
 
 .post-meta {
   color: var(--muted);
-  margin: 0 0 2em;
+  margin: 0 0 1.6em;
 }
 .post-meta .sep { padding: 0 0.4em; }
 
 .prose { font-size: var(--size); line-height: 1.6; }
+/* the first and last blocks vary by post, so pin their outer margins */
+.prose > :first-child { margin-top: 0; }
+.prose > :last-child { margin-bottom: 0; }
 .prose p { margin: 0 0 1.1em; }
 .prose h1 { font-size: 21px; margin: 1.8em 0 0.5em; }
 .prose h2,
@@ -262,13 +265,48 @@ footer .links svg { display: block; }
   margin: 1.8em 0 0.4em;
 }
 
-.prose .notes-link { display: inline-block; margin-bottom: 1em; }
+/* lecture-notes link: label plus an outbound arrow, indented as before */
+.prose .notes-row { margin: 0.9em 0 0.3em; padding-left: 1em; }
+.prose .notes-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-weight: 600;
+}
+.prose .notes-link svg { width: 0.8em; height: 0.8em; flex: 0 0 auto; }
 
-.prose details { margin: 0 0 1.1em; }
-.prose details > summary {
+/* disclosure: chevron flips when open */
+.prose details.collapsible { margin: 0.3em 0 1.1em; padding-left: 1em; }
+.prose details.collapsible > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
   cursor: pointer;
-  color: var(--muted);
-  font-style: italic;
+  font-weight: 600;
+  list-style: none;
+  border-radius: 3px;
+  padding: 0 2px;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--under);
+  transition: background-color 120ms ease;
+}
+.prose details.collapsible > summary::-webkit-details-marker { display: none; }
+.prose details.collapsible > summary::marker { content: ""; }
+.prose details.collapsible > summary:hover { background: var(--wash); }
+.prose details.collapsible > summary svg {
+  width: 0.7em;
+  height: 0.7em;
+  flex: 0 0 auto;
+  transition: transform 200ms ease;
+}
+.prose details.collapsible[open] > summary svg { transform: rotate(180deg); }
+.prose .collapsible-body { margin-top: 0.6em; }
+.prose .collapsible-body > :last-child { margin-bottom: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .prose details.collapsible > summary,
+  .prose details.collapsible > summary svg { transition: none; }
 }
 
 .prose pre {

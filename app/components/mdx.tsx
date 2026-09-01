@@ -116,9 +116,14 @@ function SectionHeader({ children }) {
 
 function NotesLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a className="notes-link" href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
+    <div className="notes-row">
+      <a className="notes-link" href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+      </a>
+    </div>
   )
 }
 
@@ -132,9 +137,14 @@ function Collapsible({
   defaultOpen?: boolean
 }) {
   return (
-    <details open={defaultOpen}>
-      <summary>{title}</summary>
-      {children}
+    <details className="collapsible" open={defaultOpen}>
+      <summary>
+        {title}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div className="collapsible-body">{children}</div>
     </details>
   )
 }
