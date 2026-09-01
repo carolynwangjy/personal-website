@@ -246,6 +246,7 @@ li .rule { color: var(--muted); }
 footer {
   margin-top: 2.5em;
   padding-top: 0.8em;
+  border-top: 1px solid var(--rule);
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
