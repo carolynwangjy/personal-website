@@ -162,16 +162,6 @@ export const service: Group[] = [
         ],
       },
       {
-        role: "advancements director",
-        org: "paragon policy fellowship",
-        url: "https://www.paragonfellowship.org/",
-        dates: "spring 2024 - fall 2024",
-        bullets: [
-          "built tech policy fellowship from the ground up",
-          "led research and media operations. had one-too-many car zoom calls",
-        ],
-      },
-      {
         role: "lead director",
         org: "cs kickstart",
         url: "https://www.cskickstart.com/",
@@ -180,6 +170,16 @@ export const service: Group[] = [
           "had the privilege to run (in my opinion) one of the most lifechanging programs for females in eecs and cs",
           "check out our birds of a feather presentation at [sigcse 2026](https://sigcse2026.sigcse.org/details/sigcse-ts-2026-birds-of-a-feather/18/Developing-and-Sustaining-Summer-Bridge-Programs)!",
           "still involved in an advisory role!",
+        ],
+      },
+      {
+        role: "advancements director",
+        org: "paragon policy fellowship",
+        url: "https://www.paragonfellowship.org/",
+        dates: "spring 2024 - fall 2024",
+        bullets: [
+          "built tech policy fellowship from the ground up",
+          "led research and media operations. had one-too-many car zoom calls",
         ],
       },
       {

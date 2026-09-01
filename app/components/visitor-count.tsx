@@ -13,8 +13,8 @@ function ordinal(n: number) {
 
 /**
  * Counts once per browser session, then reads. Renders nothing until the
- * count arrives, and nothing at all when the store isn't configured — so
- * the footer never shows a placeholder or a made-up number.
+ * count arrives, nothing when the store isn't configured, and nothing for a
+ * count below 1 — "you're the 0th visitor" is never a sentence worth showing.
  */
 export function VisitorCount() {
   const [count, setCount] = useState<number | null>(null)
@@ -28,12 +28,20 @@ export function VisitorCount() {
       // private mode or blocked storage: fall through and just count
     }
 
-    fetch(`/api/visits${counted ? '' : '?bump=1'}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (typeof data.count === 'number') setCount(data.count)
-      })
-      .catch(() => {})
+    async function load() {
+      const read = await fetch(`/api/visits${counted ? '' : '?bump=1'}`)
+      let { count } = await read.json()
+
+      // this session says it already counted, but the store is empty — the
+      // count was reset or expired, so count now rather than showing a zero
+      if (counted && count === 0) {
+        ;({ count } = await (await fetch('/api/visits?bump=1')).json())
+      }
+
+      if (typeof count === 'number' && count > 0) setCount(count)
+    }
+
+    load().catch(() => {})
   }, [])
 
   if (count === null) return null
