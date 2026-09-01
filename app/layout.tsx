@@ -3,7 +3,7 @@ import 'katex/dist/katex.min.css'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { baseUrl } from './sitemap'
+import { baseUrl } from 'app/lib/site'
 import { getLatestCommitDate } from './lib/git-date'
 
 const description =

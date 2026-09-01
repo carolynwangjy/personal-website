@@ -107,7 +107,7 @@ export default function Page() {
       </nav>
 
       <SectionBlock section={sections.fiction}>
-        <PostList collection="short-stories" />
+        <PostList collection="fiction" />
       </SectionBlock>
 
       <SectionBlock section={sections.blog}>

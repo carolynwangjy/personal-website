@@ -7,7 +7,7 @@ import { parseFrontmatter } from './frontmatter'
  * no category field to keep in sync. Drop a new .mdx file in one of these.
  */
 export const COLLECTIONS = {
-  'short-stories': 'app/content/short-stories',
+  fiction: 'app/content/fiction',
   blog: 'app/content/blog',
 } as const
 
@@ -60,5 +60,5 @@ export function getPosts(collection: Collection): Post[] {
 
 /** Every post from both folders, newest first. */
 export function getAllPosts(): Post[] {
-  return [...read('short-stories'), ...read('blog')].sort(newestFirst)
+  return [...read('fiction'), ...read('blog')].sort(newestFirst)
 }

@@ -4,7 +4,7 @@ import { CustomMDX } from 'app/components/mdx'
 import { getAllPosts } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
-import { baseUrl } from 'app/sitemap'
+import { baseUrl } from 'app/lib/site'
 
 export async function generateStaticParams() {
   let posts = getAllPosts()
@@ -64,7 +64,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   }
 
   const backHref =
-    post.collection === 'short-stories' ? '/#fiction' : '/#blog'
+    post.collection === 'fiction' ? '/#fiction' : '/#blog'
 
   return (
     <section>
