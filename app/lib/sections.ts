@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { parseFrontmatter } from './frontmatter'
 
-export const SECTION_IDS = ['fiction', 'blog', 'teaching', 'experience', 'service', 'hobbies'] as const
+export const SECTION_IDS = ['fiction', 'blog', 'teaching', 'courses', 'experience', 'service', 'hobbies'] as const
 export type SectionId = (typeof SECTION_IDS)[number]
 
 /** each section is its own page; fiction lives at the root */
@@ -10,6 +10,7 @@ export const SECTION_HREFS: Record<SectionId, string> = {
   fiction: '/',
   blog: '/blog',
   teaching: '/teaching',
+  courses: '/courses',
   experience: '/experience',
   service: '/service',
   hobbies: '/hobbies',
