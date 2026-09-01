@@ -5,6 +5,7 @@ import { getBlogPosts, formatDate } from 'app/blog/utils'
 import { CustomMDX } from 'app/components/mdx'
 import { inline } from 'app/lib/inline'
 import { getIntro } from 'app/lib/intro'
+import { getSections, type Section } from 'app/lib/sections'
 import { teaching, type Item } from 'app/data/teaching'
 import { work } from 'app/data/work'
 
@@ -70,8 +71,27 @@ function TeachingItem({ item }: { item: Item }) {
   )
 }
 
+/** A homepage section: markdown copy, then the generated list, then more copy. */
+function SectionBlock({
+  section,
+  children,
+}: {
+  section: Section
+  children: React.ReactNode
+}) {
+  return (
+    <section id={section.id}>
+      {section.before && <CustomMDX source={section.before} />}
+      {children}
+      {section.after && <CustomMDX source={section.after} />}
+    </section>
+  )
+}
+
 export default function Page() {
   const intro = getIntro()
+  const sections = getSections()
+  const tabs = Object.values(sections)
 
   return (
     <>
@@ -89,35 +109,27 @@ export default function Page() {
       </div>
 
       <nav aria-label="sections">
-        <a href="#fiction">fiction</a>
-        <span className="sep" aria-hidden="true">
-          |
-        </span>
-        <a href="#blog">blog</a>
-        <span className="sep" aria-hidden="true">
-          |
-        </span>
-        <a href="#teaching">teaching</a>
-        <span className="sep" aria-hidden="true">
-          |
-        </span>
-        <a href="#work">work</a>
+        {tabs.map((section, i) => (
+          <React.Fragment key={section.id}>
+            {i > 0 && (
+              <span className="sep" aria-hidden="true">
+                |
+              </span>
+            )}
+            <a href={`#${section.id}`}>{section.label}</a>
+          </React.Fragment>
+        ))}
       </nav>
 
-      <section id="fiction">
-        <p>short stories, mostly. the ones i’m least embarrassed by live here.</p>
+      <SectionBlock section={sections.fiction}>
         <PostList category="fiction" />
-      </section>
+      </SectionBlock>
 
-      <section id="blog">
-        <p>
-          occasional notes on ml, books, running, and whatever else is rattling around.{' '}
-          <Link href="/rss">rss</Link> if you’re into that.
-        </p>
+      <SectionBlock section={sections.blog}>
         <PostList category="blog" />
-      </section>
+      </SectionBlock>
 
-      <section id="teaching">
+      <SectionBlock section={sections.teaching}>
         {teaching.map((group) => (
           <React.Fragment key={group.heading}>
             <h2>{group.heading}</h2>
@@ -128,9 +140,9 @@ export default function Page() {
             </ul>
           </React.Fragment>
         ))}
-      </section>
+      </SectionBlock>
 
-      <section id="work">
+      <SectionBlock section={sections.work}>
         <ul>
           {work.map((entry, i) => (
             <li key={i}>
@@ -145,18 +157,7 @@ export default function Page() {
             </li>
           ))}
         </ul>
-        <p>
-          a fuller version lives on{' '}
-          <a
-            href="https://www.linkedin.com/in/carolyn-wang-jy/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin
-          </a>
-          .
-        </p>
-      </section>
+      </SectionBlock>
     </>
   )
 }
