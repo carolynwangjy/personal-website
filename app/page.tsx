@@ -2,7 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { getBlogPosts, formatDate } from 'app/blog/utils'
+import { CustomMDX } from 'app/components/mdx'
 import { inline } from 'app/lib/inline'
+import { getIntro } from 'app/lib/intro'
 import { teaching, type Item } from 'app/data/teaching'
 import { work } from 'app/data/work'
 
@@ -69,62 +71,21 @@ function TeachingItem({ item }: { item: Item }) {
 }
 
 export default function Page() {
+  const intro = getIntro()
+
   return (
     <>
       <div className="intro">
         <div className="text">
-          <h1>carolyn wang</h1>
-          <p>
-            i’m an undergrad at{' '}
-            <a href="https://www.berkeley.edu/" target="_blank" rel="noopener noreferrer">
-              uc berkeley
-            </a>{' '}
-            majoring in{' '}
-            <a href="https://eecs.berkeley.edu/cs/" target="_blank" rel="noopener noreferrer">
-              computer science
-            </a>{' '}
-            and minoring in{' '}
-            <a href="https://ppl-minor.berkeley.edu/" target="_blank" rel="noopener noreferrer">
-              politics, philosophy &amp; law (ppl)
-            </a>{' '}
-            as part of the{' '}
-            <a
-              href="https://eecs.berkeley.edu/resources/undergrads/honors/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              eecs honors program
-            </a>
-            .
-          </p>
-          <p>
-            i’m currently doing nlp research at{' '}
-            <a href="https://bair.berkeley.edu/" target="_blank" rel="noopener noreferrer">
-              bair
-            </a>
-            , teaching <a href="#teaching">cs189</a> (cal’s flagship ml course), and
-            inhabiting a little intellectual burrow between machine learning and social
-            systems. the bookshelf in my brain is:
-          </p>
-          <ul>
-            <li>
-              enamored, quite hopelessly, with good stories. i’m probably writing or taking
-              a nap
-            </li>
-            <li>
-              interested in knowledge tracing w/ llms, social systems, languages, and
-              endurance sports
-            </li>
-            <li>
-              adores music gigs, novels, giving (and receiving) hugs,{' '}
-              <a href="https://www.newyorker.com/" target="_blank" rel="noopener noreferrer">
-                the new yorker
-              </a>
-              , jorts, funny pranks
-            </li>
-          </ul>
+          <CustomMDX source={intro.content} />
         </div>
-        <Image src="/carolyn-wang.jpg" alt="carolyn wang" width={120} height={120} priority />
+        <Image
+          src={intro.image}
+          alt={intro.imageAlt}
+          width={120}
+          height={120}
+          priority
+        />
       </div>
 
       <nav aria-label="sections">
