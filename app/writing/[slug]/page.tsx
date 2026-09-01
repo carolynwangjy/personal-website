@@ -1,15 +1,13 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { CustomMDX } from 'app/components/mdx'
-import { getBlogPosts } from 'app/blog/utils'
+import { getAllPosts } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
 import { baseUrl } from 'app/sitemap'
 
-const FICTION_CATEGORY = 'short stories'
-
 export async function generateStaticParams() {
-  let posts = getBlogPosts()
+  let posts = getAllPosts()
 
   return posts.map((post) => ({
     slug: post.slug,
@@ -18,7 +16,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  let post = getBlogPosts().find((post) => post.slug === slug)
+  let post = getAllPosts().find((post) => post.slug === slug)
   if (!post) {
     return
   }
@@ -59,14 +57,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  let post = getBlogPosts().find((post) => post.slug === slug)
+  let post = getAllPosts().find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
   }
 
   const backHref =
-    post.metadata.category === FICTION_CATEGORY ? '/#fiction' : '/#blog'
+    post.collection === 'short-stories' ? '/#fiction' : '/#blog'
 
   return (
     <section>

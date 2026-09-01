@@ -1,9 +1,9 @@
-import { getBlogPosts } from 'app/blog/utils'
+import { getAllPosts } from 'app/lib/posts'
 
 export const baseUrl = 'https://carolynwang.me'
 
 export default async function sitemap() {
-  let blogs = getBlogPosts().map((post) => ({
+  let blogs = getAllPosts().map((post) => ({
     url: `${baseUrl}/writing/${post.slug}`,
     lastModified: post.metadata.publishedAt,
   }))

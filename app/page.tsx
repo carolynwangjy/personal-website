@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { getBlogPosts, formatDate } from 'app/blog/utils'
+import { getPosts, type Collection } from 'app/lib/posts'
+import { formatDate } from 'app/lib/format-date'
 import { CustomMDX } from 'app/components/mdx'
 import { inline } from 'app/lib/inline'
 import { getIntro } from 'app/lib/intro'
@@ -9,31 +10,15 @@ import { getSections, type Section } from 'app/lib/sections'
 import { teaching, type Item } from 'app/data/teaching'
 import { work } from 'app/data/work'
 
-const FICTION_CATEGORY = 'short stories'
-
 /** `2022-11-11` → `nov 2022` */
 function monthYear(publishedAt: string) {
   return formatDate(publishedAt.slice(0, 7)).toLowerCase()
 }
 
-function postsIn(category: 'fiction' | 'blog') {
-  return getBlogPosts()
-    .filter((post) =>
-      category === 'fiction'
-        ? post.metadata.category === FICTION_CATEGORY
-        : post.metadata.category !== FICTION_CATEGORY
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.metadata.publishedAt).getTime() -
-        new Date(a.metadata.publishedAt).getTime()
-    )
-}
-
-function PostList({ category }: { category: 'fiction' | 'blog' }) {
+function PostList({ collection }: { collection: Collection }) {
   return (
     <ul>
-      {postsIn(category).map((post) => (
+      {getPosts(collection).map((post) => (
         <li key={post.slug}>
           <Link href={`/writing/${post.slug}`}>
             {post.metadata.displayTitle || post.metadata.title}
@@ -122,11 +107,11 @@ export default function Page() {
       </nav>
 
       <SectionBlock section={sections.fiction}>
-        <PostList category="fiction" />
+        <PostList collection="short-stories" />
       </SectionBlock>
 
       <SectionBlock section={sections.blog}>
-        <PostList category="blog" />
+        <PostList collection="blog" />
       </SectionBlock>
 
       <SectionBlock section={sections.teaching}>
