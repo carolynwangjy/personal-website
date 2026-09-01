@@ -6,9 +6,9 @@
   --ink:     #111827;   /* body text */
   --muted:   #6b6b6b;   /* secondary text, dates, footer */
   --under:   #a3a3a3;   /* thin grey link underline */
-  --wash:    #f8e4e4;   /* pink hover wash — light, so hovering doesn't flash */
+  --wash:    #f5dada;   /* pink hover wash */
   --wash-2:  #eacaca;   /* pink, one shade deeper (pressed tab) */
-  --wash-3:  #f8e4e4;   /* the tab you're on — same wash, held steady */
+  --wash-3:  #f8e4e4;   /* pink, lighter than --wash (the tab you're on) */
   --rule:    #c8a0a0;   /* dusty-rose rule under the tabs */
   --size:    16px;      /* nudge this one number to rescale everything */
 }
@@ -18,9 +18,9 @@
     --ink:     #d9cdb0;
     --muted:   #9d917a;
     --under:   #7a7466;
-    --wash:    rgba(180, 120, 50, 0.14);
+    --wash:    rgba(180, 120, 50, 0.22);
     --wash-2:  rgba(200, 140, 60, 0.32);
-    --wash-3:  rgba(180, 120, 50, 0.14);
+    --wash-3:  rgba(180, 120, 50, 0.16);
     --rule:    #5a2020;
   }
 }
