@@ -1,26 +1,48 @@
 export const dynamic = 'force-dynamic'
 
-const REST_URL = process.env.UPSTASH_REDIS_REST_URL
-const REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN
 const KEY = 'visits'
+
+/**
+ * Upstash exposes its REST credentials under different names depending on how
+ * the database was created: direct signup, the older Vercel KV integration, or
+ * the Vercel Marketplace (which prefixes everything with `storage_`). Accept
+ * whichever pair is present.
+ *
+ * Note the read-write token — INCR needs it, the READ_ONLY one won't do.
+ */
+const CANDIDATES: [url: string, token: string][] = [
+  ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN'],
+  ['KV_REST_API_URL', 'KV_REST_API_TOKEN'],
+  ['storage_KV_REST_API_URL', 'storage_KV_REST_API_TOKEN'],
+]
+
+function credentials() {
+  for (const [urlVar, tokenVar] of CANDIDATES) {
+    const url = process.env[urlVar]
+    const token = process.env[tokenVar]
+    if (url && token) return { url: url.replace(/\/$/, ''), token }
+  }
+  return null
+}
 
 /**
  * Returns the running visit count, incrementing it when `?bump=1`.
  *
- * Backed by Upstash Redis over its REST API, so there is no npm dependency.
- * With the two env vars unset it returns `{ count: null }` and the footer
- * simply omits the sentence.
+ * Talks to Upstash over its REST API, so there is no npm dependency. With no
+ * credentials configured it returns `{ count: null }` and the footer simply
+ * omits the sentence.
  */
 export async function GET(request: Request) {
-  if (!REST_URL || !REST_TOKEN) {
+  const creds = credentials()
+  if (!creds) {
     return Response.json({ count: null })
   }
 
   const bump = new URL(request.url).searchParams.get('bump') === '1'
 
   try {
-    const res = await fetch(`${REST_URL}/${bump ? 'incr' : 'get'}/${KEY}`, {
-      headers: { Authorization: `Bearer ${REST_TOKEN}` },
+    const res = await fetch(`${creds.url}/${bump ? 'incr' : 'get'}/${KEY}`, {
+      headers: { Authorization: `Bearer ${creds.token}` },
       cache: 'no-store',
     })
 
