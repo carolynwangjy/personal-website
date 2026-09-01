@@ -30,29 +30,23 @@ function PostList({ collection }: { collection: Collection }) {
   )
 }
 
-function TeachingItem({ item }: { item: Item }) {
+function Resources({ item }: { item: Item }) {
   return (
-    <li>
-      {inline(item.text)}
-      {item.meta && <span className="meta"> ({item.meta})</span>}
-      {item.links && (
-        <>
-          <span className="rule"> — </span>
-          {item.links.map((link, i) => (
-            <React.Fragment key={link.label}>
-              {i > 0 && <span className="rule"> / </span>}
-              {link.url ? (
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
-              ) : (
-                <span className="rule">{link.label}</span>
-              )}
-            </React.Fragment>
-          ))}
-        </>
-      )}
-    </li>
+    <>
+      {item.meta && <span className="meta">{item.meta}</span>}
+      {item.links?.map((link, i) => (
+        <React.Fragment key={link.label}>
+          {i > 0 && <span className="rule"> / </span>}
+          {link.url ? (
+            <a href={link.url} target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </a>
+          ) : (
+            <span className="rule">{link.label}</span>
+          )}
+        </React.Fragment>
+      ))}
+    </>
   )
 }
 
@@ -62,11 +56,27 @@ function TeachingList() {
       {teaching.map((group) => (
         <React.Fragment key={group.heading}>
           <h2>{group.heading}</h2>
-          <ul>
-            {group.items.map((item, i) => (
-              <TeachingItem key={i} item={item} />
-            ))}
-          </ul>
+          {group.table ? (
+            <div className="rows">
+              {group.items.map((item, i) => (
+                <div className="row" key={i}>
+                  <span className="row-topic">{inline(item.text)}</span>
+                  <span className="row-links">
+                    <Resources item={item} />
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ul>
+              {group.items.map((item, i) => (
+                <li key={i}>
+                  {inline(item.text)}{' '}
+                  <Resources item={item} />
+                </li>
+              ))}
+            </ul>
+          )}
         </React.Fragment>
       ))}
     </>
@@ -80,20 +90,28 @@ function GroupedEntries({ groups }: { groups: Group[] }) {
       {groups.map((group) => (
         <React.Fragment key={group.heading}>
           <h2>{group.heading}</h2>
-          <ul>
-            {group.entries.map((entry, i) => (
-              <li key={i}>
+          {group.entries.map((entry, i) => (
+            <div className="entry" key={i}>
+              <p className="entry-head">
+                <span className="role">{entry.role}</span>,{' '}
                 {entry.url ? (
                   <a href={entry.url} target="_blank" rel="noopener noreferrer">
                     {entry.org}
                   </a>
                 ) : (
                   entry.org
-                )}{' '}
-                <span className="meta">({entry.dates})</span>. {inline(entry.line)}
-              </li>
-            ))}
-          </ul>
+                )}
+                <span className="meta">{entry.dates}</span>
+              </p>
+              {entry.bullets.length > 0 && (
+                <ul>
+                  {entry.bullets.map((bullet, j) => (
+                    <li key={j}>{inline(bullet)}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
         </React.Fragment>
       ))}
     </>
@@ -119,7 +137,7 @@ function Tabs({ sections, current }: { sections: Section[]; current: SectionId }
             </span>
           )}
           <Link
-            href={section.href}
+            href={`${section.href}#${section.id}`}
             aria-current={section.id === current ? 'page' : undefined}
           >
             {section.label}

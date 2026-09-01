@@ -7,7 +7,12 @@ export type Item = {
   links?: Resource[]
 }
 
-export type Group = { heading: string; items: Item[] }
+export type Group = {
+  heading: string
+  /** true for material lists, which render as aligned topic/link rows */
+  table?: boolean
+  items: Item[]
+}
 
 export const teaching: Group[] = [
   {
@@ -25,6 +30,7 @@ export const teaching: Group[] = [
   },
   {
     heading: 'cs 189 discussion materials (spring 2026)',
+    table: true,
     items: [
       {
         text: 'course website',
@@ -168,6 +174,7 @@ export const teaching: Group[] = [
   },
   {
     heading: 'cs 61a lab & discussion materials (fall 2025)',
+    table: true,
     items: [
       {
         text: 'getting started',
@@ -297,6 +304,7 @@ export const teaching: Group[] = [
   },
   {
     heading: 'naclo: north american computational linguistics olympiad',
+    table: true,
     items: [
       { text: 'website', links: [{ label: 'naclo.org', url: 'https://naclo.org' }] },
       {
