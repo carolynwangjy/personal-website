@@ -127,6 +127,27 @@ function NotesLink({ href, children }: { href: string; children: React.ReactNode
   )
 }
 
+/** inline link with a small outbound arrow, as on the old experience page */
+function ArrowLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a className="arrow-link" href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M7 17L17 7" />
+        <path d="M7 7h10v10" />
+      </svg>
+    </a>
+  )
+}
+
 function Collapsible({
   title,
   children,
@@ -167,6 +188,7 @@ let components = {
   SectionHeader,
   Collapsible,
   NotesLink,
+  ArrowLink,
 }
 
 export function CustomMDX(props) {

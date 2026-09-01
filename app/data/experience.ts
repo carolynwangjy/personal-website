@@ -81,7 +81,7 @@ export const experience: Group[] = [
         role: "lead teaching assistant",
         org: "cs189 (machine learning)",
         url: "https://eecs189.org/",
-        dates: "fall 2026 – present",
+        dates: "fall 2026 - present",
         bullets: [
           "running course logistics for 400+ ml students :)",
           "wrangling spreadsheets and hounding the rest of course staff",
@@ -91,7 +91,7 @@ export const experience: Group[] = [
         role: "tutor (video lead)",
         org: "cs189 (machine learning)",
         url: "https://eecs189.org/",
-        dates: "spring 2026 – fall 2026",
+        dates: "spring 2026 - fall 2026",
         bullets: [
           "became a youtuber for 900+ students :D (see [cs189 channel](https://www.youtube.com/@cs189-sp26))",
           "pimental proctoring at 90 degrees, or opera wordle dinosaur game?",
@@ -112,7 +112,7 @@ export const experience: Group[] = [
         role: "tutor",
         org: "cs61a (computer programs)",
         url: "https://cs61a.org/",
-        dates: "fall 2024 – spring 2025",
+        dates: "fall 2024 - spring 2025",
         bullets: [
           "learned how to teach, how to critique, and how to learn",
           "met and befriended the great john denero",
@@ -122,7 +122,7 @@ export const experience: Group[] = [
         role: "senior mentor",
         org: "computer science mentors",
         url: "https://csmentors.studentorg.berkeley.edu/#/",
-        dates: "spring 2024 – fall 2024",
+        dates: "spring 2024 - fall 2024",
         bullets: [
           "learned how to teach teachers, learned how to teach students",
         ],
@@ -139,7 +139,7 @@ export const service: Group[] = [
       {
         role: "undergrad representative",
         org: "eecs study committee",
-        dates: "fall 2025 – present",
+        dates: "fall 2025 - present",
         bullets: [
           "fangirling over all the legendary profs gathered in one meeting space",
         ],
@@ -148,7 +148,7 @@ export const service: Group[] = [
         role: "undergrad representative",
         org: "cdss department",
         url: "https://cdss.berkeley.edu/",
-        dates: "fall 2024 – present",
+        dates: "fall 2024 - present",
         bullets: [
           "providing input to the amazing associate dean of students (narges!)",
         ],
@@ -157,7 +157,7 @@ export const service: Group[] = [
         role: "advancements director",
         org: "paragon policy fellowship",
         url: "https://www.paragonfellowship.org/",
-        dates: "spring 2024 – fall 2024",
+        dates: "spring 2024 - fall 2024",
         bullets: [
           "built tech policy fellowship from the ground up",
           "led research and media operations. had one-too-many car zoom calls",
@@ -167,7 +167,7 @@ export const service: Group[] = [
         role: "lead director",
         org: "cs kickstart",
         url: "https://www.cskickstart.com/",
-        dates: "fall 2023 – fall 2025",
+        dates: "fall 2023 - fall 2025",
         bullets: [
           "had the privilege to run (in my opinion) one of the most lifechanging programs for females in eecs and cs",
           "check out our birds of a feather presentation at [sigcse 2026](https://sigcse2026.sigcse.org/details/sigcse-ts-2026-birds-of-a-feather/18/Developing-and-Sustaining-Summer-Bridge-Programs)!",
@@ -178,7 +178,7 @@ export const service: Group[] = [
         role: "youth commissioner",
         org: "city of saratoga",
         url: "https://www.saratoga.ca.us/337/Youth-Commission",
-        dates: "fall 2019 – spring 2021",
+        dates: "fall 2019 - spring 2021",
         bullets: [
           "appointed and served two-year term in public office :)",
         ],
@@ -206,7 +206,7 @@ export const service: Group[] = [
         role: "editor-in-chief",
         org: "saratoga falcon newspaper",
         url: "https://saratogafalcon.org/",
-        dates: "fall 2020 – spring 2023",
+        dates: "fall 2020 - spring 2023",
         bullets: [],
       },
     ],
