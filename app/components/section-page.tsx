@@ -131,7 +131,8 @@ function Tabs({ sections, current }: { sections: Section[]; current: SectionId }
             </span>
           )}
           <Link
-            href={`${section.href}#top`}
+            href={section.href}
+            scroll={false}
             aria-current={section.id === current ? 'page' : undefined}
           >
             {section.label}
@@ -150,7 +151,7 @@ export function SectionPage({ current }: { current: SectionId }) {
 
   return (
     <>
-      <div className="intro" id="top">
+      <div className="intro">
         <div className="text">
           <CustomMDX source={intro.content} />
         </div>
