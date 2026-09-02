@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { CustomMDX } from 'app/components/mdx'
 import { CourseFilter } from 'app/components/course-filter'
-import { KeepScroll } from 'app/components/keep-scroll'
+import { KeepScroll, rememberScroll } from 'app/components/keep-scroll'
 import { getPosts, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
@@ -164,6 +164,7 @@ function Tabs({ sections, current }: { sections: Section[]; current: SectionId }
           <Link
             href={section.href}
             scroll={false}
+            onClick={rememberScroll}
             aria-current={section.id === current ? 'page' : undefined}
           >
             {section.label}

@@ -1,33 +1,52 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
+
+const TABS = 'nav[aria-label="sections"]'
+
+/** Where the tab row sat on screen when a tab was clicked. */
+let anchor: number | null = null
+
+export function rememberScroll(event: React.MouseEvent) {
+  // Cmd-click and friends open a new tab: this page isn't going anywhere, and a
+  // measurement left lying around would be applied to some later navigation.
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return
+  }
+  const nav = document.querySelector(TABS)
+  anchor = nav ? nav.getBoundingClientRect().top : null
+}
 
 /**
- * Tab links keep their scroll position (scroll={false}), which is what you want
- * between pages of similar length. But the pages differ a lot — /teaching is
- * many times taller than /hobbies — so carrying a deep position onto a short
- * page leaves it past the end and the browser clamps it to the bottom.
+ * Switching tabs replaces everything below the tab row, and the pages differ a
+ * lot in height — /teaching is many times taller than /hobbies. That much change
+ * under the viewport is enough for the browser to move you: it clamps a position
+ * that no longer exists, and re-anchors around content that just disappeared.
  *
- * That clamp is only a problem when it pushes the tab bar off the top of the
- * screen, which is what strands you at the footer with no way back. On a page
- * short enough that the clamped view still shows the tabs, nothing needs to
- * happen — moving the page then is just noise. So: intervene only when the tabs
- * have scrolled out of view, and then move the least amount that brings them
- * back, rather than jumping to the very top.
+ * What should happen is much simpler. The tab row is the fixed point of these
+ * pages, the line you clicked from, so it should sit exactly where it sat and
+ * the section under it should change. Not a proportional position, not a jump to
+ * the top — the same line, in the same place, on a different tab.
+ *
+ * So measure it on the way out, measure it again once the new page is in the
+ * DOM, and scroll by the difference. Before paint, so nothing is ever seen in
+ * the wrong place. A page too short to hold that position clamps on its own,
+ * which is the one case where the row has to move and you land near the end.
  */
 export function KeepScroll() {
   const pathname = usePathname()
 
-  useEffect(() => {
-    const max = document.documentElement.scrollHeight - window.innerHeight
-    const clamped = window.scrollY > 0 && window.scrollY >= max - 1
-    if (!clamped) return
+  useLayoutEffect(() => {
+    const before = anchor
+    anchor = null
+    if (before === null) return
 
-    const nav = document.querySelector('nav[aria-label="sections"]')
-    if (nav && nav.getBoundingClientRect().top < 0) {
-      nav.scrollIntoView()
-    }
+    const nav = document.querySelector(TABS)
+    if (!nav) return
+
+    const after = nav.getBoundingClientRect().top
+    if (after !== before) window.scrollBy(0, after - before)
   }, [pathname])
 
   return null
