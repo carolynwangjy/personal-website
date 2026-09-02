@@ -164,6 +164,13 @@ li::before {
 }
 li:last-child { margin-bottom: 0; }
 
+/* markdown writes a loose list — one <p> per item — whenever its items are
+   separated by blank lines, which is an authoring detail, not a design one. The
+   paragraph margin would stack on top of the item's own, spacing those bullets
+   further apart than identical ones written tight. The item owns the spacing. */
+li > p { margin: 0; }
+li > p + p { margin-top: 0.35em; }
+
 /* nested lists keep the ~ marker, indented one level further */
 li > ul { margin: 0.15em 0 0; padding-left: 1.4em; }
 
