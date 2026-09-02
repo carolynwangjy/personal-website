@@ -266,13 +266,13 @@ footer .links svg { display: block; }
   .intro { flex-direction: column-reverse; gap: 16px; }
   .intro img { width: 112px; height: 112px; margin-top: 0; }
 
-  /* the row can't fit one line on a phone at full size, so break it on
-     purpose: the last tab takes its own line and the separator that would
-     land at the seam is dropped — the line break already delineates it. */
-  nav[aria-label="sections"] { gap: 0.35em 0.45em; }
+  /* all five tabs don't fit one line at full size, and wrapping strands a
+     separator at the seam. So drop the hobbies tab here instead — the intro
+     links straight to the hobby pages, so nothing becomes unreachable. */
+  nav[aria-label="sections"] { gap: 0.45em; }
   nav[aria-label="sections"] a { padding: 0 3px; }
-  nav[aria-label="sections"] a:last-of-type { flex-basis: 100%; }
-  nav[aria-label="sections"] .sep:last-of-type { display: none; }
+  nav[aria-label="sections"] a[href="/hobbies"],
+  nav[aria-label="sections"] .sep:has(+ a[href="/hobbies"]) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
