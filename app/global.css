@@ -266,14 +266,13 @@ footer .links svg { display: block; }
   .intro { flex-direction: column-reverse; gap: 16px; }
   .intro img { width: 112px; height: 112px; margin-top: 0; }
 
-  /* keep the tabs on one line with their separators: the pipes are what make
-     the row read as navigation. The type scales with the viewport just enough
-     to fit, down to a 11px floor. */
-  nav[aria-label="sections"] {
-    font-size: clamp(11px, 3.4vw, 16px);
-    gap: 0.35em 0.4em;
-  }
+  /* the row can't fit one line on a phone at full size, so break it on
+     purpose: the last tab takes its own line and the separator that would
+     land at the seam is dropped — the line break already delineates it. */
+  nav[aria-label="sections"] { gap: 0.35em 0.45em; }
   nav[aria-label="sections"] a { padding: 0 3px; }
+  nav[aria-label="sections"] a:last-of-type { flex-basis: 100%; }
+  nav[aria-label="sections"] .sep:last-of-type { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
