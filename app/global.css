@@ -261,9 +261,16 @@ footer .links svg { display: block; }
 
 
 @media (max-width: 480px) {
-  main { padding-top: 8vh; }
+  /* narrower side padding buys ~24px for every line on the page */
+  main { padding: 8vh 20px; }
   .intro { flex-direction: column-reverse; gap: 16px; }
   .intro img { width: 112px; height: 112px; margin-top: 0; }
+
+  /* the tabs can't fit one line on a phone, so let them wrap cleanly: the
+     pipes would strand at a line end, and a wider word-gap separates well
+     enough without them. row-gap keeps the second row off the first. */
+  nav[aria-label="sections"] { gap: 0.35em 0.9em; }
+  nav[aria-label="sections"] .sep { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
