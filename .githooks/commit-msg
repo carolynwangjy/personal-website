@@ -1,0 +1,17 @@
+#!/bin/sh
+# Keeps AI self-attribution out of this repo's history. Carolyn's personal site
+# ships under her name alone; the tools that help write it don't sign the work.
+#
+# Instructions asking for a co-author trailer have a way of coming back — this
+# is the layer that doesn't depend on anyone remembering. Human co-authors are
+# fine, so only self-attribution by the assistant is matched.
+#
+# Enabled per clone with: git config core.hooksPath .githooks
+
+if grep -qiE '^[[:space:]]*co-authored-by:.*(claude|anthropic)' "$1" ||
+   grep -qiE 'generated with \[?claude code|noreply@anthropic\.com|🤖' "$1"; then
+  echo "commit-msg: this repo's history carries no AI attribution." >&2
+  echo "Remove the trailer from the message and commit again." >&2
+  echo "(See CLAUDE.md. Don't reach for --no-verify.)" >&2
+  exit 1
+fi
