@@ -71,7 +71,7 @@ h1 {
      both sides, but only part of the way: -0.213em makes the gaps exactly
      uniform and -0.105em still reads tight, because a glyph this narrow needs
      more air around it than one that fills its em */
-  margin: 0 -0.03em;
+  margin: 0 -0.065em;
 }
 
 p { margin: 0 0 1em; }
