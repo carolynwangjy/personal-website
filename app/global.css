@@ -65,6 +65,13 @@ h1 {
    needs to compensate. long cang itself stays as the fallback */
 .zh-wang {
   font-family: var(--font-wang-thin), var(--font-long-cang), Georgia, serif;
+  /* long cang gives 王 a full 1em advance though its ink is only 0.58em wide,
+     so it sits 9.4px from 家 where 家 and 悦 sit 1.96px apart — the character is
+     centred on a cjk em grid its neighbours fill and it doesn't. pull it in on
+     both sides, but only part of the way: -0.213em makes the gaps exactly
+     uniform and -0.105em still reads tight, because a glyph this narrow needs
+     more air around it than one that fills its em */
+  margin: 0 -0.03em;
 }
 
 p { margin: 0 0 1em; }
