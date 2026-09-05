@@ -47,6 +47,26 @@ h1 {
   line-height: 1.2;
 }
 
+/* chinese characters in the intro heading, set in long cang (brush script).
+   the face draws 王家悦 at 0.72em of ink where pingfang uses 0.89em, so 1.25em
+   puts them back at the optical size they had in the system font. font-weight
+   is pinned because the h1 is 600 and long cang ships only a 400 — without it
+   the browser fakes the bold by smearing every stroke */
+.zh {
+  font-family: var(--font-long-cang), Georgia, serif;
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+/* long cang draws 王 with a 0.079em stroke where 家悦 sit at 0.049em, and ships
+   no lighter weight. the font this points at holds that one glyph with its
+   outline eroded to a 0.049em stroke — same shape, same position, same advance,
+   finer brush. the size and offset are baked into the glyph, so nothing here
+   needs to compensate. long cang itself stays as the fallback */
+.zh-wang {
+  font-family: var(--font-wang-thin), var(--font-long-cang), Georgia, serif;
+}
+
 p { margin: 0 0 1em; }
 
 /* markdown `---` divider. tailwind's preflight sets a border width but no

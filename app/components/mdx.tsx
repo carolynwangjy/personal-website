@@ -99,9 +99,18 @@ function slugify(str) {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
 }
 
+/** flattens a heading's children to plain text so slugify sees words, not elements */
+function textOf(node): string {
+  if (node === null || node === undefined || typeof node === 'boolean') return ''
+  if (typeof node === 'string' || typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(textOf).join('')
+  if (React.isValidElement(node)) return textOf((node.props as any).children)
+  return ''
+}
+
 function createHeading(level) {
   const Heading = ({ children }) => {
-    let slug = slugify(children)
+    let slug = slugify(textOf(children))
     return React.createElement(`h${level}`, { id: slug }, children)
   }
 

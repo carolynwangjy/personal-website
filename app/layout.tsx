@@ -1,11 +1,32 @@
 import './global.css'
 import 'katex/dist/katex.min.css'
 import type { Metadata } from 'next'
+import { Long_Cang } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from 'app/lib/site'
 import { getLatestCommitDate } from './lib/git-date'
 import { VisitorCount } from './components/visitor-count'
+
+// brush-script face for the chinese characters in the intro heading. preload is
+// off because google chunks this font into ~90 unicode-range slices; the browser
+// only fetches the few that actually cover 王家悦.
+const longCang = Long_Cang({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: false,
+  variable: '--font-long-cang',
+})
+
+// one glyph: long cang's 王 with its strokes eroded to match 家悦. see
+// scripts/thin-wang.py and app/fonts/README.md
+const wangThin = localFont({
+  src: './fonts/long-cang-wang-thin.woff2',
+  display: 'swap',
+  variable: '--font-wang-thin',
+})
 
 const description =
   "carolyn is an undergrad at uc berkeley majoring in computer science and minoring in politics, philosophy & law (ppl) as part of the eecs honors program. she's doing nlp research at bair, teaching cs189, and inhabiting a little intellectual burrow between machine learning and social systems."
@@ -59,7 +80,7 @@ export default function RootLayout({
   const dateString = `${month} ${day}, ${year}`
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${longCang.variable} ${wangThin.variable}`}>
       <head>
         <meta name="color-scheme" content="light only" />
       </head>
