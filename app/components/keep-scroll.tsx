@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useLayoutEffect } from 'react'
 
@@ -7,6 +8,12 @@ const TABS = 'nav[aria-label="sections"]'
 
 /** Where the tab row sat on screen when a tab was clicked. */
 let anchor: number | null = null
+
+/** Where each section page was when we last left it. */
+const positions = new Map<string, number>()
+
+/** Set while a ← back link is the thing navigating. */
+let goingBack = false
 
 export function rememberScroll(event: React.MouseEvent) {
   // Cmd-click and friends open a new tab: this page isn't going anywhere, and a
@@ -16,6 +23,29 @@ export function rememberScroll(event: React.MouseEvent) {
   }
   const nav = document.querySelector(TABS)
   anchor = nav ? nav.getBoundingClientRect().top : null
+}
+
+/**
+ * A post's ← back link. The browser's own back button puts you back at the spot
+ * in the list you left from, and this is the same gesture, so it should land in
+ * the same place rather than at the top of the list. A post reached directly,
+ * with no list behind it, has no position to return to and goes to the top.
+ */
+export function BackLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      scroll={false}
+      className="post-back"
+      onClick={(event) => {
+        if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+          goingBack = true
+        }
+      }}
+    >
+      {children}
+    </Link>
+  )
 }
 
 /**
@@ -40,13 +70,21 @@ export function KeepScroll() {
   useLayoutEffect(() => {
     const before = anchor
     anchor = null
-    if (before === null) return
+    const back = goingBack
+    goingBack = false
 
-    const nav = document.querySelector(TABS)
-    if (!nav) return
+    if (back) {
+      window.scrollTo(0, positions.get(pathname) ?? 0)
+    } else if (before !== null) {
+      const nav = document.querySelector(TABS)
+      const after = nav ? nav.getBoundingClientRect().top : before
+      if (after !== before) window.scrollBy(0, after - before)
+    }
 
-    const after = nav.getBoundingClientRect().top
-    if (after !== before) window.scrollBy(0, after - before)
+    // on the way out, note where this page was, in case a ← back link returns
+    return () => {
+      positions.set(pathname, window.scrollY)
+    }
   }, [pathname])
 
   return null

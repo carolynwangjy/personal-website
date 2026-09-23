@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
+import { BackLink } from 'app/components/keep-scroll'
 import { CustomMDX } from 'app/components/mdx'
 import { getAllPosts } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
@@ -90,9 +90,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           }),
         }}
       />
-      <Link href={backHref} className="post-back">
-        ← back
-      </Link>
+      <BackLink href={backHref}>← back</BackLink>
       <h1 className="post-title">{post.metadata.title}</h1>
       {post.metadata.subtitle && (
         <p className="post-subtitle">{inline(post.metadata.subtitle)}</p>

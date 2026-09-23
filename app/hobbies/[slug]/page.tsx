@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
+import { BackLink } from 'app/components/keep-scroll'
 import { CustomMDX } from 'app/components/mdx'
 import { getHobbies } from 'app/lib/hobbies'
 
@@ -23,9 +23,7 @@ export default async function Hobby({ params }: { params: Promise<{ slug: string
 
   return (
     <section>
-      <Link href="/hobbies" className="post-back">
-        ← back
-      </Link>
+      <BackLink href="/hobbies">← back</BackLink>
       <h1 className="post-title">{hobby.title}</h1>
       <article className="prose">
         <CustomMDX source={hobby.content} />
