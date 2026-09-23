@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { parseFrontmatter } from './frontmatter'
+import { SECTION_HREFS } from './sections'
 
 /**
  * Which folder a post lives in decides which list it shows up in — there is
@@ -56,6 +57,15 @@ const newestFirst = (a: Post, b: Post) =>
 /** One folder's posts, newest first. */
 export function getPosts(collection: Collection): Post[] {
   return read(collection).sort(newestFirst)
+}
+
+/**
+ * Where a post lives: under its own section, the way the hobby pages do. These
+ * were all under /writing once, which said nothing about which list a piece
+ * belonged to; /writing/<slug> still redirects here so old links keep working.
+ */
+export function postHref(post: Pick<Post, 'collection' | 'slug'>) {
+  return `${SECTION_HREFS[post.collection]}/${post.slug}`
 }
 
 /** Every post from both folders, newest first. */

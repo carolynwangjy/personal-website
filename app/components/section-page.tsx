@@ -4,7 +4,7 @@ import React from 'react'
 import { CustomMDX } from 'app/components/mdx'
 import { CourseFilter } from 'app/components/course-filter'
 import { KeepScroll, rememberScroll } from 'app/components/keep-scroll'
-import { getPosts, type Collection } from 'app/lib/posts'
+import { getPosts, postHref, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
 import { getHobbies } from 'app/lib/hobbies'
@@ -23,7 +23,7 @@ function PostList({ collection }: { collection: Collection }) {
     <ul>
       {getPosts(collection).map((post) => (
         <li key={post.slug}>
-          <Link href={`/writing/${post.slug}`}>
+          <Link href={postHref(post)}>
             {post.metadata.displayTitle || post.metadata.title}{' '}
             <span className="meta">({monthYear(post.metadata.publishedAt)})</span>
           </Link>

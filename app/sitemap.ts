@@ -1,10 +1,10 @@
-import { getAllPosts } from 'app/lib/posts'
+import { getAllPosts, postHref } from 'app/lib/posts'
 import { getHobbies } from 'app/lib/hobbies'
 import { baseUrl } from 'app/lib/site'
 
 export default async function sitemap() {
   let blogs = getAllPosts().map((post) => ({
-    url: `${baseUrl}/writing/${post.slug}`,
+    url: `${baseUrl}${postHref(post)}`,
     lastModified: post.metadata.publishedAt,
   }))
 
