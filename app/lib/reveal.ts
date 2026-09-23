@@ -24,19 +24,23 @@ export const REVEAL_SECTION = `
   //
   // The navigation type carries this: 'reload' and 'back_forward' are not
   // arrivals. It isn't quite enough on its own, because a reload interrupted by
-  // another reload reports itself as 'navigate' — so also ignore a load that
-  // follows another load of the same url within a few seconds, which is what an
-  // interrupted reload looks like and what opening the url again never does.
+  // another reload reports itself as 'navigate'. That case has a tell, though —
+  // the load it interrupted never reached its load event. So mark the page while
+  // it loads, clear the mark when it finishes, and read a mark left behind as
+  // the interrupted reload it is. Anything else, including opening the same url
+  // again a second later, is an arrival.
   var entry = performance.getEntriesByType('navigation')[0];
   if (entry && entry.type !== 'navigate') return;
-  var recent = false;
+  var interrupted = false;
   try {
-    var key = 'seen:' + location.pathname;
-    var last = +sessionStorage.getItem(key);
-    recent = last > 0 && Date.now() - last < 5000;
-    sessionStorage.setItem(key, String(Date.now()));
+    var key = 'loading:' + location.pathname;
+    interrupted = sessionStorage.getItem(key) !== null;
+    sessionStorage.setItem(key, '1');
+    addEventListener('load', function () {
+      try { sessionStorage.removeItem(key); } catch (e) {}
+    });
   } catch (e) {}
-  if (recent || window.scrollY > 0) return;
+  if (interrupted || window.scrollY > 0) return;
   // the tab row only exists on a section page
   var nav = document.querySelector('nav[aria-label="sections"]');
   if (!nav) return;
