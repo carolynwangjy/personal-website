@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from 'app/lib/site'
 import { getLatestCommitDate } from './lib/git-date'
+import { REVEAL_SECTION } from './lib/reveal'
 import { VisitorCount } from './components/visitor-count'
 
 // brush-script face for the chinese characters in the intro heading. preload is
@@ -138,6 +139,9 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
         </main>
+        {/* last thing in the body, so it measures a finished page before the
+            first paint. see app/lib/reveal.ts */}
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_SECTION }} />
       </body>
     </html>
   )

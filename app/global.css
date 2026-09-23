@@ -116,6 +116,17 @@ a:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
   margin-bottom: 1.4em;
 }
 .intro .text { flex: 1; min-width: 0; }
+/* the way back to the front page, now that the fiction tab goes to /fiction.
+   it shouldn't announce itself — no underline, no wash, no hover. it looks like
+   the heading it is, and clicking it takes you home. the focus ring stays, since
+   that only shows for keyboard users, who need to know it's there */
+.intro h1 a {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
 .intro p:last-child, .intro ul { margin-bottom: 0; }
 .intro img {
   flex: 0 0 auto;

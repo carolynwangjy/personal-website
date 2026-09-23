@@ -5,9 +5,9 @@ import { parseFrontmatter } from './frontmatter'
 export const SECTION_IDS = ['fiction', 'blog', 'teaching', 'experience', 'hobbies'] as const
 export type SectionId = (typeof SECTION_IDS)[number]
 
-/** each section is its own page; fiction lives at the root */
+/** each section is its own page; the root shows fiction too, as the front page */
 export const SECTION_HREFS: Record<SectionId, string> = {
-  fiction: '/',
+  fiction: '/fiction',
   blog: '/blog',
   teaching: '/teaching',
   experience: '/experience',
