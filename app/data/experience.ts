@@ -149,10 +149,19 @@ export const experience: Group[] = [
         ],
       },
       {
-        role: "research & education representative",
-        org: "cdss dean's forum",
+        role: "undergrad representative",
+        org: "cdss study committee",
         url: "https://cdss.berkeley.edu/",
-        dates: "fall 2024 - present",
+        dates: "fall 2026 - present",
+        bullets: [
+          "providing input to the amazing associate dean of students (narges!)",
+        ],
+      },
+      {
+        role: "research & education representative",
+        org: "cdss dean's cabinet",
+        url: "https://cdss.berkeley.edu/",
+        dates: "fall 2026 - present",
         bullets: [
           "providing input to the amazing associate dean of students (narges!)",
         ],
