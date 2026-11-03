@@ -139,9 +139,7 @@ a:focus-visible { box-shadow: 0 0 0 2px var(--wash-2); }
 
 /* tabs */
 nav[aria-label="sections"] {
-  margin: 1.6em 0 1.2em;
   padding-bottom: 0.55em;
-  border-bottom: 1px solid var(--rule);
   display: flex;
   flex-wrap: wrap;
   gap: 0 0.55em;
@@ -163,7 +161,40 @@ nav[aria-label="sections"] a[aria-current="page"]:active {
 }
 nav[aria-label="sections"] .sep { color: var(--muted); user-select: none; }
 
+/* The rule under the tabs sits on the wrapper, not the nav, so clipping the
+   nav (below) doesn't cut it short. */
+.tab-row {
+  position: relative;
+  margin: 1.6em 0 1.2em;
+  border-bottom: 1px solid var(--rule);
+}
+/* On narrow screens the row moves a page at a time by its arrows (tab-row.tsx).
+   It is clipped to the tabs that fit whole, with room added after the last
+   tab so the last page can line up against the left arrow. */
+.tab-row nav {
+  padding-right: var(--room, 0px);
+  clip-path: inset(0 var(--clip-r, 0px) 0 var(--clip-l, 0px));
+}
+.tab-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0.55em; /* stop above the nav's bottom padding */
+  width: 1.6em; /* ARROW_EM in tab-row.tsx */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--muted);
+  cursor: pointer;
+}
+.tab-arrow[hidden] { display: none; }
+.tab-arrow:hover, .tab-arrow:focus-visible { color: var(--ink); }
+
 section { margin: 0 0 3em; }
+section .footnote { font-size: 14px; color: var(--muted); }
 section:last-of-type { margin-bottom: 0; }
 
 section h2 {
@@ -311,13 +342,16 @@ footer .links svg { display: block; }
   .intro { flex-direction: column-reverse; gap: 16px; }
   .intro img { width: 112px; height: 112px; margin-top: 0; }
 
-  /* all five tabs don't fit one line at full size, and wrapping strands a
-     separator at the seam. So drop the hobbies tab here instead — the intro
-     links straight to the hobby pages, so nothing becomes unreachable. */
-  nav[aria-label="sections"] { gap: 0.45em; }
+  /* the tabs don't fit one line here, and wrapping strands a separator at the
+     seam. So keep them on one line; the arrows page through them, and the row
+     doesn't scroll by hand, which could leave a word cut in half. */
+  nav[aria-label="sections"] {
+    gap: 0.45em;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+  }
+  nav[aria-label="sections"] > * { flex: none; }
   nav[aria-label="sections"] a { padding: 0 3px; }
-  nav[aria-label="sections"] a[href="/hobbies"],
-  nav[aria-label="sections"] .sep:has(+ a[href="/hobbies"]) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }

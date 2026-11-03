@@ -4,12 +4,14 @@ import React from 'react'
 import { CustomMDX } from 'app/components/mdx'
 import { CourseFilter } from 'app/components/course-filter'
 import { KeepScroll, rememberScroll } from 'app/components/keep-scroll'
+import { TabRow } from 'app/components/tab-row'
 import { getPosts, postHref, type Collection } from 'app/lib/posts'
 import { formatDate } from 'app/lib/format-date'
 import { inline } from 'app/lib/inline'
 import { getHobbies } from 'app/lib/hobbies'
 import { getIntro } from 'app/lib/intro'
 import { getSections, type Section, type SectionId } from 'app/lib/sections'
+import { courses } from 'app/data/courses'
 import { teaching, type Item } from 'app/data/teaching'
 import { experience, type Group } from 'app/data/experience'
 
@@ -63,6 +65,23 @@ function Resources({ item }: { item: Item }) {
         </>
       )}
       <Links links={item.links} />
+    </>
+  )
+}
+
+function CourseList() {
+  return (
+    <>
+      {courses.map((semester) => (
+        <React.Fragment key={semester.term}>
+          <h2>{semester.term}</h2>
+          <ul>
+            {semester.courses.map((course, i) => (
+              <li key={i}>{inline(course)}</li>
+            ))}
+          </ul>
+        </React.Fragment>
+      ))}
     </>
   )
 }
@@ -147,31 +166,34 @@ const CONTENT: Record<SectionId, React.ReactNode> = {
   fiction: <PostList collection="fiction" />,
   blog: <PostList collection="blog" />,
   teaching: <TeachingList />,
+  courses: <CourseList />,
   experience: <GroupedEntries groups={experience} />,
   hobbies: <HobbyList />,
 }
 
 function Tabs({ sections, current }: { sections: Section[]; current: SectionId }) {
   return (
-    <nav aria-label="sections">
-      {sections.map((section, i) => (
-        <React.Fragment key={section.id}>
-          {i > 0 && (
-            <span className="sep" aria-hidden="true">
-              |
-            </span>
-          )}
-          <Link
-            href={section.href}
-            scroll={false}
-            onClick={rememberScroll}
-            aria-current={section.id === current ? 'page' : undefined}
-          >
-            {section.label}
-          </Link>
-        </React.Fragment>
-      ))}
-    </nav>
+    <TabRow>
+      <nav aria-label="sections">
+        {sections.map((section, i) => (
+          <React.Fragment key={section.id}>
+            {i > 0 && (
+              <span className="sep" aria-hidden="true">
+                |
+              </span>
+            )}
+            <Link
+              href={section.href}
+              scroll={false}
+              onClick={rememberScroll}
+              aria-current={section.id === current ? 'page' : undefined}
+            >
+              {section.label}
+            </Link>
+          </React.Fragment>
+        ))}
+      </nav>
+    </TabRow>
   )
 }
 

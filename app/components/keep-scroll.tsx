@@ -3,11 +3,15 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useLayoutEffect } from 'react'
+import { placeTabs } from 'app/components/tab-row'
 
 const TABS = 'nav[aria-label="sections"]'
 
 /** Where the tab row sat on screen when a tab was clicked. */
 let anchor: number | null = null
+
+/** How far the tab row was scrolled sideways (it scrolls on narrow screens). */
+let tabsLeft: number | null = null
 
 /** Where each section page was when we last left it. */
 const positions = new Map<string, number>()
@@ -23,6 +27,7 @@ export function rememberScroll(event: React.MouseEvent) {
   }
   const nav = document.querySelector(TABS)
   anchor = nav ? nav.getBoundingClientRect().top : null
+  tabsLeft = nav ? nav.scrollLeft : null
 }
 
 /**
@@ -72,6 +77,14 @@ export function KeepScroll() {
     anchor = null
     const back = goingBack
     goingBack = false
+    const left = tabsLeft
+    tabsLeft = null
+
+    // On a narrow screen the tab row scrolls sideways, and each page brings a
+    // fresh one starting at the left. Keep it where it was after a tab click;
+    // otherwise (a direct visit, a back link) open on the page with the current tab.
+    const tabs = document.querySelector<HTMLElement>(TABS)
+    if (tabs && tabs.scrollWidth > tabs.clientWidth) placeTabs(tabs, left)
 
     if (back) {
       window.scrollTo(0, positions.get(pathname) ?? 0)
