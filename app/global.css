@@ -47,6 +47,10 @@ h1 {
   line-height: 1.2;
 }
 
+/* the chinese name and its brackets move to the next line together, never
+   split partway through */
+.zh-group { white-space: nowrap; }
+
 /* chinese characters in the intro heading, set in long cang (brush script).
    the face draws 王家悦 at 0.72em of ink where pingfang uses 0.89em, so 1.25em
    puts them back at the optical size they had in the system font. font-weight
@@ -179,7 +183,7 @@ nav[aria-label="sections"] .sep { color: var(--muted); user-select: none; }
   position: absolute;
   top: 0;
   bottom: 0.55em; /* stop above the nav's bottom padding */
-  width: 1.6em; /* ARROW_EM in tab-row.tsx */
+  width: calc(var(--size) * 1.6); /* ARROW_EM in tab-row.tsx */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,9 +191,18 @@ nav[aria-label="sections"] .sep { color: var(--muted); user-select: none; }
   border: 0;
   background: none;
   font: inherit;
+  font-size: 1.2em;
+  line-height: 1;
+  /* a hair above the middle of the lowercase letters reads as centred */
+  padding-top: 0.03em;
   color: var(--muted);
   cursor: pointer;
 }
+/* a bigger target for a finger than the glyph itself, reaching up, down and
+   outward, but never over the tab beside the arrow */
+.tab-arrow::after { content: ""; position: absolute; top: -10px; bottom: -10px; }
+.tab-arrow.left::after { left: -10px; right: 0; }
+.tab-arrow.right::after { left: 0; right: -10px; }
 .tab-arrow[hidden] { display: none; }
 .tab-arrow:hover, .tab-arrow:focus-visible { color: var(--ink); }
 
@@ -336,15 +349,26 @@ footer .links a:hover, footer .links a:focus-visible { background: var(--wash); 
 footer .links svg { display: block; }
 
 
+/* stack the photo above the intro as soon as the name can't fit on one line
+   beside it: the name is ~344px wide, and the photo, gap and side padding take
+   242px more, so it starts wrapping just under 586px. 600 leaves a little
+   slack, so the name never sits awkwardly on two lines first */
+@media (max-width: 600px) {
+  .intro { flex-direction: column-reverse; gap: 16px; }
+  .intro img { width: 112px; height: 112px; margin-top: 0; }
+}
+
 @media (max-width: 480px) {
   /* narrower side padding buys ~24px for every line on the page */
   main { padding: 8vh 20px; }
-  .intro { flex-direction: column-reverse; gap: 16px; }
-  .intro img { width: 112px; height: 112px; margin-top: 0; }
+}
 
-  /* the tabs don't fit one line here, and wrapping strands a separator at the
-     seam. So keep them on one line; the arrows page through them, and the row
-     doesn't scroll by hand, which could leave a word cut in half. */
+/* the tabs need ~487px on one line, which with the side padding means a screen
+   ~551px wide; any narrower and wrapping strands a separator at the seam. So
+   keep them on one line; the arrows page through them, and the row doesn't
+   scroll by hand, which could leave a word cut in half. 560 leaves a little
+   slack */
+@media (max-width: 560px) {
   nav[aria-label="sections"] {
     gap: 0.45em;
     flex-wrap: nowrap;

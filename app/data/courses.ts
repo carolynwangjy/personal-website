@@ -14,7 +14,7 @@ export const courses: Semester[] = [
       'english 143a: advanced short fiction',
       'polecon c160: origins of capitalism',
       'cs 199: research (bair nlp group)',
-      'cs 399: 189 course staff - teaching assistant',
+      'cs 399: 189 course staff - teaching assistant ([materials](/teaching#cs189))',
     ],
   },
   {
@@ -25,7 +25,7 @@ export const courses: Semester[] = [
       'legalst 106wi: philosophy of law',
       `legalst 199: writing intensive seminar ([paper](${DRIVE}/16pYakjV4H3pjYCi_RfuHE88-YzeAn4hb/view?usp=sharing))`,
       'cs 199: research (sky lab)',
-      'cs 197: 189 course staff - tutor ([materials](/teaching))',
+      'cs 197: 189 course staff - tutor ([materials](/teaching#cs189))',
     ],
   },
   {
@@ -35,7 +35,7 @@ export const courses: Semester[] = [
       'cs 189: machine learning',
       'cs 375: teaching techniques for computer science',
       'nusctx 10: human nutrition',
-      'cs 399: 61a course staff - teaching assistant ([materials](/teaching))',
+      'cs 399: 61a course staff - teaching assistant ([materials](/teaching#cs61a))',
     ],
   },
   {

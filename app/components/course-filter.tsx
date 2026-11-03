@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
 export type FilterOption = { id: string; short: string }
@@ -19,6 +19,12 @@ export function CourseFilter({
   const [active, setActive] = useState<string | null>(null)
   const controls = useRef<HTMLParagraphElement>(null)
 
+  // a link like /teaching#cs61a opens with that course already picked
+  useLayoutEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1))
+    if (options.some((option) => option.id === id)) setActive(id)
+  }, [])
+
   /**
    * Filtering changes the page height by thousands of pixels, and the browser
    * re-clamps the scroll position, which yanks the page. Measure where the
@@ -28,6 +34,9 @@ export function CourseFilter({
   function choose(next: string | null) {
     const before = controls.current?.getBoundingClientRect().top
     flushSync(() => setActive(next))
+    // keep the address in step, so the filtered view can be linked to
+    const { pathname, search } = window.location
+    window.history.replaceState(window.history.state, '', next ? `#${next}` : pathname + search)
     const after = controls.current?.getBoundingClientRect().top
     if (before !== undefined && after !== undefined && after !== before) {
       window.scrollBy(0, after - before)
