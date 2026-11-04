@@ -99,7 +99,7 @@ export const experience: Group[] = [
         role: "tutor (video lead)",
         org: "cs189: machine learning",
         url: "https://eecs189.org/",
-        dates: "spring 2026 - fall 2026",
+        dates: "spring 2026",
         bullets: [
           "became a youtuber for 900+ students :D (see [cs189 channel](https://www.youtube.com/@cs189-sp26))",
           "pimental proctoring at 90 degrees, or opera wordle dinosaur game?",

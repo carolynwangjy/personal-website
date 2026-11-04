@@ -9,6 +9,16 @@ const DRIVE = 'https://drive.google.com/file/d'
 /** newest first */
 export const courses: Semester[] = [
   {
+    term: 'spring 2027 (tentative)',
+    courses: [
+      'cs 185: reinforcement learning',
+      'cs 288: advanced nlp',
+      'phil 161: aristotle',
+      'ugba 135: personal finance',
+      'legalst 199: honors thesis',
+    ],
+  },
+  {
     term: 'fall 2026',
     courses: [
       'english 143a: advanced short fiction',
